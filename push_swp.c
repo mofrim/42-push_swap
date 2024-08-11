@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 18:13:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/11 19:26:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,14 @@ int main(int ac, char **av)
 	// ft_printf("\nsorted:\n");
 	// print_stacks(stacks);
 
-	size = 5;
 
+	size = 100;
 	stacks = init_stacks(size);
-	fill_stack_rev(&stacks, size);
-	print_stacks(stacks);
-	ra(&stacks);
-	ra(&stacks);
-	sa(&stacks);
-	rra(&stacks);
-	rra(&stacks);
-	ft_printf("\nsorted:\n");
-	print_stacks(stacks);
+	fill_stack_rev(&stacks);
+	// print_stacks(stacks);
+	simple_sort(&stacks);
+	// ft_printf("\nsorted:\n");
+	// print_stacks(stacks);
 }
 
 void	easy_tests(void)
@@ -56,7 +52,7 @@ void	easy_tests(void)
 	size = 5;
 	stacks = init_stacks(size);
 	// fill_stack_rand(&stacks, size, 3);
-	fill_stack_rev(&stacks, size);
+	fill_stack_rev(&stacks);
 	print_stacks(stacks);
 
 	ft_printf("\neinmal sa:\n");

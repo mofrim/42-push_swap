@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 12:13:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/11 18:58:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "push_swp.h"
 
 /* swap a */
-void	sa(t_stacks **st)
+void	sa(t_stacks **sts)
 {
 	long tmp;
 	long		**a;
 
-	a = &((*st)->a);
+	a = &((*sts)->a->st);
 	if ((*a)[0] == LONG_MAX || (*a)[1] == LONG_MAX)
 		return ;
 	tmp = (*a)[0];
@@ -28,12 +28,12 @@ void	sa(t_stacks **st)
 }
 
 /* swap b */
-void	sb(t_stacks **st)
+void	sb(t_stacks **sts)
 {
 	long	tmp;
 	long	**b;
 
-	b = &((*st)->b);
+	b = &((*sts)->b->st);
 	if ((*b)[0] == LONG_MAX || (*b)[1] == LONG_MAX)
 		return ;
 	tmp = (*b)[0];
@@ -42,14 +42,14 @@ void	sb(t_stacks **st)
 }
 
 /* swap a & b */
-void	ss(t_stacks **st)
+void	ss(t_stacks **sts)
 {
-	sa(st);
-	sb(st);
+	sa(sts);
+	sb(sts);
 }
 
 /* push a */
-void	pa(t_stacks **st)
+void	pa(t_stacks **sts)
 {
 	long	**b;
 	long	**a;
@@ -57,27 +57,29 @@ void	pa(t_stacks **st)
 	long	tmpB;
 	int		i;
 
-	b = &((*st)->b);
-	a = &((*st)->a);
+	b = &((*sts)->b->st);
+	a = &((*sts)->a->st);
 	if ((*b)[0] == LONG_MAX)
 		return ;
 	tmpA = (*a)[0];
 	(*a)[0] = (*b)[0];
 	i = 0;
-	while (++i < (*st)->size || tmpA != LONG_MAX)
+	while (++i < (*sts)->a->size || tmpA != LONG_MAX)
 	{
 		tmpB = (*a)[i];
 		(*a)[i] = tmpA;
 		tmpA = tmpB;
 	}
 	i = -1;
-	while (++i < (*st)->size - 1 || (*b)[i + 1] == LONG_MAX)
+	while (++i < (*sts)->b->size - 1 || (*b)[i + 1] == LONG_MAX)
 		(*b)[i] = (*b)[i + 1];
 	(*b)[i] = LONG_MAX;
+	(*sts)->a->size++;
+	(*sts)->b->size--;
 }
 
 /* push b */
-void	pb(t_stacks **st)
+void	pb(t_stacks **sts)
 {
 	long	**b;
 	long	**a;
@@ -85,75 +87,77 @@ void	pb(t_stacks **st)
 	long	tmpB;
 	int		i;
 
-	b = &((*st)->b);
-	a = &((*st)->a);
+	b = &((*sts)->b->st);
+	a = &((*sts)->a->st);
 	if ((*a)[0] == LONG_MAX)
 		return ;
 	tmpA = (*b)[0];
 	(*b)[0] = (*a)[0];
 	i = 0;
-	while (++i < (*st)->size || tmpA != LONG_MAX)
+	while (++i < (*sts)->b->size || tmpA != LONG_MAX)
 	{
 		tmpB = (*b)[i];
 		(*b)[i] = tmpA;
 		tmpA = tmpB;
 	}
 	i = -1;
-	while (++i < (*st)->size - 1 || (*a)[i + 1] == LONG_MAX)
+	while (++i < (*sts)->a->size - 1 || (*a)[i + 1] == LONG_MAX)
 		(*a)[i] = (*a)[i + 1];
 	(*a)[i] = LONG_MAX;
+	(*sts)->a->size--;
+	(*sts)->b->size++;
 }
 
 /* rotate a */
-void	ra(t_stacks **st)
+void	ra(t_stacks **sts)
 {
 	long	**a;
 	long	tmp;
 	int		i;
 
-	a = &((*st)->a);
+	a = &((*sts)->a->st);
 
 	i = -1;
 	tmp = (*a)[0];
-	while (++i < (*st)->size - 1 && (*a)[i + 1] != LONG_MAX)
+	while (++i < (*sts)->a->size - 1 && (*a)[i + 1] != LONG_MAX)
 		(*a)[i] = (*a)[i + 1];
 	(*a)[i] = tmp;
 }
 
 /* rotate b */
-void	rb(t_stacks **st)
+void	rb(t_stacks **sts)
 {
 	long	**b;
 	long	tmp;
 	int		i;
 
-	b = &((*st)->b);
+	b = &((*sts)->b->st);
 
 	i = -1;
 	tmp = (*b)[0];
-	while (++i < (*st)->size - 1 && (*b)[i + 1] != LONG_MAX)
+	while (++i < (*sts)->b->size - 1 && (*b)[i + 1] != LONG_MAX)
 		(*b)[i] = (*b)[i + 1];
 	(*b)[i] = tmp;
 }
 
 /* rotate a & b */
-void	rr(t_stacks **st)
+void	rr(t_stacks **sts)
 {
-	ra(st);
-	rb(st);
+	ra(sts);
+	rb(sts);
 }
 
 /* rotate a */
-void	rra(t_stacks **st)
+void	rra(t_stacks **sts)
 {
 	long	**a;
 	long	tmp;
 	int		i;
 
-	a = &((*st)->a);
+	a = &((*sts)->a->st);
 
 	i = 0;
-	while (i < (*st)->size - 1 && (*a)[i] != LONG_MAX)
+	while (i < (*sts)->a->size - 1 && (*a)[i] != LONG_MAX)
 		i++;
 	if ((*a)[i] == LONG_MAX)
 		i--;
@@ -166,17 +170,17 @@ void	rra(t_stacks **st)
 	(*a)[0] = tmp;
 }
 
-/* rotate a */
-void	rrb(t_stacks **st)
+/* rotate b */
+void	rrb(t_stacks **sts)
 {
 	long	**b;
 	long	tmp;
 	int		i;
 
-	b = &((*st)->b);
+	b = &((*sts)->b->st);
 
 	i = 0;
-	while (i < (*st)->size - 1 && (*b)[i] != LONG_MAX)
+	while (i < (*sts)->b->size - 1 && (*b)[i] != LONG_MAX)
 		i++;
 	if ((*b)[i] == LONG_MAX)
 		i--;
@@ -189,8 +193,8 @@ void	rrb(t_stacks **st)
 	(*b)[0] = tmp;
 }
 
-void	rrr(t_stacks **st)
+void	rrr(t_stacks **sts)
 {
-	rra(st);
-	rrb(st);
+	rra(sts);
+	rrb(sts);
 }

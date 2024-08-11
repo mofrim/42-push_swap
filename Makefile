@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/10 09:04:01 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/11 19:02:03 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,12 @@ CFLAGS	= -Wall -Wextra -Werror
 LIBFT_PATH	= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
 
-SRC =	push_swp.c \
-			general_funcs.c \
-			stack_operations1.c
+SRC_FILES =	./push_swp.c \
+						./general_funcs.c \
+						./stack_operations1.c \
+						./simple_sort.c
+
+SRC = $(patsubst ./%.c,%.c,$(SRC_FILES))
 
 all: $(NAME)
 
