@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 18:54:22 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/11 19:53:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,35 @@ void	free_stacks(t_stacks **st)
 	free(*st);
 }
 
-void	fill_stack_rand(t_stacks **st, unsigned int seed)
+int	is_in(long *arr, int val, int size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+		if (arr[i] == val)
+			return (1);
+	return (0);
+}
+
+void	fill_stack_rand(t_stacks **sts, unsigned int seed)
 {
 	int	size;
+	int	i;
+	int	val;
+	long **a;
 
-	size = (*st)->initial_size;
+	size = (*sts)->initial_size;
+	a = &((*sts)->a->st);
 	srand(seed);
-	while (--size >= 0)
-		(*st)->a->st[size] = (double)rand() / (double)RAND_MAX * 15;
+	val = (double)rand() / (double)RAND_MAX * size * 2;
+	i = size;
+	while (--i >= 0)
+	{
+		while (is_in(*a, val, size))
+			val = (double)rand() / (double)RAND_MAX * size * 2;
+		(*a)[i] = val;
+	}
 }
 
 void	fill_stack_rev(t_stacks **st)

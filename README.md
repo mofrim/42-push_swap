@@ -56,6 +56,42 @@ next idea:
 
     pb, pb, pb
 
+another one:
+
+    bring max to top. until min is 2 under max do sa ra. then 1x sa. and max is
+    sorted. now take max-1. bring max-1 to top. do sa ra until max is 2 under
+    max-1. one time sa. and finished.
+    ... BUT!!! a quicker version might be: take whatever is at the top of the
+    stack. say this is x_i in sorted stack. do sa ra or sa rra until x_i+1 is 2
+    under x_i. 1 more time sa. and x_i is sorted relative to x_i+1. repeat this
+    for whatever is at the top of the stack.
+
+but maybe:
+
+    ..it takes less operations to just move x_i to top -> pb -> ra until x_i+1
+    is at top -> pa, move x_i+1 to top -> pb -> move x_i+2 to top -> and so
+    on...
+
+### the strategy approach
+
+okay. let's call it `the strategies approach`. from the beginning the goal
+is to fill stack b with the reversely sorted stack in order to push that
+back to stack a. at every instance we have a couple of strategies, say 4
+different ones:
+
+1. ra or rra stack a until min is at top -> pb to put it on top of stack b,
+    do the same for min+1 & min+2
+2. ra or rra stack a until min+1 is at top -> pb, then, ra or rra until min
+    is at top -> pb -> sb
+3. ra / rra stack a until min+2 is top -> pb, ra / rra until min+1 is top ->
+    pb, ra / rra until min is top -> pb. at this moment stack_b looks like
+    this [min, min+1, min+2, min-1,...]. correct order would be: [min+2,
+    min+1, min, min-1,...] => sort it: sb, rb, sb, rrb, sb - voilá.
+
+now for every strategy the number of moves is counted. the one with the
+least number of moves will be executed. this also means we have to deal with
+the stack sizes 1 and 2 seperately because this only works for stacks >= 3
+
 
 
 ## investigations
@@ -108,6 +144,14 @@ next idea:
 
     more stable: bring first elem to top -> pb, bring 2nd elem to top -> pb,
     sb, pa, pa
+
+ 5) oh man, i really need progress here
+
+    0. a = [5,4,3,2,1]
+    00. `rra`: a = [1,5,4,3,2]
+    1. bring min to top: `rra` a = [1,5,4,3,2]
+    2. `pb`: a = [5,4,3,2] b = [1]
+
 
 
 
