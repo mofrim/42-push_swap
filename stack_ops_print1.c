@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 20:39:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 21:19:32 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 22:02:28 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ void	pb_print(t_stacks **sts)
 }
 
 /* rotate a and print ra. */
-void	ra(t_stacks **sts)
+void	ra_print(t_stacks **sts)
 {
 	ra(sts);
 	ft_printf("ra\n");
 }
 
 /* rotate b and print rb. */
-void	rb(t_stacks **sts)
+void	rb_print(t_stacks **sts)
 {
 	rb(sts);
 	ft_printf("rb\n");
 }
 
 /* rotate a & b and print rr. */
-void	rr(t_stacks **sts)
+void	rr_print(t_stacks **sts)
 {
 	ra(sts);
 	rb(sts);
@@ -74,21 +74,21 @@ void	rr(t_stacks **sts)
 }
 
 /* rev rotate a and print rra. */
-void	rra(t_stacks **sts)
+void	rra_print(t_stacks **sts)
 {
 	rra(sts);
 	ft_printf("rra\n");
 }
 
 /* rev rotate b and print rrb. */
-void	rrb(t_stacks **sts)
+void	rrb_print(t_stacks **sts)
 {
 	rrb(sts);
 	ft_printf("rrb\n");
 }
 
 /* rev rotate a & b and print rrr. */
-void	rrr(t_stacks **sts)
+void	rrr_print(t_stacks **sts)
 {
 	rra(sts);
 	rrb(sts);

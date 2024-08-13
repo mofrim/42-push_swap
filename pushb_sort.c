@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 06:29:02 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/12 09:49:03 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 21:37:52 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,12 @@ void	move_to_top_next(t_stacks **sts, long *ss, long	xi, int	stack_size)
 			ft_printf("ra\n");
 			ra(sts);
 		}
-
 }
 
 // ..it takes less operations to just move x_i to top -> pb -> ra until x_i+1
 // is at top -> pa, move x_i+1 to top -> pb -> move x_i+2 to top -> and so
 // on...
-// 
+//
 // or
 //
 // take elem at top, pb, find next in sorted order, move this to top, pa,

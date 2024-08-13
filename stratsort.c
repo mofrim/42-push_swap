@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:36:44 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 20:24:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 21:40:16 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	strat3_do(t_stacks **sts, long **sortd, int indx_cur);
  * small enough num of steps, just add one or two more. */
 
 /* Maybe i should also have a strategy for 4 or 5. Just to finish earlier with
- * the copying */
+ * the copying. */
 
 void	stratsort(t_stacks **sts)
 {

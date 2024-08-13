@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 21:29:04 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 22:02:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void		ra(t_stacks **st);
 void		rb(t_stacks **st);
 void		rr(t_stacks **st);
 void		rra(t_stacks **st);
+void		rrb(t_stacks **st);
 void		rrr(t_stacks **st);
 
 /* Ops with printing. */
@@ -63,6 +64,7 @@ void		ra_print(t_stacks **st);
 void		rb_print(t_stacks **st);
 void		rr_print(t_stacks **st);
 void		rra_print(t_stacks **st);
+void		rrb_print(t_stacks **st);
 void		rrr_print(t_stacks **st);
 
 #endif 
