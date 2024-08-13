@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 20:25:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 21:21:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	get_index_sorted(long num, long *sorted_stack, int size);
 
 void	move_to_top_next(t_stacks **sts, long *ss, long	xi, int	stack_size);
 
-/* Operations */
-void	sa(t_stacks **st);
-void	sb(t_stacks **st);
-void	ss(t_stacks **st);
+/* Operations. */
+int		sa(t_stacks **st);
+int		sb(t_stacks **st);
+int		ss(t_stacks **st);
 void	pa(t_stacks **st);
 void	pb(t_stacks **st);
 void	ra(t_stacks **st);
@@ -58,6 +58,15 @@ void	rb(t_stacks **st);
 void	rr(t_stacks **st);
 void	rra(t_stacks **st);
 void	rrr(t_stacks **st);
+
+/* Ops with printing. */
+void	pa_print(t_stacks **st);
+void	pb_print(t_stacks **st);
+void	ra_print(t_stacks **st);
+void	rb_print(t_stacks **st);
+void	rr_print(t_stacks **st);
+void	rra_print(t_stacks **st);
+void	rrr_print(t_stacks **st);
 
 #endif 
 

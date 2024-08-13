@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_ops1.c                                       :+:      :+:    :+:   */
+/*   stack_ops_print1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 21:01:55 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/08/13 20:39:59 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/08/13 21:07:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,47 @@
 #include "libft/libft.h"
 #include "push_swp.h"
 
-/* TODO: for every operation create a version f.ex. sa_print which also prints
- * "sa", so the versions without print can be used inside the simulation
- * functions and the ones with print in the "do" funcs.
- */
-
-/* swap a. Returns 0 if nothing was done. Returns 1 otherwise. */
-int	sa(t_stacks **sts)
+/* swap a, and print that. */
+void	sa_print(t_stacks **sts)
 {
-	long tmp;
 	long		**a;
 
 	a = &((*sts)->a->st);
 	if ((*a)[0] == LONG_MAX || (*a)[1] == LONG_MAX)
-		return (0);
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-	return (1);
+		return ;
+	sa(sts);
+	ft_printf("sa\n");
 }
 
-/* swap b */
-int	sb(t_stacks **sts)
+/* swap b, and print that. */
+void	sb_print(t_stacks **sts)
 {
-	long	tmp;
 	long	**b;
 
 	b = &((*sts)->b->st);
 	if ((*b)[0] == LONG_MAX || (*b)[1] == LONG_MAX)
-		return (0);
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-	return (1);
+		return ;
+	sb(sts);
+	ft_printf("sb\n");
 }
 
-/* swap a & b. Returns 0 if neither sa nor sb did anything, 1 if only sa
- * succeeded, 2 if only sb, and 3 if both succeeded. */
-int	ss(t_stacks **sts)
+/* swap a & b. Prints ss if ss did anything.
+ * QUESTION: maybe this is not exactly the wanted beahvior. Maybe it should only
+ * print sa or sb in cases where this was only done.
+ */
+void	ss_print(t_stacks **sts)
 {
-	int	ret;
+	int ss_ret;
 
-	ret = 0;
-	ret += sa(sts);
-	ret += 2 * sb(sts);
-	return (ret);
+	ss_ret = ss(sts);
+	if (ss_ret == 0)
+		return ;
+	if (ss_ret == 1)
+		ft_printf("ss\n");
+	if (ss_ret == 2)
+		ft_printf("ss\n");
+	if (ss_ret == 3)
+		ft_printf("ss\n");
 }
 
 /* push a */
@@ -211,3 +207,5 @@ void	rrr(t_stacks **sts)
 	rra(sts);
 	rrb(sts);
 }
+
+
