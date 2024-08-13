@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 19:53:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 20:32:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	free_stacks(t_stacks **st)
 	free((*st)->b->st);
 	free((*st)->a);
 	free((*st)->b);
+	free((*st)->sortd);
 	free(*st);
 }
 
@@ -61,6 +62,8 @@ int	is_in(long *arr, int val, int size)
 	return (0);
 }
 
+/* Fills stacks->a with a random array. Also fills stacks->sortd with the
+ * ascendingly ordered array.*/
 void	fill_stack_rand(t_stacks **sts, unsigned int seed)
 {
 	int	size;
@@ -79,15 +82,19 @@ void	fill_stack_rand(t_stacks **sts, unsigned int seed)
 			val = (double)rand() / (double)RAND_MAX * size * 2;
 		(*a)[i] = val;
 	}
+	(*sts)->sortd = quicksorted_stack(*a, size);
 }
 
-void	fill_stack_rev(t_stacks **st)
+/* Fills stacks->a with a reversely ordered array. Also fills stacks->sortd with
+ * the ascendingly ordered array.*/
+void	fill_stack_rev(t_stacks **sts)
 {
 	int	size;
 
-	size = (*st)->initial_size;
+	size = (*sts)->initial_size;
 	while (--size >= 0)
-		(*st)->a->st[size] = (*st)->a->size - size;
+		(*sts)->a->st[size] = (*sts)->a->size - size;
+	(*sts)->sortd = quicksorted_stack((*sts)->a->st, size);
 }
 
 void	print_stacks(t_stacks *sts)

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/12 06:52:16 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 20:25:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+// TODO: add sorted stack to struct & do this during init_stacks.
 typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*b;
+	long	*sortd;
 	int		initial_size;
 }	t_stacks;
 

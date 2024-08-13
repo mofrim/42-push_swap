@@ -152,6 +152,11 @@ the stack sizes 1 and 2 seperately because this only works for stacks >= 3
     1. bring min to top: `rra` a = [1,5,4,3,2]
     2. `pb`: a = [5,4,3,2] b = [1]
 
+## TODO list
+
+- [ ] add `print ops`
+- [ ] write `strat_sort`
+- [ ] write `simulation` and `do` funcs
 
 
 

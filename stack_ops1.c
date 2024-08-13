@@ -6,13 +6,18 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 21:12:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/13 20:39:46 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "libft/libft.h"
 #include "push_swp.h"
+
+/* TODO: for every operation create a version f.ex. sa_print which also prints
+ * "sa", so the versions without print can be used inside the simulation
+ * functions and the ones with print in the "do" funcs.
+ */
 
 /* swap a */
 void	sa(t_stacks **sts)
