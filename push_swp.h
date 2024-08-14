@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 22:02:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/14 07:13:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+/* cur_min: the index in sortd-array of current minimal value. */
 typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*b;
 	long	*sortd;
 	int		initial_size;
+	int		cur_min;
 }	t_stacks;
 
 t_stacks	*init_stacks(int size);
@@ -58,6 +60,9 @@ void		rrb(t_stacks **st);
 void		rrr(t_stacks **st);
 
 /* Ops with printing. */
+int			sa_print(t_stacks **st);
+int			sb_print(t_stacks **st);
+int			ss_print(t_stacks **st);
 void		pa_print(t_stacks **st);
 void		pb_print(t_stacks **st);
 void		ra_print(t_stacks **st);

@@ -154,7 +154,8 @@ the stack sizes 1 and 2 seperately because this only works for stacks >= 3
 
 ## TODO list
 
-- [ ] add `print ops`
+- [x] add `print ops`
+- [ ] write `stacks_dup` function to duplicate stacks for simulations
 - [ ] write `strat_sort`
 - [ ] write `simulation` and `do` funcs
 

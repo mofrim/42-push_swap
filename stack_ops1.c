@@ -6,12 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 21:01:55 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/14 07:11:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
-#include "libft/libft.h"
 #include "push_swp.h"
 
 /* TODO: for every operation create a version f.ex. sa_print which also prints
