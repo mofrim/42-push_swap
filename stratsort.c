@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:36:44 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 15:24:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 15:30:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,19 @@ int	stratsort(t_stacks **sts)
  */
 int	simulate_strats(t_stacks **sts)
 {
-	int s1;
-	int s2;
-	int s3;
+	int s31;
+	int s32;
+	int s33;
 
-	s1 = strat31_sim(*sts);
-	s2 = strat32_sim(*sts);
-	s3 = strat33_sim(*sts);
+	s31 = strat31_sim(*sts);
+	s32 = strat32_sim(*sts);
+	s33 = strat33_sim(*sts);
 
-	if (s1 <= s2 && s1 <= s3)
+	if (s31 <= s32 && s31 <= s33)
 		return (1);
-	if (s2 <= s1 && s2 <= s3)
+	if (s32 <= s31 && s32 <= s33)
 		return (2);
-	if (s3 <= s1 && s3 <=s2)
+	if (s33 <= s31 && s33 <=s32)
 		return (3);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 21:31:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 15:24:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 15:44:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ int	strat31_sim(t_stacks *sts)
 	return (ops);
 }
 
+/*
+ * QUESTION: What should i do here? Am i stuck using this approach or can i
+ * substantaly improve something using the same approach but using
+ * more/different sim/do funcs ?! 
+ */
 int	strat112_sim(t_stacks *sts)
 {
 	t_stacks *dup;
