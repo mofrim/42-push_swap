@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/14 07:13:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 11:58:38 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ void		move_to_top_next(t_stacks **sts, long *ss, long xi, int stack_size);
 int			sa(t_stacks **st);
 int			sb(t_stacks **st);
 int			ss(t_stacks **st);
-void		pa(t_stacks **st);
-void		pb(t_stacks **st);
-void		ra(t_stacks **st);
-void		rb(t_stacks **st);
-void		rr(t_stacks **st);
-void		rra(t_stacks **st);
-void		rrb(t_stacks **st);
-void		rrr(t_stacks **st);
+int			pa(t_stacks **st);
+int			pb(t_stacks **st);
+int			ra(t_stacks **st);
+int			rb(t_stacks **st);
+int			rr(t_stacks **st);
+int			rra(t_stacks **st);
+int			rrb(t_stacks **st);
+int			rrr(t_stacks **st);
 
 /* Ops with printing. */
-int			sa_print(t_stacks **st);
-int			sb_print(t_stacks **st);
-int			ss_print(t_stacks **st);
+void		sa_print(t_stacks **st);
+void		sb_print(t_stacks **st);
+void		ss_print(t_stacks **st);
 void		pa_print(t_stacks **st);
 void		pb_print(t_stacks **st);
 void		ra_print(t_stacks **st);
@@ -71,5 +71,18 @@ void		rr_print(t_stacks **st);
 void		rra_print(t_stacks **st);
 void		rrb_print(t_stacks **st);
 void		rrr_print(t_stacks **st);
+
+/* stratsort. */
+void		stratsort(t_stacks **sts);
+t_stacks	*stacks_dup(t_stacks *orig);
+void		sort2(t_stacks **sts);
+void		sort3(t_stacks **sts);
+int			strat1_sim(t_stacks *sts);
+int			strat2_sim(t_stacks *sts);
+int			strat3_sim(t_stacks *sts);
+int			strat1_do(t_stacks **sts);
+int			strat2_do(t_stacks **sts);
+int			strat3_do(t_stacks **sts);
+int			move_top_min(t_stacks **sts, int min_offset);
 
 #endif 

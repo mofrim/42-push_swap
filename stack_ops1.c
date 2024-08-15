@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/14 07:11:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 11:58:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ss(t_stacks **sts)
 }
 
 /* push a */
-void	pa(t_stacks **sts)
+int	pa(t_stacks **sts)
 {
 	long	**b;
 	long	**a;
@@ -72,7 +72,7 @@ void	pa(t_stacks **sts)
 	b = &((*sts)->b->st);
 	a = &((*sts)->a->st);
 	if ((*b)[0] == LONG_MAX)
-		return ;
+		return (0);
 	tmpA = (*a)[0];
 	(*a)[0] = (*b)[0];
 	i = 0;
@@ -88,10 +88,11 @@ void	pa(t_stacks **sts)
 	(*b)[i] = LONG_MAX;
 	(*sts)->a->size++;
 	(*sts)->b->size--;
+	return (1);
 }
 
 /* push b */
-void	pb(t_stacks **sts)
+int	pb(t_stacks **sts)
 {
 	long	**b;
 	long	**a;
@@ -102,7 +103,7 @@ void	pb(t_stacks **sts)
 	b = &((*sts)->b->st);
 	a = &((*sts)->a->st);
 	if ((*a)[0] == LONG_MAX)
-		return ;
+		return (0);
 	tmpA = (*b)[0];
 	(*b)[0] = (*a)[0];
 	i = 0;
@@ -118,10 +119,11 @@ void	pb(t_stacks **sts)
 	(*a)[i] = LONG_MAX;
 	(*sts)->a->size--;
 	(*sts)->b->size++;
+	return (1);
 }
 
 /* rotate a */
-void	ra(t_stacks **sts)
+int	ra(t_stacks **sts)
 {
 	long	**a;
 	long	tmp;
@@ -134,10 +136,11 @@ void	ra(t_stacks **sts)
 	while (++i < (*sts)->a->size - 1 && (*a)[i + 1] != LONG_MAX)
 		(*a)[i] = (*a)[i + 1];
 	(*a)[i] = tmp;
+	return (1);
 }
 
 /* rotate b */
-void	rb(t_stacks **sts)
+int	rb(t_stacks **sts)
 {
 	long	**b;
 	long	tmp;
@@ -150,17 +153,19 @@ void	rb(t_stacks **sts)
 	while (++i < (*sts)->b->size - 1 && (*b)[i + 1] != LONG_MAX)
 		(*b)[i] = (*b)[i + 1];
 	(*b)[i] = tmp;
+	return (1);
 }
 
 /* rotate a & b */
-void	rr(t_stacks **sts)
+int	rr(t_stacks **sts)
 {
 	ra(sts);
 	rb(sts);
+	return (1);
 }
 
 /* rotate a */
-void	rra(t_stacks **sts)
+int	rra(t_stacks **sts)
 {
 	long	**a;
 	long	tmp;
@@ -180,10 +185,11 @@ void	rra(t_stacks **sts)
 		i--;
 	}
 	(*a)[0] = tmp;
+	return (1);
 }
 
 /* rotate b */
-void	rrb(t_stacks **sts)
+int	rrb(t_stacks **sts)
 {
 	long	**b;
 	long	tmp;
@@ -203,10 +209,12 @@ void	rrb(t_stacks **sts)
 		i--;
 	}
 	(*b)[0] = tmp;
+	return (1);
 }
 
-void	rrr(t_stacks **sts)
+int	rrr(t_stacks **sts)
 {
 	rra(sts);
 	rrb(sts);
+	return (1);
 }
