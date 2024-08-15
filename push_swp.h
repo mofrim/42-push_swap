@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 13:42:32 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 15:24:22 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ t_stacks	*stacks_dup(t_stacks *orig);
 int			sort2(t_stacks **sts);
 int			sort3(t_stacks **sts);
 int			simulate_strats(t_stacks **sts);
-int			strat1_sim(t_stacks *sts);
-int			strat2_sim(t_stacks *sts);
-int			strat3_sim(t_stacks *sts);
+int			strat31_sim(t_stacks *sts);
+int			strat32_sim(t_stacks *sts);
+int			strat33_sim(t_stacks *sts);
 int			strat1_do(t_stacks **sts);
 int			strat2_do(t_stacks **sts);
 int			strat3_do(t_stacks **sts);

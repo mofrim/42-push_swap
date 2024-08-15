@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 12:15:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 15:14:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	fill_stack_rev(t_stacks **sts)
 	size = (*sts)->initial_size;
 	while (--size >= 0)
 		(*sts)->a->st[size] = (*sts)->a->size - size;
-	(*sts)->sortd = quicksorted_stack((*sts)->a->st, size);
+	(*sts)->sortd = quicksorted_stack((*sts)->a->st,(*sts)->initial_size);
 }
 
 void	print_stacks(t_stacks *sts)
