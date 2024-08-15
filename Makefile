@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/14 23:05:34 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/15 19:05:09 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRC_FILES =	./push_swp.c \
 						./stratsort.c \
 						./strat_sim.c \
 						./strat_do.c \
-						./strat_utils.c
+						./strat_utils.c \
+						./dist_sort.c \
+						./dist_sort_utils.c
 
 SRC = $(patsubst ./%.c,%.c,$(SRC_FILES))
 

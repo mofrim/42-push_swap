@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:36:44 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 15:30:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 19:37:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,64 +59,16 @@ int	stratsort(t_stacks **sts)
 	return (ops);
 }
 
-/*
- * Call the simulation functions for all 3 strats and return the strat num which
- * took the least ops.
- */
-int	simulate_strats(t_stacks **sts)
+int	strat_optimized(t_stacks **sts)
 {
-	int s31;
-	int s32;
-	int s33;
-
-	s31 = strat31_sim(*sts);
-	s32 = strat32_sim(*sts);
-	s33 = strat33_sim(*sts);
-
-	if (s31 <= s32 && s31 <= s33)
-		return (1);
-	if (s32 <= s31 && s32 <= s33)
-		return (2);
-	if (s33 <= s31 && s33 <=s32)
-		return (3);
-	return (0);
-}
-
-/* Handles 2-elem stack_a. */
-int	sort2(t_stacks **sts)
-{
+	t_stacks *dup;
+	int	ras;
 	int	ops;
 
-	ops = 0;
-	if ((*sts)->a->st[0] > (*sts)->a->st[1])
-		ops += sa_print(sts);
-	return (ops);
-}
-
-/* Handles 3-elem stack_a. */
-int	sort3(t_stacks **sts)
-{
-	long	*a;
-	int		ops;
-
-	ops = 0;
-	a = (*sts)->a->st;
-	if (a[0] > a[1] && a[0] > a[2])
-	{
+	dup = stacks_dup(*sts);
+	ras = optimize_dists_rot(&dup);
+	while (ras-- > 0)
 		ops += ra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[1] > a[0] && a[1] > a[2])
-	{
-		ops += rra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[2] > a[0] && a[2] > a[1])
-	{
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
+	ops += stratsort(sts);
 	return (ops);
 }

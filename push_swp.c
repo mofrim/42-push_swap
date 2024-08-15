@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 15:27:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 19:43:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,49 @@
 
 void	easy_tests(void);
 void	strattest(void);
+void	distsorttest(void);
+void strat_optimized_test(void);
 
 int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	
-	strattest();
+
+	strat_optimized_test();
+}
+
+
+void strat_optimized_test(void)
+{
+	t_stacks	*stacks;
+	t_stacks	*dup;
+	int	size;
+	int ops1, ops2;
+
+	size = 20;
+	stacks = init_stacks(size);
+	fill_stack_rand(&stacks, 1);
+	dup = stacks_dup(stacks);
+	ops1 = stratsort(&stacks);
+	ops2 = strat_optimized(&dup);
+	ft_printf("normal ops: %d\noptimized ops: %d\n", ops1, ops2);
+	free_stacks(&stacks);
+	free_stacks(&dup);
+}
+
+void distsorttest(void)
+{
+	t_stacks	*stacks;
+	int	size;
+
+	size = 20;
+	stacks = init_stacks(size);
+	fill_stack_rand(&stacks, 1);
+	print_stacks(stacks);
+	ft_printf("\ndists:\n\n");
+	// print_dists_stack(stacks);
+	optimize_dists_rot(&stacks);
+	free_stacks(&stacks);
 }
 
 void strattest(void)

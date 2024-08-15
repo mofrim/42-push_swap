@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 21:35:26 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 12:32:52 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 19:33:45 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,23 @@ t_stacks	*stacks_dup(t_stacks *orig)
 }
 
 /* Return index of value `num` in array of longs `stack`. */
-int	get_stack_index(long num, long *stack)
+int	indexof_long(long num, long *arr)
 {
 	int	i;
 
 	i = 0;
-	while (stack[i] != num)
+	while (arr[i] != num)
+		i++;
+	return (i);
+}
+
+/* Will find **the first** index where arr[index] matches num. */
+int	indexof_int(int num, int *arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i] != num)
 		i++;
 	return (i);
 }
@@ -65,7 +76,7 @@ int move_top_min(t_stacks **sts, int min_offset)
 	indx_min = (*sts)->cur_min + min_offset;
 	if (indx_min >= (*sts)->initial_size)
 		return (-1);
-	indx_a = get_stack_index((*sts)->sortd[indx_min], (*sts)->a->st);
+	indx_a = indexof_long((*sts)->sortd[indx_min], (*sts)->a->st);
 	ops = 0;
 	while ((*sts)->a->st[0] != (*sts)->sortd[indx_min])
 	{
@@ -87,7 +98,7 @@ int move_top_min_print(t_stacks **sts, int min_offset)
 	indx_min = (*sts)->cur_min + min_offset;
 	if (indx_min >= (*sts)->initial_size)
 		return (-1);
-	indx_a = get_stack_index((*sts)->sortd[indx_min], (*sts)->a->st);
+	indx_a = indexof_long((*sts)->sortd[indx_min], (*sts)->a->st);
 	ops = 0;
 	while ((*sts)->a->st[0] != (*sts)->sortd[indx_min])
 	{
@@ -95,6 +106,68 @@ int move_top_min_print(t_stacks **sts, int min_offset)
 			ops += ra_print(sts);
 		else
 			ops += rra_print(sts);
+	}
+	return (ops);
+}
+
+/*
+ * Call the simulation functions for all 3 strats and return the strat num which
+ * took the least ops.
+ */
+int	simulate_strats(t_stacks **sts)
+{
+	int s31;
+	int s32;
+	int s33;
+
+	s31 = strat31_sim(*sts);
+	s32 = strat32_sim(*sts);
+	s33 = strat33_sim(*sts);
+
+	if (s31 <= s32 && s31 <= s33)
+		return (1);
+	if (s32 <= s31 && s32 <= s33)
+		return (2);
+	if (s33 <= s31 && s33 <=s32)
+		return (3);
+	return (0);
+}
+
+/* Handles 2-elem stack_a. */
+int	sort2(t_stacks **sts)
+{
+	int	ops;
+
+	ops = 0;
+	if ((*sts)->a->st[0] > (*sts)->a->st[1])
+		ops += sa_print(sts);
+	return (ops);
+}
+
+/* Handles 3-elem stack_a. */
+int	sort3(t_stacks **sts)
+{
+	long	*a;
+	int		ops;
+
+	ops = 0;
+	a = (*sts)->a->st;
+	if (a[0] > a[1] && a[0] > a[2])
+	{
+		ops += ra_print(sts);
+		if (a[0] > a[1])
+			ops += sa_print(sts);
+	}
+	if (a[1] > a[0] && a[1] > a[2])
+	{
+		ops += rra_print(sts);
+		if (a[0] > a[1])
+			ops += sa_print(sts);
+	}
+	if (a[2] > a[0] && a[2] > a[1])
+	{
+		if (a[0] > a[1])
+			ops += sa_print(sts);
 	}
 	return (ops);
 }
