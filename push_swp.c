@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 09:50:05 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 12:55:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,6 @@ int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	// t_stacks	*stacks;
-	// long *ss;
-	// int	size;
-
-	// size = 5;
-	// stacks = init_stacks(size);
-	// fill_stack_rev(&stacks);
-	// fill_stack_rand(&stacks, 12390);
-	// print_stacks(stacks);
-
-	// ss = quicksorted_stack(stacks->a->st, stacks->a->size);
-	// move_to_top_next(&stacks, ss, 4, size);
-	// simple_sort(&stacks);
-	// simple_sort2(&stacks);
-	// swap_sort(&stacks);
-	// bring_max_to_top(&stacks, 5);
-	// sa(&stacks);
-	// ra(&stacks);
-	// sa(&stacks);
-	// ra(&stacks);
-	// sa(&stacks);
-	// bring_max_to_top(&stacks, 3);
-	// ra(&stacks);
-	// ft_printf("\nsorted:\n");
-	// print_stacks(stacks);
-	// free_stacks(&stacks);
 	
 	strattest();
 }
@@ -56,13 +30,14 @@ void strattest(void)
 	t_stacks	*stacks;
 	int	size;
 
-	size = 5;
+	size = 100;
 	stacks = init_stacks(size);
-	fill_stack_rand(&stacks, 4293);
+	fill_stack_rand(&stacks, 123);
 	print_stacks(stacks);
 
-	ft_printf("\nmove_top_min(1):\n\n");
-	int ops = move_top_min(&stacks, 1);
+	ft_printf("\nstrat1_sim1:\n\n");
+	// int ops = strat1_do(&stacks);
+	int ops = stratsort(&stacks);
 	print_stacks(stacks);
 	ft_printf("\nneeded ops: %d\n", ops);
 

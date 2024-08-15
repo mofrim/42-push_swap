@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/14 06:55:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 12:15:06 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,44 @@ t_stacks	*init_stacks(int size)
 	stacks->b->size = 0;
 	stacks->initial_size = size;
 	stacks->cur_min = 0;
+	return (stacks);
+}
+
+/* Init stacks. Also malloc sortd array and init everything with LONG_MAX. */
+t_stacks	*init_stacks_empty(int size)
+{
+	t_stacks	*stacks;
+	int		i;
+
+	stacks = malloc(sizeof(t_stacks));
+	stacks->a = malloc(size * sizeof(t_stack));
+	stacks->b = malloc(size * sizeof(t_stack));
+	stacks->a->st = malloc(size * sizeof(long));
+	stacks->b->st = malloc(size * sizeof(long));
+	stacks->sortd = malloc(size * sizeof(long));
+	if (!stacks || !stacks->a || !stacks->b || !stacks->a->st || \
+			!stacks->b->st || !stacks->sortd)
+		return (NULL);
+	i = -1;
+	while (++i < size)
+	{
+		stacks->a->st[i] = LONG_MAX;
+		stacks->b->st[i] = LONG_MAX;
+		stacks->sortd[i] = LONG_MAX;
+	}
+	stacks->a->size = size;
+	stacks->b->size = 0;
+	stacks->initial_size = size;
+	stacks->cur_min = 0;
+	return (stacks);
+}
+
+t_stacks	*init_stacks_rand(int size, int seed)
+{
+	t_stacks	*stacks;
+
+	stacks = init_stacks(size);
+	fill_stack_rand(&stacks, seed);
 	return (stacks);
 }
 

@@ -6,21 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:36:44 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 09:23:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 13:42:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swp.h"
-
-/*
- * QUESTION: what was the idea behind passing `indx_cur` again? 
- * ANSWER: `indx_cur` is the index of the current to-be-sorted value from the
- * sorted array. 
- */
-
-void	sort2(t_stacks **sts);
-void	sort3(t_stacks **sts);
-int		simulate_strats(t_stacks **sts);
 
 /* One advantage certainly is: if using 3 strats is not enough to archieve
  * small enough num of steps, just add one or two more.
@@ -33,46 +24,36 @@ int		simulate_strats(t_stacks **sts);
  * NOTE: it might also be more efficient f.ex. to move_top_min & pb and after that
  * do a strat2 or 3 combo...how to adress that? we could call these 'strat12'
  * and 'strat13'
+ *
+ * FIXME: handle cases where stack_a is already sorted and we end up with less
+ * then 3 elements in stack_a.
  */
-void	stratsort(t_stacks **sts)
+int	stratsort(t_stacks **sts)
 {
 	int	sim_res;
+	int	ops;
 
+	ops = 0;
 	if ((*sts)->initial_size == 1)
-		return ;
+		return (0);
 	if ((*sts)->initial_size == 2)
 		return (sort2(sts));
 	if ((*sts)->initial_size == 3)
 		return (sort3(sts));
-
-	// from here on it is clear that there are at least 4 elements in a.
-	// we can now start the strats. we need another function which runs all the
-	// strats and returns strat number which needed the least ops. so:
-	//
-	// int sim_res = simulate_strats(sts);
-	//
-	// if (sim_res == 1)
-	// 		strat1_do(sts);
-	// 	if (sim_res == 2)
-	// 		strat2_do(sts);
-	//
-	// 		... and so on.
-	// 		
-	// 	but this we would have to do in a loop until there are only 3
-	// 	elements left in a.
-	// so lt's do that:
-
 	while ((*sts)->a->size > 3)
 	{
 		sim_res = simulate_strats(sts);
 		if (sim_res == 1)
-			strat1_do(sts);
+			ops += strat1_do(sts);
 		if (sim_res == 2)
 			strat2_do(sts);
 		if (sim_res == 3)
 			strat3_do(sts);
 	}
-	sort3(sts);
+	ops += sort3(sts);
+	while ((*sts)->b->size > 0)
+		ops += pa_print(sts);
+	return (ops);
 }
 
 /*
@@ -85,47 +66,54 @@ int	simulate_strats(t_stacks **sts)
 	int s2;
 	int s3;
 
-	s1 = strat1_sim(sts);
-	s2 = strat2_sim(sts);
-	s3 = strat3_sim(sts);
+	s1 = strat1_sim(*sts);
+	s2 = strat2_sim(*sts);
+	s3 = strat3_sim(*sts);
 
-	if (s1 >= s2 && s1 >= s3)
+	if (s1 <= s2 && s1 <= s3)
 		return (1);
-	if (s2 >= s1 && s2 >= s3)
+	if (s2 <= s1 && s2 <= s3)
 		return (2);
-	if (s3 >= s1 && s3 >=s2)
+	if (s3 <= s1 && s3 <=s2)
 		return (3);
 	return (0);
 }
 
 /* Handles 2-elem stack_a. */
-void	sort2(t_stacks **sts)
+int	sort2(t_stacks **sts)
 {
+	int	ops;
+
+	ops = 0;
 	if ((*sts)->a->st[0] > (*sts)->a->st[1])
-		sa_print(sts);
+		ops += sa_print(sts);
+	return (ops);
 }
 
 /* Handles 3-elem stack_a. */
-void	sort3(t_stacks **sts)
+int	sort3(t_stacks **sts)
 {
 	long	*a;
+	int		ops;
 
+	ops = 0;
 	a = (*sts)->a->st;
 	if (a[0] > a[1] && a[0] > a[2])
 	{
-		ra_print(sts);
+		ops += ra_print(sts);
 		if (a[0] > a[1])
-			sa_print(sts);
+			ops += sa_print(sts);
 	}
 	if (a[1] > a[0] && a[1] > a[2])
 	{
-		rra_print(sts);
+		ops += rra_print(sts);
 		if (a[0] > a[1])
-			sa_print(sts);
+			ops += sa_print(sts);
 	}
 	if (a[2] > a[0] && a[2] > a[1])
 	{
 		if (a[0] > a[1])
-			sa_print(sts);
+			ops += sa_print(sts);
 	}
+	return (ops);
 }

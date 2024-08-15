@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 20:39:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/13 22:02:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 12:26:38 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,83 +14,98 @@
 #include "push_swp.h"
 
 /* swap a, and print that. */
-void	sa_print(t_stacks **sts)
+int	sa_print(t_stacks **sts)
 {
 	sa(sts);
 	ft_printf("sa\n");
+	return (1);
 }
 
 /* swap b, and print that. */
-void	sb_print(t_stacks **sts)
+int	sb_print(t_stacks **sts)
 {
+
 	sb(sts);
 	ft_printf("sb\n");
+	return (1);
 }
 
 /* swap a & b and print ss.
  * QUESTION: maybe this is not exactly the wanted beahvior. Maybe it should only
  * print sa or sb in cases where this was only done.
  */
-void	ss_print(t_stacks **sts)
+int	ss_print(t_stacks **sts)
 {
+
 	ss(sts);
 	ft_printf("ss\n");
+	return (1);
 }
 
+
 /* push a and print pa. */
-void	pa_print(t_stacks **sts)
+int	pa_print(t_stacks **sts)
 {
 	pa(sts);
 	ft_printf("pa\n");
+	return (1);
 }
 
 /* push b and print pb. */
-void	pb_print(t_stacks **sts)
+int	pb_print(t_stacks **sts)
 {
 	pb(sts);
 	ft_printf("pb\n");
+	return (1);
 }
 
 /* rotate a and print ra. */
-void	ra_print(t_stacks **sts)
+int	ra_print(t_stacks **sts)
 {
 	ra(sts);
 	ft_printf("ra\n");
+	return (1);
 }
 
 /* rotate b and print rb. */
-void	rb_print(t_stacks **sts)
+int	rb_print(t_stacks **sts)
 {
 	rb(sts);
 	ft_printf("rb\n");
+	return (1);
 }
 
 /* rotate a & b and print rr. */
-void	rr_print(t_stacks **sts)
+int	rr_print(t_stacks **sts)
 {
 	ra(sts);
 	rb(sts);
 	ft_printf("rr\n");
+	return (1);
 }
 
 /* rev rotate a and print rra. */
-void	rra_print(t_stacks **sts)
+int	rra_print(t_stacks **sts)
 {
+
 	rra(sts);
 	ft_printf("rra\n");
+	return (1);
 }
 
 /* rev rotate b and print rrb. */
-void	rrb_print(t_stacks **sts)
+int	rrb_print(t_stacks **sts)
 {
 	rrb(sts);
 	ft_printf("rrb\n");
+	return (1);
 }
 
 /* rev rotate a & b and print rrr. */
-void	rrr_print(t_stacks **sts)
+int	rrr_print(t_stacks **sts)
 {
 	rra(sts);
 	rrb(sts);
 	ft_printf("rrr\n");
+	return (1);
 }

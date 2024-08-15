@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 11:58:38 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 13:42:32 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_stacks
 }	t_stacks;
 
 t_stacks	*init_stacks(int size);
+t_stacks	*init_stacks_rand(int size, int seed);
+t_stacks	*init_stacks_empty(int size);
 void		fill_stack_rand(t_stacks **st, unsigned int seed);
 void		fill_stack_rev(t_stacks **st);
 void		free_stacks(t_stacks **st);
@@ -60,23 +62,24 @@ int			rrb(t_stacks **st);
 int			rrr(t_stacks **st);
 
 /* Ops with printing. */
-void		sa_print(t_stacks **st);
-void		sb_print(t_stacks **st);
-void		ss_print(t_stacks **st);
-void		pa_print(t_stacks **st);
-void		pb_print(t_stacks **st);
-void		ra_print(t_stacks **st);
-void		rb_print(t_stacks **st);
-void		rr_print(t_stacks **st);
-void		rra_print(t_stacks **st);
-void		rrb_print(t_stacks **st);
-void		rrr_print(t_stacks **st);
+int		sa_print(t_stacks **st);
+int		sb_print(t_stacks **st);
+int		ss_print(t_stacks **st);
+int		pa_print(t_stacks **st);
+int		pb_print(t_stacks **st);
+int		ra_print(t_stacks **st);
+int		rb_print(t_stacks **st);
+int		rr_print(t_stacks **st);
+int		rra_print(t_stacks **st);
+int		rrb_print(t_stacks **st);
+int		rrr_print(t_stacks **st);
 
 /* stratsort. */
-void		stratsort(t_stacks **sts);
+int			stratsort(t_stacks **sts);
 t_stacks	*stacks_dup(t_stacks *orig);
-void		sort2(t_stacks **sts);
-void		sort3(t_stacks **sts);
+int			sort2(t_stacks **sts);
+int			sort3(t_stacks **sts);
+int			simulate_strats(t_stacks **sts);
 int			strat1_sim(t_stacks *sts);
 int			strat2_sim(t_stacks *sts);
 int			strat3_sim(t_stacks *sts);
@@ -84,5 +87,6 @@ int			strat1_do(t_stacks **sts);
 int			strat2_do(t_stacks **sts);
 int			strat3_do(t_stacks **sts);
 int			move_top_min(t_stacks **sts, int min_offset);
+int 		move_top_min_print(t_stacks **sts, int min_offset);
 
 #endif 
