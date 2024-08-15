@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 19:40:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 20:07:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int			strat3_do(t_stacks **sts);
 int			move_top_min(t_stacks **sts, int min_offset);
 int 		move_top_min_print(t_stacks **sts, int min_offset);
 int			indexof(long num, long *arr);
-int			strat_optimized(t_stacks **sts);
+
 
 /* distsort. */
 void	print_dists_stack(t_stacks *sts);
@@ -98,5 +98,9 @@ int		*get_dists_array(long *a, long *sortd, int size);
 int		optimize_dists_rot(t_stacks **sts);
 int		indexof_int(int num, int *arr);
 int		indexof_long(long num, long *arr);
+
+/* experimental. */
+int			strat_optimized(t_stacks **sts);
+int			optimize_dists_rot_inv(t_stacks **sts);
 
 #endif 

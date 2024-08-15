@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:36:44 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 19:37:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 20:06:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,15 @@ int	strat_optimized(t_stacks **sts)
 	int	ops;
 
 	dup = stacks_dup(*sts);
-	ras = optimize_dists_rot(&dup);
-	while (ras-- > 0)
+	ras = optimize_dists_rot_inv(&dup);
+	ft_printf("ras = %d\n", ras);
+	ops = 0;
+	while (ras > 0)
+	{
+		ft_printf("from here!");
 		ops += ra_print(sts);
+		ras--;
+	}
 	ops += stratsort(sts);
 	return (ops);
 }

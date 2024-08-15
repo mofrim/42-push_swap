@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:28:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 19:32:03 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 20:11:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,58 @@ int	optimize_dists_rot(t_stacks **sts)
 		ft_printf("total_dist = %d\n", d);
 		if (d < mind)
 		{
-			ft_printf("found new min: %d\n", d);
+			// ft_printf("found new min: %d\n", d);
 			mind = d;
 		}
 		rots[i] = d;
 		ra(sts);
 	}
 	free(dists);
-	ft_printf("\nnumber of ra's: %d\n", indexof_int(mind, rots));
+	// ft_printf("\nnumber of ra's: %d\n", indexof_int(mind, rots));
 	return (indexof_int(mind, rots));
+}
+
+int	optimize_dists_rot_inv(t_stacks **sts)
+{
+	int	i;
+	int	*dists;
+	int	d;
+	int	mind;
+	int	rots[(*sts)->initial_size];
+	long	*sortd_inv;
+
+	sortd_inv = malloc(sizeof(long) * (*sts)->initial_size);
+	i = (*sts)->initial_size;
+	while (--i >= 0)
+		sortd_inv[(*sts)->initial_size - i - 1] = (*sts)->sortd[i];
+	dists = get_dists_array((*sts)->a->st, sortd_inv, (*sts)->initial_size);
+
+	d = 0;
+	mind = INT_MAX;
+	i = -1;
+	while(++i < (*sts)->initial_size)
+	{
+		d = calc_total_dist((*sts)->a->st, sortd_inv, (*sts)->initial_size);
+		ft_printf("total_dist = %d, sortd_inv[i] = %d\n", d, sortd_inv[i]);
+		if (d < mind)
+		{
+			// ft_printf("found new min: %d\n", d);
+			mind = d;
+		}
+		rots[i] = d;
+		ra(sts);
+	}
+	free(dists);
+	free(sortd_inv);
+	// ft_printf("\nnumber of ra's: %d\n", indexof_int(mind, rots));
+	return (indexof_int(mind, rots));
+}
+
+/* Implement the idea from above: compare elements and move BIGGER ones above
+ * SMALLER ones. This is for optimizing for stratsort !!! */
+int	mixed_optimize(t_stacks **sts)
+{
+
 }
 
 
