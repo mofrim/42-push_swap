@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:28:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 20:11:34 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/16 06:54:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,36 @@ int	optimize_dists_rot_inv(t_stacks **sts)
 	return (indexof_int(mind, rots));
 }
 
-/* Implement the idea from above: compare elements and move BIGGER ones above
- * SMALLER ones. This is for optimizing for stratsort !!! */
+/*
+ * Implement the idea from above: compare elements and move BIGGER ones above
+ * SMALLER ones. THIS IS FOR OPTIMIZING FOR STRATSORT !!! 
+ *
+ * ok. i give up array approach :(
+ *
+ */
 int	mixed_optimize(t_stacks **sts)
 {
-
+	return (0);
 }
 
+/* right now i am getting another idea.. what if we pretend the stacks-a are
+ * linked together at position 0 from the start. that means. if a[0] has postion
+ * 10 in the final array: pb -> 10x ra -> pa. then take the elem above or below
+ * in a. pb -> X times ra, pa.*/
 
+/* Oh, a even better idea. I call it
+ *
+ * 		bus_sort
+ *
+ * 	The idea: scan for an area where we have elems in stack-a that would
+ * need shifting in the same direction. Then, start ra'ing and pb'ing. stack-b
+ * 	functions like a bus where the elements wait until it is time to drop
+ * them of. in every block, ra or rra to the element with the highest shift
+ * needed.
+ *
+ * until we reach the first position where one of the elems should be
+ * dropped of. this would...
+ *
+ * damn. i slowly get the feeling that working with linked lists here would be
+ * much more convenient. with the lists we could save for every list item its
+ * position in the final sorted list, its distance from that position, ...*/

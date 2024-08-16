@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 20:08:44 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/15 23:32:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int main(int ac, char **av)
 	(void)ac;
 	(void)av;
 
-	strat_optimized_test();
-	// distsorttest();
+	// strat_optimized_test();
+	distsorttest();
 }
 
 
@@ -52,14 +52,14 @@ void distsorttest(void)
 	t_stacks	*stacks;
 	int	size;
 
-	size = 20;
+	size = 10;
 	stacks = init_stacks(size);
-	fill_stack_rand(&stacks, 1);
+	fill_stack_rand(&stacks, 2);
 	print_stacks(stacks);
 	ft_printf("\ndists:\n\n");
 	print_dists_stack(stacks);
-	ft_printf("\nrot:\n\n");
-	optimize_dists_rot(&stacks);
+	// ft_printf("\nrot:\n\n");
+	// optimize_dists_rot(&stacks);
 	free_stacks(&stacks);
 }
 
