@@ -88,6 +88,21 @@ but maybe:
     is at top -> pa, move x_i+1 to top -> pb -> move x_i+2 to top -> and so
     on...
 
+bus_sort:
+
+    The idea: scan for an area where we have elems in stack-a that would
+    need shifting in the same direction. Then, start ra'ing and pb'ing. stack-b
+    functions like a bus where the elements wait until it is time to drop
+    them of. in every block, ra or rra to the element with the highest shift
+    needed.
+ 
+    until we reach the first position where one of the elems should be
+    dropped of. this would...
+ 
+    damn. i slowly get the feeling that working with linked lists here would be
+    much more convenient. with the lists we could save for every list item its
+    position in the final sorted list, its distance from that position, ...
+
 ### the strategy approach
 
 okay. let's call it `the strategies approach`. from the beginning the goal
@@ -167,6 +182,11 @@ the stack sizes 1 and 2 seperately because this only works for stacks >= 3
     00. `rra`: a = [1,5,4,3,2]
     1. bring min to top: `rra` a = [1,5,4,3,2]
     2. `pb`: a = [5,4,3,2] b = [1]
+
+ 6) last try
+
+    a =     [5,3, 1,4, 2], sortd = [1,2,3,4,5] =>
+    dists = [4,1,-2,0,-3]
 
 ## TODO list
 
