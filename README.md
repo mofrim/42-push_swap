@@ -1,7 +1,23 @@
 # 42-push_swp
+
 42's push_swap project
 
-Operations:
+## Current Status
+
+I got stuck using my array-approach. In principle it should be possible to
+solve this exercise also using the array-approach. But right now i am lacking
+the right idea to do it.
+
+Rewriting everything with linked lists will cost a lot of time. Plus, having
+read mcombeau's solution i strongly have the feeling i really do not want to
+copy-implement stuff according to her solution after putting so much work into
+it.
+
+Conclusion: i think i have to keep going with my approach and somehow,
+hopefully in an elegant way make it meet the requirements.
+
+
+## Operations:
 
     sa (swap a): Swap the first 2 elements at the top of stack a.
         Do nothing if there is only one or no elements.
