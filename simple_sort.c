@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 19:00:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 23:19:34 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/18 11:06:43 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // again, rotate to top, pb, until to elems remain in a, if first > than last,
 // sa, then pa, pa, pa
 
-int	find_imin(t_stack *s)
+int	get_min_indx(t_stack *s)
 {
 	int	i;
 	int	min;
@@ -51,7 +51,7 @@ void	simple_sort(t_stacks **sts)
 
 	while ((*sts)->a->size > 2)
 	{
-		i = find_imin((*sts)->a);
+		i = get_min_indx((*sts)->a);
 		while (i-- > 0)
 		{
 			ft_printf("ra\n");
@@ -76,7 +76,7 @@ void	simple_sort2(t_stacks **sts)
 
 	while ((*sts)->a->size > 2)
 	{
-		i = find_imin((*sts)->a);
+		i = get_min_indx((*sts)->a);
 		if (i >= (*sts)->a->size / 2)
 			while ((*sts)->a->size - i++ > 0)
 			{
@@ -150,7 +150,7 @@ void	bring_max_to_top(t_stacks **sts, int size)
 void	bring_min_to_top(t_stacks **sts)
 {
 	int	i;
-	i = find_imin((*sts)->a);
+	i = get_min_indx((*sts)->a);
 	if (i >= (*sts)->a->size / 2)
 		while ((*sts)->a->size - i++ > 0)
 		{

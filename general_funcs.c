@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 15:14:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/17 16:39:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_stacks	*init_stacks(int size)
 	}
 	stacks->a->size = size;
 	stacks->b->size = 0;
+	stacks->a->sortd = NULL;
+	stacks->b->sortd = NULL;
 	stacks->initial_size = size;
 	stacks->cur_min = 0;
 	return (stacks);

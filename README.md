@@ -188,12 +188,38 @@ the stack sizes 1 and 2 seperately because this only works for stacks >= 3
     a =     [5,3, 1,4, 2], sortd = [1,2,3,4,5] =>
     dists = [4,1,-2,0,-3]
 
-## TODO list
+## 2 halves sort approach
 
-- [x] add `print ops`
-- [ ] write `stacks_dup` function to duplicate stacks for simulations
-- [ ] write `strat_sort`
-- [ ] write `simulation` and `do` funcs
+What to do with this?
 
+    a[ 0] =  35, dst =  -7   ||   b[ 0] =   3, dst =  -8
+    a[ 1] =  22, dst =   1   ||   b[ 1] =   4, dst =  -6
+    a[ 2] =  33, dst =  -4   ||   b[ 2] =  13, dst =   0
+    a[ 3] =  37, dst =  -5   ||   b[ 3] =  16, dst =   3
+    a[ 4] =  39, dst =  -5   ||   b[ 4] =   2, dst =  -5
+    a[ 5] =  25, dst =   3   ||   b[ 5] =  11, dst =   1
+    a[ 6] =  23, dst =   5   ||   b[ 6] =  10, dst =   1
+    a[ 7] =  27, dst =   4   ||   b[ 7] =  15, dst =   6
+    a[ 8] =  32, dst =   3   ||   b[ 8] =  12, dst =   5
+    a[ 9] =  28, dst =   5   ||   b[ 9] =   7, dst =   3
 
+0) after every initial push to b check if b->size >2 { if a[0] > a[1] && b[0] <
+   b[1] } and do a ss. this does a little presorting.
+1) Calc dists differently: f.ex. a[0] in the above table should not have dst -7
+   but +2. the current code:
+
+    ```c
+    (*st)->dsts[i] = i - indexof_long((*st)->st[i], sortd, size);
+
+    ```
+
+    should be:
+
+    ```c
+    dst = i - indexof_long(...);
+    if (ft_abs(dst) > size - ft_abs(dst))
+        dst = size - ft_abs(dst);
+         
+    ```
+2) swap_sort?!?!?
 

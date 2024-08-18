@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 19:04:26 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 19:29:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:43:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	calc_total_dist(long *a, long *sortd, int size)
 	i = -1;
 	total_dist = 0;
 	while (++i < size)
-		total_dist += ft_abs(i - indexof_long(a[i], sortd));
+		total_dist += ft_abs(i - indexof_long(a[i], sortd, size ));
 	return (total_dist);
 }
 
@@ -43,7 +43,7 @@ int *get_dists_array(long *a, long *sortd, int size)
 		return (NULL);
 	i = -1;
 	while (++i < size)
-		dists[i] = i - indexof_long(a[i], sortd);
+		dists[i] = i - indexof_long(a[i], sortd, size );
 	return (dists);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 21:35:26 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 19:33:45 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:42:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ t_stacks	*stacks_dup(t_stacks *orig)
 }
 
 /* Return index of value `num` in array of longs `stack`. */
-int	indexof_long(long num, long *arr)
+int	indexof_long(long num, long *arr, int size)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i] != num)
+	while (arr[i] != num && i < size)
 		i++;
 	return (i);
 }
@@ -76,7 +76,7 @@ int move_top_min(t_stacks **sts, int min_offset)
 	indx_min = (*sts)->cur_min + min_offset;
 	if (indx_min >= (*sts)->initial_size)
 		return (-1);
-	indx_a = indexof_long((*sts)->sortd[indx_min], (*sts)->a->st);
+	indx_a = indexof_long((*sts)->sortd[indx_min], (*sts)->a->st, (*sts)->initial_size);
 	ops = 0;
 	while ((*sts)->a->st[0] != (*sts)->sortd[indx_min])
 	{
@@ -98,7 +98,7 @@ int move_top_min_print(t_stacks **sts, int min_offset)
 	indx_min = (*sts)->cur_min + min_offset;
 	if (indx_min >= (*sts)->initial_size)
 		return (-1);
-	indx_a = indexof_long((*sts)->sortd[indx_min], (*sts)->a->st);
+	indx_a = indexof_long((*sts)->sortd[indx_min], (*sts)->a->st, (*sts)->a->size);
 	ops = 0;
 	while ((*sts)->a->st[0] != (*sts)->sortd[indx_min])
 	{

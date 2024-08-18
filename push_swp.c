@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 23:32:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/17 04:41:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	easy_tests(void);
 void	strattest(void);
 void	distsorttest(void);
 void strat_optimized_test(void);
+void finalsort_test(void);
 
 int main(int ac, char **av)
 {
@@ -25,7 +26,26 @@ int main(int ac, char **av)
 	(void)av;
 
 	// strat_optimized_test();
-	distsorttest();
+	// distsorttest();
+	finalsort_test();
+}
+
+void finalsort_test(void)
+{
+	t_stacks	*stacks;
+	int	size;
+
+	size = 20;
+	stacks = init_stacks(size);
+	fill_stack_rand(&stacks, 4);
+	print_stacks(stacks);
+	ft_printf("\npushb smaller half:\n\n");
+	pushb_smaller_half(&stacks);
+	ft_printf("\ndists:\n\n");
+	set_stacka_dsts(&stacks->a, stacks->a->size);
+	set_stackb_dsts(&stacks->b, stacks->b->size);
+	print_dsts(stacks);
+	free_stacks(&stacks);
 }
 
 
@@ -36,7 +56,7 @@ void strat_optimized_test(void)
 	int	size;
 	int ops1, ops2;
 
-	size = 20;
+	size = 30;
 	stacks = init_stacks(size);
 	fill_stack_rand(&stacks, 3);
 	dup = stacks_dup(stacks);
@@ -47,12 +67,13 @@ void strat_optimized_test(void)
 	free_stacks(&dup);
 }
 
+
 void distsorttest(void)
 {
 	t_stacks	*stacks;
 	int	size;
 
-	size = 10;
+	size = 20;
 	stacks = init_stacks(size);
 	fill_stack_rand(&stacks, 2);
 	print_stacks(stacks);

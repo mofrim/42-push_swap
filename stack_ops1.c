@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 11:58:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/17 04:17:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,11 @@ int	sb(t_stacks **sts)
 	return (1);
 }
 
-/* swap a & b. Returns 0 if neither sa nor sb did anything, 1 if only sa
- * succeeded, 2 if only sb, and 3 if both succeeded. */
 int	ss(t_stacks **sts)
 {
-	int	ret;
-
-	ret = 0;
-	ret += sa(sts);
-	ret += 2 * sb(sts);
-	return (ret);
+	sa(sts);
+	sb(sts);
+	return (1);
 }
 
 /* push a */

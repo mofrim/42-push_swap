@@ -6,16 +6,21 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/15 20:07:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/18 19:20:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWP_H
 # define PUSH_SWP_H
 
+#include <stdlib.h>
+#include "libft/libft.h"
+
 typedef struct s_stack
 {
 	long	*st;
+	int		*dsts;
+	long	*sortd;
 	int		size;
 }	t_stack;
 
@@ -97,10 +102,18 @@ int		calc_total_dist(long *a, long *sortd, int size);
 int		*get_dists_array(long *a, long *sortd, int size);
 int		optimize_dists_rot(t_stacks **sts);
 int		indexof_int(int num, int *arr);
-int		indexof_long(long num, long *arr);
+int		indexof_long(long num, long *arr, int size);
 
 /* experimental. */
 int			strat_optimized(t_stacks **sts);
 int			optimize_dists_rot_inv(t_stacks **sts);
+int			pushb_smaller_half(t_stacks **sts);
+void	set_stacka_dsts(t_stack **st, int size);
+void	set_stackb_dsts(t_stack **st, int size);
+void	print_dsts(t_stacks *sts);
+long	ft_abs(long num);
+void	free_ptr(void **p);
+int		get_min_indx(t_stack *s);
+void	swap_sort_single(t_stacks **sts);
 
 #endif 
