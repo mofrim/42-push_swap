@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 13:11:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:21:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,50 +26,36 @@
  *
  */
 
-/* The name says it all. */
-int	pb_all_but_three(t_stacks **sts)
-{
-	int	ops;
-
-	ops = 0;
-	while ((*sts)->a->size > 3)
-		ops += pb_print(sts);
-	return (ops);
-}
-
-/* Handles 3-elem stack_a. */
-int	sort_three(t_stacks **sts)
-{
-	long	*a;
-	int		ops;
-
-	ops = 0;
-	a = (*sts)->a->st;
-	if (a[0] > a[1] && a[0] > a[2])
-	{
-		ops += ra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[1] > a[0] && a[1] > a[2])
-	{
-		ops += rra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[2] > a[0] && a[2] > a[1])
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	return (ops);
-}
-
 int	smartsort(t_stacks **sts)
 {
 	int	ops;
+	int best;
 
 	ops = 0;
 	ops += pb_all_but_three(sts);
 	ops += sort_three(sts);
-
+	// calc_dsts(sts);
+	// print_dsts_trgts(*sts);
+	// best = find_best_move(sts);
+	// ft_printf("best move: %d\n", find_best_move(sts));
+	// do_best_move(sts, best);
+	// calc_dsts(sts);
+	// print_dsts_trgts(*sts);
+	// best = find_best_move(sts);
+	// ft_printf("best move: %d\n", find_best_move(sts));
+	// do_best_move(sts, best);
+	// calc_dsts(sts);
+	// move_top_min_smart(sts);
+	// print_dsts_trgts(*sts);
+	while ((*sts)->b->size)
+	{
+		calc_dsts(sts);
+		print_dsts_trgts(*sts);
+		best = find_best_move(sts);
+		ft_printf("best move: %d\n", find_best_move(sts));
+		do_best_move(sts, best);
+	}
+	move_top_min_smart(sts);
+	print_dsts_trgts(*sts);
 	return (ops);
 }

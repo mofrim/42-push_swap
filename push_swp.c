@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 12:14:33 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:18:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,26 @@ void	easy_tests(void);
 void	strattest(void);
 void	distsorttest(void);
 void strat_optimized_test(void);
-void finalsort_test(void);
+void smartsort_test(void);
 
 int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
 
-	// strat_optimized_test();
-	// distsorttest();
-	finalsort_test();
+	smartsort_test();
 }
 
-void finalsort_test(void)
+void smartsort_test(void)
 {
 	t_stacks	*stacks;
-	t_stacks	*dup;
 	int	size;
-	int ops1, ops2 = 0;
 
-	size = 100;
+	size = 20;
 	stacks = init_stacks(size);
-	fill_stack_rand(&stacks, 5);
-	dup = stacks_dup(stacks);
-	ops1 = stratsort(&stacks);
-	// ops2 = swap_sort_single(&dup);
-	// ft_printf("stratsort done!\n");
-	// ops2 = swap_sort(&dup);
-	// print_stacks(dup);
-	ft_printf("strat ops: %d\nswapsort ops: %d\n", ops1, ops2);
+	fill_stack_rand(&stacks, 1);
+	smartsort(&stacks);
 	free_stacks(&stacks);
-	free_stacks(&dup);
 }
 
 

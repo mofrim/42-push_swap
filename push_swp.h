@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 13:12:14 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:01:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 #include <stdlib.h>
 #include "libft/libft.h"
+#include <errno.h>
 
+// FIXME: maybe move dsts to stacks. reason: in stack a we do not need them.
 typedef struct s_stack
 {
 	long	*st;
-	int		*dsts;
 	long	*sortd;
 	int		size;
 }	t_stack;
@@ -29,6 +30,9 @@ typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		*dstA;
+	int		*dstB;
+	int		*targets;
 	long	*sortd;
 	int		initial_size;
 	int		cur_min;
@@ -111,8 +115,8 @@ int		indexof_long(long num, long *arr, int size);
 int			strat_optimized(t_stacks **sts);
 int			optimize_dists_rot_inv(t_stacks **sts);
 int			pushb_smaller_half(t_stacks **sts);
-void	set_stacka_dsts(t_stack **st, int size);
-void	set_stackb_dsts(t_stack **st, int size);
+void	set_stacka_dsts(t_stacks **st, int size);
+void	set_stackb_dsts(t_stacks **st, int size);
 void	print_dsts(t_stacks *sts);
 long	ft_abs(long num);
 void	free_ptr(void **p);
@@ -125,7 +129,16 @@ int	get_max_indx(t_stack *s);
 /* smartsort. */
 
 int	pb_all_but_three(t_stacks **sts);
+long	get_stack_max(t_stack *stck);
 int	sort_three(t_stacks **sts);
 int	smartsort(t_stacks **sts);
+void	reset_dsts(t_stacks **sts);
+void	set_targets(t_stacks **sts);
+int	get_target(long elem, long *st, int size);
+void	print_dsts_trgts(t_stacks *sts);
+void	calc_dsts(t_stacks **sts);
+int	find_best_move(t_stacks **sts);
+int	do_best_move(t_stacks **sts, int best);
+int	move_top_min_smart(t_stacks **sts);
 
 #endif 

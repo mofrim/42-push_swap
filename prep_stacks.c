@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 07:34:27 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/17 04:31:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 16:27:46 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,21 @@ int	pushb_smaller_half(t_stacks **sts)
 /* call me like get_stack_dsts(st, st->size) */
 // TODO: definitely merge into one func
 // TODO: extract dst calculation
-void	set_stacka_dsts(t_stack **st, int size)
+void	set_stacka_dsts(t_stacks **sts, int size)
 {
 	long *sortd;
 	int		dst;
 	int	i;
 
-	sortd = quicksorted_stack((*st)->st, size);
-	(*st)->dsts = malloc(size * sizeof(int));
+	sortd = quicksorted_stack((*sts)->a->st, size);
+	(*sts)->dstA = malloc(size * sizeof(int));
 	i = -1;
 	while (++i < size)
 	{
-		dst = i - indexof_long((*st)->st[i], sortd, size);
+		dst = i - indexof_long((*sts)->a->st[i], sortd, size);
 		if (ft_abs(dst) > size - ft_abs(dst))
 			dst = size - ft_abs(dst);
-		(*st)->dsts[i] = dst;
+		(*sts)->dstA[i] = dst;
 	}
 }
 
@@ -92,22 +92,22 @@ void	inv_long_arr(long **arr, int size)
 }
 
 // TODO: definitely merge into one func
-void	set_stackb_dsts(t_stack **st, int size)
+void	set_stackb_dsts(t_stacks **sts, int size)
 {
 	long *sortd;
 	int		dst;
 	int	i;
 
-	sortd = quicksorted_stack((*st)->st, size);
+	sortd = quicksorted_stack((*sts)->b->st, size);
 	inv_long_arr(&sortd, size);
-	(*st)->dsts = malloc(size * sizeof(int));
+	(*sts)->dstB = malloc(size * sizeof(int));
 	i = -1;
 	while (++i < size)
 	{
-		dst = i - indexof_long((*st)->st[i], sortd, size);
+		dst = i - indexof_long((*sts)->b->st[i], sortd, size);
 		if (ft_abs(dst) > size - ft_abs(dst))
 			dst = size - ft_abs(dst);
-		(*st)->dsts[i] = dst;
+		(*sts)->dstB[i] = dst;
 	}
 }
 
@@ -117,5 +117,5 @@ void	print_dsts(t_stacks *sts)
 
 	i = -1;
 	while (++i < sts->a->size)
-		ft_printf("a[%2d] = %3d, dst = %3d // b[%2d] = %3d, dst = %3d\n", i, sts->a->st[i], sts->a->dsts[i], i, sts->b->st[i], sts->b->dsts[i]);
+		ft_printf("a[%2d] = %3d, dst = %3d // b[%2d] = %3d, dst = %3d\n", i, sts->a->st[i], sts->dstB[i], i, sts->b->st[i], sts->dstB[i]);
 }

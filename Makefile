@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/18 19:40:10 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/19 16:53:54 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,12 @@ SRC_FILES =	./push_swp.c \
 						./dist_sort.c \
 						./dist_sort_utils.c \
 						./prep_stacks.c \
-						./swap_sort.c
+						./swap_sort.c \
+						./smart_dsts.c \
+						./smart_sort.c \
+						./smart_utils.c \
+						./smart_targets.c \
+						./smart_move.c
 
 SRC = $(patsubst ./%.c,%.c,$(SRC_FILES))
 

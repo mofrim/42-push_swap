@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 19:00:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 08:18:16 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:55:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,6 @@
 // or.... find lowest number in a, rotate to top, pb, find lowest number in b
 // again, rotate to top, pb, until to elems remain in a, if first > than last,
 // sa, then pa, pa, pa
-
-int	get_min_indx(t_stack *s)
-{
-	int	i;
-	int	min;
-	int	imin;
-
-	if (!s->size)
-		return (-1);
-	i = 0;
-	min = s->st[0];
-	imin = 0;
-	while (i < s->size)
-	{
-		if (min > s->st[i])
-		{
-			min = s->st[i];
-			imin = i;
-		}
-		i++;
-	}
-	return (imin);
-}
 
 int	get_max_indx(t_stack *s)
 {
