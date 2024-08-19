@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 18:49:00 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:08:16 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,34 @@ void	set_targets(t_stacks **sts)
 	i = -1;
 	while (++i < b->size)
 	{
-		s->targets[i] = get_target(b->st[i], a->st, a->size);
+		s->targets[i] = get_target(b->st[i], a, a->size);
 		// ft_printf("s->targets[i] = %d\n", s->targets[i]);
 
 	}
 }
 
 /* Get target index in stack a. */
-int	get_target(long elem, long *st, int size)
+// FIXME: make this very clear and logic!!!
+int	get_target(long elem, t_stack *s, int size)
 {
 	int	i;
 	int	target;
 
 	i = -1;
 	target = -1;
+	// ft_printf("max: %d\n", get_stack_max(s));
+	// ft_printf("max_indx: %d\n", get_max_indx(s));
+	if (elem > get_stack_max(s) && get_max_indx(s) < size - 1)
+		return(get_max_indx(s) + 1);
 	while (++i < size)
 	{
-		if (i == 0)
-			if (st[0] > elem && elem < st[size - 1])
-				return (0);
-		if (i == size - 1)
+		if (i < size - 1)
 		{
-			if (st[size - 1] < elem)
-				return (0);
-			else
-				return (size - 1);
+			if (s->st[i] < elem && elem < s->st[i + 1])
+				return (i + 1);
+			if (s->st[i] > elem && s->st[i + 1] < s->st[i] && elem < s->st[i + 1])
+				return (i + 1);
 		}
-		if (st[i] < elem && elem < st[i + 1])
-			return (i + 1);
 	}
 	return (0);
 }

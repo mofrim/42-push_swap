@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 18:18:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:07:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ int main(int ac, char **av)
 void smartsort_test(void)
 {
 	t_stacks	*stacks;
+	int			ops;
 	int	size;
 
-	size = 20;
+	size = 100;
 	stacks = init_stacks(size);
 	fill_stack_rand(&stacks, 1);
-	smartsort(&stacks);
+	ops = smartsort(&stacks);
+	ft_printf("ops: %d\n", ops);
 	free_stacks(&stacks);
 }
 

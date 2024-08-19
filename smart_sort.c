@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 18:21:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:06:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int	smartsort(t_stacks **sts)
 	while ((*sts)->b->size)
 	{
 		calc_dsts(sts);
-		print_dsts_trgts(*sts);
+		// print_dsts_trgts(*sts);
 		best = find_best_move(sts);
-		ft_printf("best move: %d\n", find_best_move(sts));
-		do_best_move(sts, best);
+		// ft_printf("best move: %d\n", best);
+		ops += do_best_move(sts, best);
 	}
-	move_top_min_smart(sts);
+	ops += move_top_min_smart(sts);
 	print_dsts_trgts(*sts);
 	return (ops);
 }

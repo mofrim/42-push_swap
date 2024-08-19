@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 18:45:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:59:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	calc_dsts(t_stacks **sts)
 			dstb = i - s->b->size;
 		else
 			dstb = i;
-		if (trgt > s->a->size - trgt)
-			dsta = trgt - s->a->size;
-		if (trgt > s->a->size - trgt)
+		if (trgt == -1)
+			dsta = INT_MAX;
+		else if (trgt > s->a->size - trgt)
 			dsta = trgt - s->a->size;
 		else
 			dsta = trgt;
