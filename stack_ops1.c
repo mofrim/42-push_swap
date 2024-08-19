@@ -6,23 +6,18 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/17 04:17:48 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 00:31:08 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "push_swp.h"
 
-/* TODO: for every operation create a version f.ex. sa_print which also prints
- * "sa", so the versions without print can be used inside the simulation
- * functions and the ones with print in the "do" funcs.
- */
-
 /* swap a. Returns 0 if nothing was done. Returns 1 otherwise. */
 int	sa(t_stacks **sts)
 {
-	long tmp;
-	long		**a;
+	long	**a;
+	long	tmp;
 
 	a = &((*sts)->a->st);
 	if ((*a)[0] == LONG_MAX || (*a)[1] == LONG_MAX)

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 16:20:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 00:24:28 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,10 @@ t_stacks	*init_stacks(int size)
 	}
 	stacks->a->size = size;
 	stacks->b->size = 0;
-	stacks->a->sortd = NULL;
-	stacks->b->sortd = NULL;
-	stacks->dstA = NULL;
-	stacks->dstB = NULL;
+	stacks->dsts_a = NULL;
+	stacks->dsts_b = NULL;
 	stacks->targets = NULL;
 	stacks->initial_size = size;
-	stacks->cur_min = 0;
 	return (stacks);
 }
 
@@ -58,21 +55,18 @@ t_stacks	*init_stacks_empty(int size)
 	stacks->b = malloc(size * sizeof(t_stack));
 	stacks->a->st = malloc(size * sizeof(long));
 	stacks->b->st = malloc(size * sizeof(long));
-	stacks->sortd = malloc(size * sizeof(long));
 	if (!stacks || !stacks->a || !stacks->b || !stacks->a->st || \
-			!stacks->b->st || !stacks->sortd)
+			!stacks->b->st)
 		return (NULL);
 	i = -1;
 	while (++i < size)
 	{
 		stacks->a->st[i] = LONG_MAX;
 		stacks->b->st[i] = LONG_MAX;
-		stacks->sortd[i] = LONG_MAX;
 	}
 	stacks->a->size = size;
 	stacks->b->size = 0;
 	stacks->initial_size = size;
-	stacks->cur_min = 0;
 	return (stacks);
 }
 
@@ -91,7 +85,6 @@ void	free_stacks(t_stacks **st)
 	free((*st)->b->st);
 	free((*st)->a);
 	free((*st)->b);
-	free((*st)->sortd);
 	free(*st);
 }
 
@@ -126,7 +119,6 @@ void	fill_stack_rand(t_stacks **sts, unsigned int seed)
 			val = (double)rand() / (double)RAND_MAX * size * 2;
 		(*a)[i] = val;
 	}
-	(*sts)->sortd = quicksorted_stack(*a, size);
 }
 
 /* Fills stacks->a with a reversely ordered array. Also fills stacks->sortd with
@@ -138,7 +130,6 @@ void	fill_stack_rev(t_stacks **sts)
 	size = (*sts)->initial_size;
 	while (--size >= 0)
 		(*sts)->a->st[size] = (*sts)->a->size - size;
-	(*sts)->sortd = quicksorted_stack((*sts)->a->st,(*sts)->initial_size);
 }
 
 void	print_stacks(t_stacks *sts)

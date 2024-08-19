@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 18:59:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 00:21:23 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	calc_dsts(t_stacks **sts)
 			dsta = trgt - s->a->size;
 		else
 			dsta = trgt;
-		s->dstA[i] = dsta;
-		s->dstB[i] = dstb;
+		s->dsts_a[i] = dsta;
+		s->dsts_b[i] = dstb;
 	}
 }
 
@@ -55,13 +55,13 @@ void	reset_dsts(t_stacks **sts)
 	int		i;
 
 	b = (*sts)->b;
-	if ((*sts)->dstA)
-		free((*sts)->dstA);
-	if ((*sts)->dstB)
-		free((*sts)->dstB);
-	(*sts)->dstA = malloc(sizeof(int) * b->size);
-	(*sts)->dstB = malloc(sizeof(int) * b->size);
-	if (!(*sts)->dstA || !(*sts)->dstB)
+	if ((*sts)->dsts_a)
+		free((*sts)->dsts_a);
+	if ((*sts)->dsts_b)
+		free((*sts)->dsts_b);
+	(*sts)->dsts_a = malloc(sizeof(int) * b->size);
+	(*sts)->dsts_b = malloc(sizeof(int) * b->size);
+	if (!(*sts)->dsts_a || !(*sts)->dsts_b)
 	{
 		ft_printf("malloc error!\n");
 		exit(ENOMEM);
@@ -70,8 +70,8 @@ void	reset_dsts(t_stacks **sts)
 	i = -1;
 	while (++i < b->size)
 	{
-		(*sts)->dstA[i] = 0;
-		(*sts)->dstB[i] = 0;
+		(*sts)->dsts_a[i] = 0;
+		(*sts)->dsts_b[i] = 0;
 	}
 }
 

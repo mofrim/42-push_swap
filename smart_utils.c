@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 18:06:42 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 00:20:11 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	print_dsts_trgts(t_stacks *sts)
 	while (i < a->size || i < b->size)
 	{
 		if (i < a->size && i < b->size)
-			ft_printf("a[%2d] = %3d -- b[%2d] = %2d, dstA = %+3d, " \
-					"dstB = %+3d, trgt = %2d\n", i, a->st[i], i, b->st[i], \
-					sts->dstA[i], sts->dstB[i], sts->targets[i]);
+			ft_printf("a[%2d] = %3d -- b[%2d] = %2d, dsts_a = %+3d, " \
+					"dsts_b = %+3d, trgt = %2d\n", i, a->st[i], i, b->st[i], \
+					sts->dsts_a[i], sts->dsts_b[i], sts->targets[i]);
 		else if (i < b->size)
-			ft_printf("            -- b[%2d] = %2d, dstA = %+3d, dstB = %+3d, "\
-					"trgt = %2d\n", i, b->st[i], sts->dstA[i], sts->dstB[i], \
+			ft_printf("            -- b[%2d] = %2d, dsts_a = %+3d, dsts_b = %+3d, "\
+					"trgt = %2d\n", i, b->st[i], sts->dsts_a[i], sts->dsts_b[i], \
 					sts->targets[i]);
 		else if (i < a->size)
 			ft_printf("a[%2d] = %3d -- \n", i, a->st[i]);
@@ -117,7 +117,6 @@ int	move_top_min_smart(t_stacks **sts)
 	int			min_indx;
 	int			ops;
 	int			min;
-
 
 	s = *sts;
 	min_indx = get_min_indx(s->a);

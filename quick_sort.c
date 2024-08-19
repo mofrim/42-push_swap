@@ -6,13 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 21:36:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/11 23:03:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 23:44:06 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* copy paste from geeks-for-geeks */
 
 #include "libft/libft.h"
+
 void swap(long* a, long* b) {
     long t = *a;
     *a = *b;
@@ -54,7 +55,6 @@ void quicksort(long **arr, int low, int high)
     }
 }
 
-/* WARN: dont forget to free!!! */
 long *quicksorted_stack(long *arr, int size)
 {
 	long	*sorted_stack;
@@ -69,16 +69,3 @@ long *quicksorted_stack(long *arr, int size)
 	quicksort(&sorted_stack, 0, size - 1);
 	return (sorted_stack);
 }
-
-int	get_index_sorted(long num, long *sorted_stack, int size)
-{
-	int	i;
-
-	i = -1;
-	while (++i < size)
-		if (sorted_stack[i] == num)
-			return (i);
-	return (-1);
-}
-
-

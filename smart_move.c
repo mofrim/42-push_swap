@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 16:52:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 20:12:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 00:28:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	find_best_move(t_stacks **sts)
 	i = -1;
 	while (++i < (*sts)->b->size)
 	{
-		ops = get_move_ops((*sts)->dstA[i], (*sts)->dstB[i]);
+		ops = get_move_ops((*sts)->dsts_a[i], (*sts)->dsts_b[i]);
 		if (ops < min_ops)
 		{
 			min_ops = ops;
@@ -74,10 +74,11 @@ int	do_best_move(t_stacks **sts, int best)
 	t_stacks *s;
 
 	s = *sts;
-	dsta = s->dstA[best];
-	dstb = s->dstB[best];
+	dsta = s->dsts_a[best];
+	dstb = s->dsts_b[best];
 	ops = 0;
 	// FIXME: do i even need this?!?!?!
+	// QUESTION: ^^^
 	if (dsta == INT_MAX)
 	{
 		while (ft_abs(dstb) > 0)

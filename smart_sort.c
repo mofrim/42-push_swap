@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 20:06:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 00:13:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
  * a_y to top of a then pa.
  *
  */
-
 int	smartsort(t_stacks **sts)
 {
 	int	ops;
@@ -34,28 +33,12 @@ int	smartsort(t_stacks **sts)
 	ops = 0;
 	ops += pb_all_but_three(sts);
 	ops += sort_three(sts);
-	// calc_dsts(sts);
-	// print_dsts_trgts(*sts);
-	// best = find_best_move(sts);
-	// ft_printf("best move: %d\n", find_best_move(sts));
-	// do_best_move(sts, best);
-	// calc_dsts(sts);
-	// print_dsts_trgts(*sts);
-	// best = find_best_move(sts);
-	// ft_printf("best move: %d\n", find_best_move(sts));
-	// do_best_move(sts, best);
-	// calc_dsts(sts);
-	// move_top_min_smart(sts);
-	// print_dsts_trgts(*sts);
 	while ((*sts)->b->size)
 	{
 		calc_dsts(sts);
-		// print_dsts_trgts(*sts);
 		best = find_best_move(sts);
-		// ft_printf("best move: %d\n", best);
 		ops += do_best_move(sts, best);
 	}
 	ops += move_top_min_smart(sts);
-	print_dsts_trgts(*sts);
 	return (ops);
 }
