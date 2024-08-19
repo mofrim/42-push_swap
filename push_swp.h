@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/18 19:20:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:09:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ void		print_stacks(t_stacks *st);
 
 void		simple_sort(t_stacks **sts);
 void		simple_sort2(t_stacks **sts);
-void		swap_sort(t_stacks **sts);
-void		bring_min_to_top(t_stacks **sts);
-void		bring_max_to_top(t_stacks **sts, int size);
+int		bring_min_to_top(t_stacks **sts);
+int		bring_max_to_top(t_stacks **sts);
 
 void		quicksort(long **arr, int low, int high);
 long		*quicksorted_stack(long *arr, int size);
@@ -85,12 +84,16 @@ t_stacks	*stacks_dup(t_stacks *orig);
 int			sort2(t_stacks **sts);
 int			sort3(t_stacks **sts);
 int			simulate_strats(t_stacks **sts);
-int			strat31_sim(t_stacks *sts);
-int			strat32_sim(t_stacks *sts);
-int			strat33_sim(t_stacks *sts);
-int			strat1_do(t_stacks **sts);
-int			strat2_do(t_stacks **sts);
-int			strat3_do(t_stacks **sts);
+int			strat012_sim(t_stacks *sts);
+int			strat021_sim(t_stacks *sts);
+int			strat102_sim(t_stacks *sts);
+int			strat120_sim(t_stacks *sts);
+int			strat210_sim(t_stacks *sts);
+int			strat012_do(t_stacks **sts);
+int			strat021_do(t_stacks **sts);
+int			strat102_do(t_stacks **sts);
+int			strat120_do(t_stacks **sts);
+int			strat210_do(t_stacks **sts);
 int			move_top_min(t_stacks **sts, int min_offset);
 int 		move_top_min_print(t_stacks **sts, int min_offset);
 int			indexof(long num, long *arr);
@@ -114,6 +117,9 @@ void	print_dsts(t_stacks *sts);
 long	ft_abs(long num);
 void	free_ptr(void **p);
 int		get_min_indx(t_stack *s);
-void	swap_sort_single(t_stacks **sts);
+int	swap_sort_single(t_stacks **sts);
+void	inv_long_arr(long **arr, int size);
+int	swap_sort(t_stacks **sts);
+int	get_max_indx(t_stack *s);
 
 #endif 

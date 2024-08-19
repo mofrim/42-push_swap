@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 19:00:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/18 11:06:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 08:18:16 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,30 @@ int	get_min_indx(t_stack *s)
 		}
 		i++;
 	}
-	// ft_printf("imin = %d\n", imin);
 	return (imin);
+}
+
+int	get_max_indx(t_stack *s)
+{
+	int	i;
+	int	max;
+	int	imax;
+
+	if (!s->size)
+		return (-1);
+	i = 0;
+	max = s->st[0];
+	imax = 0;
+	while (i < s->size)
+	{
+		if (max < s->st[i])
+		{
+			max = s->st[i];
+			imax = i;
+		}
+		i++;
+	}
+	return (imax);
 }
 
 void	simple_sort(t_stacks **sts)
@@ -127,40 +149,37 @@ int	find_imax(t_stack *s, int size)
 	return (imax);
 }
 
-void	bring_max_to_top(t_stacks **sts, int size)
+// FIXME: make this one func with min_to_top
+int	bring_max_to_top(t_stacks **sts)
 {
 	int	i;
+	int	ops;
 
-	ft_printf("bring max to top\n");
-	i = find_imax((*sts)->a, size);
-	if (i >= (*sts)->a->size / 2)
-		while ((*sts)->a->size - i++ > 0)
-		{
-			ft_printf("rra\n");
-			rra(sts);
-		}
+	// ft_printf("bring max to top\n");
+	i = find_imax((*sts)->b, (*sts)->b->size);
+	ops = 0;
+	if (i >= (*sts)->b->size / 2)
+		while ((*sts)->b->size - i++ > 0)
+			ops += rrb_print(sts);
 	else
 		while (i-- > 0)
-		{
-			ft_printf("ra\n");
-			ra(sts);
-		}
+			ops += rb_print(sts);
+	return (ops);
 }
 
-void	bring_min_to_top(t_stacks **sts)
+// FIXME: make this one func with max_to_top
+int	bring_min_to_top(t_stacks **sts)
 {
 	int	i;
+	int	ops;
+
+	ops = 0;
 	i = get_min_indx((*sts)->a);
 	if (i >= (*sts)->a->size / 2)
 		while ((*sts)->a->size - i++ > 0)
-		{
-			ft_printf("rra\n");
-			rra(sts);
-		}
+			ops += rra_print(sts);
 	else
 		while (i-- > 0)
-		{
-			ft_printf("ra\n");
-			ra(sts);
-		}
+			ops += ra_print(sts);
+	return (ops);
 }

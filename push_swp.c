@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/17 04:41:44 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:14:33 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,22 @@ int main(int ac, char **av)
 void finalsort_test(void)
 {
 	t_stacks	*stacks;
+	t_stacks	*dup;
 	int	size;
+	int ops1, ops2 = 0;
 
-	size = 20;
+	size = 100;
 	stacks = init_stacks(size);
-	fill_stack_rand(&stacks, 4);
-	print_stacks(stacks);
-	ft_printf("\npushb smaller half:\n\n");
-	pushb_smaller_half(&stacks);
-	ft_printf("\ndists:\n\n");
-	set_stacka_dsts(&stacks->a, stacks->a->size);
-	set_stackb_dsts(&stacks->b, stacks->b->size);
-	print_dsts(stacks);
+	fill_stack_rand(&stacks, 5);
+	dup = stacks_dup(stacks);
+	ops1 = stratsort(&stacks);
+	// ops2 = swap_sort_single(&dup);
+	// ft_printf("stratsort done!\n");
+	// ops2 = swap_sort(&dup);
+	// print_stacks(dup);
+	ft_printf("strat ops: %d\nswapsort ops: %d\n", ops1, ops2);
 	free_stacks(&stacks);
+	free_stacks(&dup);
 }
 
 

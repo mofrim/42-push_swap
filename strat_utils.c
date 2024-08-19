@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 21:35:26 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/16 20:42:48 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 13:04:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,20 +116,28 @@ int move_top_min_print(t_stacks **sts, int min_offset)
  */
 int	simulate_strats(t_stacks **sts)
 {
-	int s31;
-	int s32;
-	int s33;
+	int s012;
+	int s021;
+	int s102;
+	int s120;
+	int s210;
 
-	s31 = strat31_sim(*sts);
-	s32 = strat32_sim(*sts);
-	s33 = strat33_sim(*sts);
+	s012 = strat012_sim(*sts);
+	s021 = strat021_sim(*sts);
+	s102 = strat102_sim(*sts);
+	s210 = strat210_sim(*sts);
+	s120 = strat120_sim(*sts);
 
-	if (s31 <= s32 && s31 <= s33)
+	if (s012 <= s102 && s012 <= s210 && s012 <= s021 && s012 <= s120)
 		return (1);
-	if (s32 <= s31 && s32 <= s33)
+	if (s102 <= s012 && s102 <= s210 && s102 <= s021 && s102 <= s120)
 		return (2);
-	if (s33 <= s31 && s33 <=s32)
+	if (s210 <= s012 && s210 <=s102 && s210 <= s021 && s210 <= s120)
 		return (3);
+	if (s021 <= s012 && s021 <=s102 && s021 <= s210 && s021 <= s120)
+		return (4);
+	if (s120 <= s012 && s120 <=s021 && s120 <= s102 && s120 <= s210)
+		return (5);
 	return (0);
 }
 
@@ -141,33 +149,5 @@ int	sort2(t_stacks **sts)
 	ops = 0;
 	if ((*sts)->a->st[0] > (*sts)->a->st[1])
 		ops += sa_print(sts);
-	return (ops);
-}
-
-/* Handles 3-elem stack_a. */
-int	sort3(t_stacks **sts)
-{
-	long	*a;
-	int		ops;
-
-	ops = 0;
-	a = (*sts)->a->st;
-	if (a[0] > a[1] && a[0] > a[2])
-	{
-		ops += ra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[1] > a[0] && a[1] > a[2])
-	{
-		ops += rra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[2] > a[0] && a[2] > a[1])
-	{
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
 	return (ops);
 }
