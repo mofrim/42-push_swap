@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 12:09:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/19 13:12:14 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int		rrr_print(t_stacks **st);
 int			stratsort(t_stacks **sts);
 t_stacks	*stacks_dup(t_stacks *orig);
 int			sort2(t_stacks **sts);
-int			sort3(t_stacks **sts);
+int			sort_three(t_stacks **sts);
 int			simulate_strats(t_stacks **sts);
 int			strat012_sim(t_stacks *sts);
 int			strat021_sim(t_stacks *sts);
@@ -121,5 +121,11 @@ int	swap_sort_single(t_stacks **sts);
 void	inv_long_arr(long **arr, int size);
 int	swap_sort(t_stacks **sts);
 int	get_max_indx(t_stack *s);
+
+/* smartsort. */
+
+int	pb_all_but_three(t_stacks **sts);
+int	sort_three(t_stacks **sts);
+int	smartsort(t_stacks **sts);
 
 #endif 
