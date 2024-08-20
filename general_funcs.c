@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 13:18:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:29:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ int	is_in(long *arr, int val, int size)
 	return (0);
 }
 
-/* Fills stacks->a with a random array. Also fills stacks->sortd with the
- * ascendingly ordered array.*/
+/* Fills stacks->a with a random array. */
 void	fill_stack_rand(t_stacks **sts, unsigned int seed)
 {
 	int		size;
@@ -100,8 +99,7 @@ void	fill_stack_rand(t_stacks **sts, unsigned int seed)
 	}
 }
 
-/* Fills stacks->a with a reversely ordered array. Also fills stacks->sortd with
- * the ascendingly ordered array.*/
+/* Fills stacks->a with a reversely ordered array. */
 void	fill_stack_rev(t_stacks **sts)
 {
 	int	size;
@@ -109,25 +107,4 @@ void	fill_stack_rev(t_stacks **sts)
 	size = (*sts)->initial_size;
 	while (--size >= 0)
 		(*sts)->a->st[size] = (*sts)->a->size - size;
-}
-
-/* Print stacks a & b. */
-void	print_stacks(t_stacks *sts)
-{
-	int	i;
-
-	i = -1;
-	while (++i < sts->initial_size)
-	{
-		ft_printf("a[%d] = ", i);
-		if (sts->a->st[i] == LONG_MAX)
-			ft_printf("   ");
-		else
-			ft_printf("%d  ", sts->a->st[i]);
-		ft_printf("b[%d] = ", i);
-		if (sts->b->st[i] == LONG_MAX)
-			ft_printf(" \n");
-		else
-			ft_printf("%d\n", sts->b->st[i]);
-	}
 }

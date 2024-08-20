@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 13:05:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:28:38 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,25 @@ long	ft_atol(const char *s)
 	if (*s != 0 && !ft_isdigit(*s))
 		return (LONG_MAX);
 	return (num * sgn);
+}
+
+/* Print stacks a & b. */
+void	print_stacks(t_stacks *sts)
+{
+	int	i;
+
+	i = -1;
+	while (++i < sts->initial_size)
+	{
+		ft_printf("a[%d] = ", i);
+		if (sts->a->st[i] == LONG_MAX)
+			ft_printf("   ");
+		else
+			ft_printf("%d  ", sts->a->st[i]);
+		ft_printf("b[%d] = ", i);
+		if (sts->b->st[i] == LONG_MAX)
+			ft_printf(" \n");
+		else
+			ft_printf("%d\n", sts->b->st[i]);
+	}
 }
