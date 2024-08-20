@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:31:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 09:40:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,67 +50,6 @@ int	ss(t_stacks **sts)
 	return (1);
 }
 
-/* push a */
-int	pa(t_stacks **sts)
-{
-	long	**b;
-	long	**a;
-	long	tmpA;
-	long	tmpB;
-	int		i;
-
-	b = &((*sts)->b->st);
-	a = &((*sts)->a->st);
-	if ((*b)[0] == LONG_MAX)
-		return (0);
-	tmpA = (*a)[0];
-	(*a)[0] = (*b)[0];
-	i = 0;
-	while (++i < (*sts)->a->size || tmpA != LONG_MAX)
-	{
-		tmpB = (*a)[i];
-		(*a)[i] = tmpA;
-		tmpA = tmpB;
-	}
-	i = -1;
-	while (++i < (*sts)->b->size - 1 || (*b)[i + 1] == LONG_MAX)
-		(*b)[i] = (*b)[i + 1];
-	(*b)[i] = LONG_MAX;
-	(*sts)->a->size++;
-	(*sts)->b->size--;
-	return (1);
-}
-
-/* push b */
-int	pb(t_stacks **sts)
-{
-	long	**b;
-	long	**a;
-	long	tmpA;
-	long	tmpB;
-	int		i;
-
-	b = &((*sts)->b->st);
-	a = &((*sts)->a->st);
-	if ((*a)[0] == LONG_MAX)
-		return (0);
-	tmpA = (*b)[0];
-	(*b)[0] = (*a)[0];
-	i = 0;
-	while (++i < (*sts)->b->size || tmpA != LONG_MAX)
-	{
-		tmpB = (*b)[i];
-		(*b)[i] = tmpA;
-		tmpA = tmpB;
-	}
-	i = -1;
-	while (++i < (*sts)->a->size - 1 || (*a)[i + 1] == LONG_MAX)
-		(*a)[i] = (*a)[i + 1];
-	(*a)[i] = LONG_MAX;
-	(*sts)->a->size--;
-	(*sts)->b->size++;
-	return (1);
-}
 
 /* rotate a */
 int	ra(t_stacks **sts)
@@ -145,7 +84,6 @@ int	rb(t_stacks **sts)
 	(*b)[i] = tmp;
 	return (1);
 }
-
 /* rotate a & b */
 int	rr(t_stacks **sts)
 {

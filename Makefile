@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/19 23:49:20 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/20 09:45:11 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_FILES =	./push_swp.c \
 						./general_funcs.c \
 						./utils.c \
 						./stack_ops1.c \
+						./stack_ops_push.c \
 						./stack_ops_print1.c \
 						./quick_sort.c \
 						./smart_dsts.c \
