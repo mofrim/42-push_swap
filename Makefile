@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/20 13:53:59 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/20 14:14:11 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,37 +49,42 @@ push:
 	cc -g -o $(NAME) $(SRC) $(LIBFT) && ./push_swp
 
 test2:		$(NAME)
-					$(eval ARG = $(shell shuf -i 0-100 -n 2))
+					$(eval ARG = $(shell shuf -i 0-100 -n 2 | sed "s/\$$/-50/" | bc))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
 
-test3:		$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-100 -n 3))
+test3:		$(NAME)
+					# $(eval ARG = $(shell shuf -i 0-100 -n 3))
+					$(eval ARG = $(shell shuf -i 0-100 -n 3 | sed "s/\$$/-50/" | bc))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
 
-test5:		$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 5))
+test5:		$(NAME)
+					# $(eval ARG = $(shell shuf -i 0-5000 -n 5))
+					$(eval ARG = $(shell shuf -i 0-5000 -n 5 | sed "s/\$$/-2500/" | bc))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
 
 test100:	$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 100))
+					# $(eval ARG = $(shell shuf -i 0-5000 -n 100))
+					$(eval ARG = $(shell shuf -i 0-5000 -n 100 | sed "s/\$$/-2500/" | bc))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
 
-test500:	$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 500))
+test500:	$(NAME)
+					# $(eval ARG = $(shell shuf -i 0-5000 -n 500))
+					$(eval ARG = $(shell shuf -i 0-5000 -n 500 | sed "s/\$$/-2500/" | bc))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
 
-test1000:	$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
+test1000:	$(NAME)
+					# $(eval ARG = $(shell shuf -i 0-5000 -n 1000))
+					$(eval ARG = $(shell shuf -i 0-5000 -n 1000 | sed "s/\$$/-2500/" | bc))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
