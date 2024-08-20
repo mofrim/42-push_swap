@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 10:20:49 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 10:21:23 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:36:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,21 @@ int	rr(t_stacks **sts)
 {
 	ra(sts);
 	rb(sts);
+	return (1);
+}
+
+/* rotate a and print ra. */
+int	ra_print(t_stacks **sts)
+{
+	ra(sts);
+	ft_printf("ra\n");
+	return (1);
+}
+
+/* rotate b and print rb. */
+int	rb_print(t_stacks **sts)
+{
+	rb(sts);
+	ft_printf("rb\n");
 	return (1);
 }

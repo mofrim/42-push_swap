@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 10:18:45 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 10:19:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:35:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,26 @@ int	sb(t_stacks **sts)
 	return (1);
 }
 
+/* swap a & b */
 int	ss(t_stacks **sts)
 {
 	sa(sts);
 	sb(sts);
+	return (1);
+}
+
+/* swap a, and print that. */
+int	sa_print(t_stacks **sts)
+{
+	sa(sts);
+	ft_printf("sa\n");
+	return (1);
+}
+
+/* swap b, and print that. */
+int	sb_print(t_stacks **sts)
+{
+	sb(sts);
+	ft_printf("sb\n");
 	return (1);
 }
