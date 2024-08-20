@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:39:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 10:15:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 12:06:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	shift_up_source_stack(t_stack **stck)
 
 	s = *stck;
 	i = 0;
-	while (i < s->size - 1 || s->st[i + 1] == LONG_MAX)
+	while (i < s->size - 1)
 	{
 		s->st[i] = s->st[i + 1];
 		i++;
