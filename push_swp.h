@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 09:40:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:24:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ int			rra_print(t_stacks **st);
 int			rrb_print(t_stacks **st);
 int			rrr_print(t_stacks **st);
 
-
 /* utils. */
 long		ft_abs(long num);
 int			get_min_indx(t_stack *s);
 int			get_max_indx(t_stack *s);
+long		get_stack_max(t_stack *stck);
+int			move_top_min_smart(t_stacks **sts);
 
 /* smartsort. */
 
-int			pb_all_but_three(t_stacks **sts);
-long		get_stack_max(t_stack *stck);
-int			sort_three(t_stacks **sts);
 int			smartsort(t_stacks **sts);
+int			pb_all_but_three(t_stacks **sts);
+int			sort_three(t_stacks **sts);
 void		reset_dsts(t_stacks **sts);
 void		set_targets(t_stacks **sts);
 int			get_target(long elem, t_stack *s, int size);
@@ -91,6 +91,5 @@ void		print_dsts_trgts(t_stacks *sts);
 void		calc_dsts(t_stacks **sts);
 int			find_best_move(t_stacks **sts);
 int			do_best_move(t_stacks **sts, int best);
-int			move_top_min_smart(t_stacks **sts);
 
 #endif 
