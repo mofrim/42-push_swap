@@ -74,7 +74,9 @@ int			rrr_print(t_stacks **st);
 
 /* utils. */
 long		ft_abs(long num);
+long		ft_atol(const char *s);
 void		exit_error_malloc(void);
+void		exit_error_arg(void);
 int			get_min_indx(t_stack *s);
 int			get_max_indx(t_stack *s);
 long		get_stack_max(t_stack *stck);

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:43:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 12:02:37 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 12:46:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	free_stacks(t_stacks **st)
 
 void	exit_error_malloc(void)
 {
-	ft_printf("malloc error!\n");
+	ft_putstr_fd("Error\n", 2);
 	exit(ENOMEM);
+}
+
+void	exit_error_arg(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(EINVAL);
 }
