@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swp.c                                         :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 13:27:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:55:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int ac, char **av)
 	array_a = get_stack_from_args(av, ac - 1);
 	stacks = init_stacks_with_args(&array_a, ac - 1);
 	ops = smartsort(&stacks);
-	ft_printf("ops: %d\n", ops);
+	// ft_printf("ops: %d\n", ops);
 	free_stacks(&stacks);
 	return (0);
 }
