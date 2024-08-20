@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/20 09:45:11 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/20 10:23:16 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,10 @@ LIBFT				= $(LIBFT_PATH)/libft.a
 SRC_FILES =	./push_swp.c \
 						./general_funcs.c \
 						./utils.c \
-						./stack_ops1.c \
 						./stack_ops_push.c \
+						./stack_ops_swap.c \
+						./stack_ops_rot.c \
+						./stack_ops_revrot.c \
 						./stack_ops_print1.c \
 						./quick_sort.c \
 						./smart_dsts.c \
