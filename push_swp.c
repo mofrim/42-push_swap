@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:27:31 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 12:00:39 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void smartsort_test(void)
 	int			ops;
 	int	size;
 
-	size = 500;
+	size = 50;
 	stacks = init_stacks(size);
-	fill_stack_rand(&stacks, 123);
+	// fill_stack_rand(&stacks, 123);
+	fill_stack_rev(&stacks);
 	ops = smartsort(&stacks);
 	ft_printf("ops: %d\n", ops);
 	free_stacks(&stacks);

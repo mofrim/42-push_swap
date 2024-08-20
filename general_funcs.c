@@ -6,16 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:24:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 12:03:03 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
-#include "libft/libft.h"
-#include <stddef.h>
-#include <stdlib.h>
-#include <limits.h>
-
 
 t_stacks	*init_stacks(int size)
 {
@@ -28,7 +23,7 @@ t_stacks	*init_stacks(int size)
 	stacks->a->st = malloc(size * sizeof(long));
 	stacks->b->st = malloc(size * sizeof(long));
 	if (!stacks || !stacks->a || !stacks->b || !stacks->a->st || !stacks->b->st)
-		return (NULL);
+		exit_error_malloc();
 	i = -1;
 	while (++i < size)
 	{
@@ -44,32 +39,6 @@ t_stacks	*init_stacks(int size)
 	return (stacks);
 }
 
-/* Init stacks. Also malloc sortd array and init everything with LONG_MAX. */
-t_stacks	*init_stacks_empty(int size)
-{
-	t_stacks	*stacks;
-	int		i;
-
-	stacks = malloc(sizeof(t_stacks));
-	stacks->a = malloc(size * sizeof(t_stack));
-	stacks->b = malloc(size * sizeof(t_stack));
-	stacks->a->st = malloc(size * sizeof(long));
-	stacks->b->st = malloc(size * sizeof(long));
-	if (!stacks || !stacks->a || !stacks->b || !stacks->a->st || \
-			!stacks->b->st)
-		return (NULL);
-	i = -1;
-	while (++i < size)
-	{
-		stacks->a->st[i] = LONG_MAX;
-		stacks->b->st[i] = LONG_MAX;
-	}
-	stacks->a->size = size;
-	stacks->b->size = 0;
-	stacks->initial_size = size;
-	return (stacks);
-}
-
 t_stacks	*init_stacks_rand(int size, int seed)
 {
 	t_stacks	*stacks;
@@ -77,15 +46,6 @@ t_stacks	*init_stacks_rand(int size, int seed)
 	stacks = init_stacks(size);
 	fill_stack_rand(&stacks, seed);
 	return (stacks);
-}
-
-void	free_stacks(t_stacks **st)
-{
-	free((*st)->a->st);
-	free((*st)->b->st);
-	free((*st)->a);
-	free((*st)->b);
-	free(*st);
 }
 
 int	is_in(long *arr, int val, int size)

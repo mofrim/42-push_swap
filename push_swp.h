@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 10:24:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 12:02:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int			rrr_print(t_stacks **st);
 
 /* utils. */
 long		ft_abs(long num);
+void		exit_error_malloc(void);
 int			get_min_indx(t_stack *s);
 int			get_max_indx(t_stack *s);
 long		get_stack_max(t_stack *stck);

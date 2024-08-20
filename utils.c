@@ -6,10 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:43:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:16:36 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 12:02:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swp.h"
 
 long	ft_abs(long num)
@@ -40,4 +41,25 @@ int	get_max_indx(t_stack *s)
 		i++;
 	}
 	return (imax);
+}
+
+void	free_stacks(t_stacks **st)
+{
+	free((*st)->a->st);
+	free((*st)->b->st);
+	free((*st)->a);
+	free((*st)->b);
+	if ((*st)->dsts_b)
+		free((*st)->dsts_b);
+	if ((*st)->dsts_a)
+		free((*st)->dsts_a);
+	if ((*st)->targets)
+		free((*st)->targets);
+	free(*st);
+}
+
+void	exit_error_malloc(void)
+{
+	ft_printf("malloc error!\n");
+	exit(ENOMEM);
 }
