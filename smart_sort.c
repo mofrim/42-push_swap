@@ -6,11 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:13:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:23:54 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
+
+static int	sort_two(t_stacks **sts);
 
 /*
  * smart sort. first pb all but 3 elems. sort those 3 elems. compute dst for
@@ -31,6 +33,10 @@ int	smartsort(t_stacks **sts)
 	int best;
 
 	ops = 0;
+	if ((*sts)->a->size == 1)
+		return (0);
+	if ((*sts)->a->size == 2)
+		return (sort_two(sts));
 	ops += pb_all_but_three(sts);
 	ops += sort_three(sts);
 	while ((*sts)->b->size)
@@ -41,4 +47,17 @@ int	smartsort(t_stacks **sts)
 	}
 	ops += move_top_min_smart(sts);
 	return (ops);
+}
+
+static int	sort_two(t_stacks **sts)
+{
+	t_stack	*a;
+
+	a = (*sts)->a;
+	if (a->st[0] > a->st[1])
+	{
+		sa_print(sts);
+		return (1);
+	}
+	return (0);
 }

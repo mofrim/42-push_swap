@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 12:02:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:16:14 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_stacks
 }	t_stacks;
 
 t_stacks	*init_stacks(int size);
+t_stacks	*init_stacks_with_args(long **args, int size);
 t_stacks	*init_stacks_rand(int size, int seed);
 t_stacks	*init_stacks_empty(int size);
 void		fill_stack_rand(t_stacks **st, unsigned int seed);

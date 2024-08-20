@@ -6,22 +6,50 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 12:00:39 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:18:14 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
 #include "libft/libft.h"
-#include <stdlib.h>
+
+// FIXME: remove me again !!!
+#include <stdio.h>
 
 void smartsort_test(void);
 
+long	*get_stack_from_args(char **av, int size)
+{
+	long	*st;
+	int		i;
+
+	st = malloc(sizeof(long) * size);
+	i = 0;
+	while (i < size)
+	{
+		st[i] = ft_atol(av[i + 1]);
+		if (st[i] == LONG_MAX)
+			exit_error_arg();
+		i++;
+	}
+	return (st);
+}
+
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
-
-	smartsort_test();
+	long		*array_a;
+	t_stacks	*stacks;
+	int			ops;
+	
+	if (ac == 1)
+		return (0);
+	array_a = get_stack_from_args(av, ac - 1);
+	ft_printf("hey");
+	stacks = init_stacks_with_args(&array_a, ac - 1);
+	ft_printf("hey");
+	ops = smartsort(&stacks);
+	ft_printf("ops: %d\n", ops);
+	free_stacks(&stacks);
 }
 
 void smartsort_test(void)
@@ -33,7 +61,6 @@ void smartsort_test(void)
 	size = 50;
 	stacks = init_stacks(size);
 	// fill_stack_rand(&stacks, 123);
-	fill_stack_rev(&stacks);
 	ops = smartsort(&stacks);
 	ft_printf("ops: %d\n", ops);
 	free_stacks(&stacks);
