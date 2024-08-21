@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:19:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:26:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main(int ac, char **av)
 	stacks = init_stacks_with_args(&array_a, list_len);
 	smartsort(&stacks);
 	free_stacks(&stacks);
+	free(array_a);
 	return (0);
 }

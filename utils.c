@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:43:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 08:49:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:45:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,15 @@ long	ps_abs(long num)
 	return (num);
 }
 
-int	get_max_indx(t_stack *s)
+int	is_in(long *arr, int val, int size)
 {
 	int	i;
-	int	max;
-	int	imax;
 
-	if (!s->size)
-		return (-1);
-	i = 0;
-	max = s->st[0];
-	imax = 0;
-	while (i < s->size)
-	{
-		if (max < s->st[i])
-		{
-			max = s->st[i];
-			imax = i;
-		}
-		i++;
-	}
-	return (imax);
-}
-
-void	free_stacks(t_stacks **st)
-{
-	free((*st)->a->st);
-	free((*st)->b->st);
-	free((*st)->a);
-	free((*st)->b);
-	if ((*st)->dsts_b)
-		free((*st)->dsts_b);
-	if ((*st)->dsts_a)
-		free((*st)->dsts_a);
-	if ((*st)->targets)
-		free((*st)->targets);
-	free(*st);
+	i = -1;
+	while (++i < size)
+		if (arr[i] == val)
+			return (1);
+	return (0);
 }
 
 void	exit_error_malloc(void)
