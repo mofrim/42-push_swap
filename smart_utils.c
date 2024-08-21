@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 15:29:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 20:15:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,92 @@ long	get_stack_max(t_stack *stck)
 	return (max);
 }
 
-/* The name says it all. */
-int	pb_all_but_three(t_stacks **sts)
+/* Seems to be optimal for N > 200. */
+int	pb_all_but_three_big(t_stacks **sts)
 {
 	int		ops;
 	long	*sortd;
-	long	mid_elem;
+	long	pivot;
 	int		pushed;
 
 	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
-	mid_elem = sortd[(*sts)->a->size / 2];
+	pivot = sortd[(*sts)->a->size / 3];
+	ops = 0;
+	pushed = 0;
+	while ((*sts)->a->size > 3 && pushed < (*sts)->a->size / 3 )
+	{
+		if ((*sts)->a->st[0] <= pivot)
+		{
+			ops += pb_print(sts);
+			pushed++;
+		}
+		else
+			ops += ra_print(sts);
+	}
+	pivot = sortd[2 * (*sts)->a->size / 3];
+	while ((*sts)->a->size > 3 && pushed < 2 * (*sts)->a->size / 3 )
+	{
+		if ((*sts)->a->st[0] <= pivot)
+		{
+			ops += pb_print(sts);
+			pushed++;
+		}
+		else
+			ops += ra_print(sts);
+	}
+	free(sortd);
+	while ((*sts)->a->size > 3)
+		ops += pb_print(sts);
+	return (ops);
+}
+
+/* For N <= 200 this seems to be optimal. */
+// int	pb_all_but_three(t_stacks **sts)
+// {
+// 	int		ops;
+// 	long	*sortd;
+// 	long	pivot;
+// 	int		pushed;
+//
+// 	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
+// 	pivot = sortd[(*sts)->a->size / 2];
+// 	free(sortd);
+// 	ops = 0;
+// 	pushed = 0;
+// 	while ((*sts)->a->size > 3 && pushed < (*sts)->a->size / 2 )
+// 	{
+// 		if ((*sts)->a->st[0] <= pivot)
+// 		{
+// 			ops += pb_print(sts);
+// 			pushed++;
+// 		}
+// 		else
+// 			ops += ra_print(sts);
+// 	}
+// 	while ((*sts)->a->size > 3)
+// 	{
+// 		ops += pb_print(sts);
+// 	 	if ((*sts)->a->st[0] > (*sts)->a->st[1] &&  (*sts)->b->st[0] <   (*sts)->b->st[1])
+//
+// 	}
+// 	return (ops);
+// }
+
+int	pb_all_but_three_small(t_stacks **sts)
+{
+	int		ops;
+	long	*sortd;
+	long	pivot;
+	int		pushed;
+
+	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
+	pivot = sortd[(*sts)->a->size / 2];
 	free(sortd);
 	ops = 0;
 	pushed = 0;
 	while ((*sts)->a->size > 3 && pushed < (*sts)->a->size / 2 )
 	{
-		if ((*sts)->a->st[0] <= mid_elem)
+		if ((*sts)->a->st[0] <= pivot)
 		{
 			ops += pb_print(sts);
 			pushed++;

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 08:49:25 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 19:24:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int			is_sorted(long *arr, int size);
 /* smartsort. */
 
 int			smartsort(t_stacks **sts);
-int			pb_all_but_three(t_stacks **sts);
+int			pb_all_but_three_small(t_stacks **sts);
+int			pb_all_but_three_big(t_stacks **sts);
 int			sort_three(t_stacks **sts);
 void		reset_dsts(t_stacks **sts);
 void		set_targets(t_stacks **sts);

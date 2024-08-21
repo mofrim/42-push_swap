@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 13:23:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 19:28:28 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	smartsort(t_stacks **sts)
 		return (0);
 	if ((*sts)->a->size == 2)
 		return (sort_two(sts));
-	ops += pb_all_but_three(sts);
+	if ((*sts)->a->size < 200)
+		ops += pb_all_but_three_small(sts);
+	else
+		ops += pb_all_but_three_big(sts);
 	ops += sort_three(sts);
 	while ((*sts)->b->size)
 	{
