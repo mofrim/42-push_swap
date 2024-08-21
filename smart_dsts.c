@@ -6,18 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 15:04:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:57:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
-
-/*
- * All the dsts computation in here please!
- *
- * I also need to specify a target position in a beforehand. So, if b_x goes to
- * to the end that would be INT_MAX. If a_i < b_x < a_i+1 that would be i+1.
- */
 
 void	calc_dsts(t_stacks **sts)
 {
@@ -49,7 +42,7 @@ void	calc_dsts(t_stacks **sts)
 
 void	reset_dsts(t_stacks **sts)
 {
-	t_stack *b;
+	t_stack	*b;
 
 	b = (*sts)->b;
 	if ((*sts)->dsts_a)
@@ -61,4 +54,3 @@ void	reset_dsts(t_stacks **sts)
 	if (!(*sts)->dsts_a || !(*sts)->dsts_b)
 		exit_error_malloc();
 }
-
