@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:10:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:17:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ int	pb_all_but_three_big(t_stacks **sts)
 	return (ops);
 }
 
-int	pb_all_but_three_small(t_stacks **sts)
+void	pb_all_but_three_small(t_stacks **sts)
 {
-	int		ops;
 	long	*sortd;
 	long	pivot;
 	int		pushed;
@@ -74,21 +73,16 @@ int	pb_all_but_three_small(t_stacks **sts)
 	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
 	pivot = sortd[(*sts)->a->size / 2];
 	free(sortd);
-	ops = 0;
 	pushed = 0;
 	while ((*sts)->a->size > 3 && pushed < (*sts)->a->size / 2 )
 	{
 		if ((*sts)->a->st[0] <= pivot)
-		{
-			ops += pb_print(sts);
-			pushed++;
-		}
+			pushed += pb_print(sts);
 		else
-			ops += ra_print(sts);
+			ra_print(sts);
 	}
 	while ((*sts)->a->size > 3)
-		ops += pb_print(sts);
-	return (ops);
+		pb_print(sts);
 }
 
 /* Handles 3-elem stack_a. */

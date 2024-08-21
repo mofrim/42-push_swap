@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:07:48 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:16:36 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int			is_dupl(long n, long *arr, int size);
 int			is_sorted(long *arr, int size);
 
 /* smartsort. */
-int			smartsort(t_stacks **sts);
-int			pb_all_but_three_small(t_stacks **sts);
+void 		smartsort(t_stacks **sts);
+void		pb_all_but_three_small(t_stacks **sts);
 int			pb_all_but_three_big(t_stacks **sts);
 int			sort_three(t_stacks **sts);
 void		reset_dsts(t_stacks **sts);

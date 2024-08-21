@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 19:28:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:17:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
 
-static int	sort_two(t_stacks **sts);
+static void	sort_two(t_stacks **sts);
 
 /*
  * smart sort. first pb all but 3 elems. sort those 3 elems. compute dst for
@@ -27,40 +27,36 @@ static int	sort_two(t_stacks **sts);
  * a_y to top of a then pa.
  *
  */
-int	smartsort(t_stacks **sts)
+void	smartsort(t_stacks **sts)
 {
-	int	ops;
 	int best;
 
-	ops = 0;
 	if ((*sts)->a->size == 1)
-		return (0);
+		return ;
 	if ((*sts)->a->size == 2)
-		return (sort_two(sts));
+	{
+		sort_two(sts);
+		return ;
+	}
 	if ((*sts)->a->size < 200)
-		ops += pb_all_but_three_small(sts);
+		pb_all_but_three_small(sts);
 	else
-		ops += pb_all_but_three_big(sts);
-	ops += sort_three(sts);
+		pb_all_but_three_big(sts);
+	sort_three(sts);
 	while ((*sts)->b->size)
 	{
 		calc_dsts(sts);
 		best = find_best_move(sts);
-		ops += do_best_move(sts, best);
+		do_best_move(sts, best);
 	}
-	ops += move_top_min_smart(sts);
-	return (ops);
+	move_top_min_smart(sts);
 }
 
-static int	sort_two(t_stacks **sts)
+static void	sort_two(t_stacks **sts)
 {
 	t_stack	*a;
 
 	a = (*sts)->a;
 	if (a->st[0] > a->st[1])
-	{
 		sa_print(sts);
-		return (1);
-	}
-	return (0);
 }
