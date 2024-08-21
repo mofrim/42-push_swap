@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 16:52:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 08:49:29 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 09:11:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,6 @@ int	do_best_move(t_stacks **sts, int best)
 	dsta = s->dsts_a[best];
 	dstb = s->dsts_b[best];
 	ops = 0;
-	// FIXME: do i even need this?!?!?!
-	// QUESTION: ^^^
-	if (dsta == INT_MAX)
-	{
-		while (ps_abs(dstb) > 0)
-		{
-			if (dstb > 0)
-			{
-				ops += ra_print(sts);
-				dstb--;
-			}
-			if (dstb < 0)
-			{
-				ops += rra_print(sts);
-				dstb++;
-			}
-		}
-		ops += pa_print(sts);
-		ops += ra_print(sts);
-		return (ops);
-	}
 	while (dsta * dstb > 0)
 	{
 		if (dsta < 0)
