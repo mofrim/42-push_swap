@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 12:05:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 15:04:06 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	calc_dsts(t_stacks **sts)
 			dstb = i - s->b->size;
 		else
 			dstb = i;
-		// if (trgt == -1)
-		// 	dsta = INT_MAX;
 		if (trgt > s->a->size - trgt)
 			dsta = trgt - s->a->size;
 		else
@@ -52,7 +50,6 @@ void	calc_dsts(t_stacks **sts)
 void	reset_dsts(t_stacks **sts)
 {
 	t_stack *b;
-	int		i;
 
 	b = (*sts)->b;
 	if ((*sts)->dsts_a)
@@ -63,12 +60,5 @@ void	reset_dsts(t_stacks **sts)
 	(*sts)->dsts_b = malloc(sizeof(int) * b->size);
 	if (!(*sts)->dsts_a || !(*sts)->dsts_b)
 		exit_error_malloc();
-	// FIXME: remove that again in the future. maybe
-	// i = -1;
-	// while (++i < b->size)
-	// {
-	// 	(*sts)->dsts_a[i] = 0;
-	// 	(*sts)->dsts_b[i] = 0;
-	// }
 }
 

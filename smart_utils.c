@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:20:11 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 15:29:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,26 @@ long	get_stack_max(t_stack *stck)
 /* The name says it all. */
 int	pb_all_but_three(t_stacks **sts)
 {
-	int	ops;
+	int		ops;
+	long	*sortd;
+	long	mid_elem;
+	int		pushed;
 
+	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
+	mid_elem = sortd[(*sts)->a->size / 2];
+	free(sortd);
 	ops = 0;
+	pushed = 0;
+	while ((*sts)->a->size > 3 && pushed < (*sts)->a->size / 2 )
+	{
+		if ((*sts)->a->st[0] <= mid_elem)
+		{
+			ops += pb_print(sts);
+			pushed++;
+		}
+		else
+			ops += ra_print(sts);
+	}
 	while ((*sts)->a->size > 3)
 		ops += pb_print(sts);
 	return (ops);

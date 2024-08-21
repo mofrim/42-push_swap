@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 16:52:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 09:11:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 15:04:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ int	get_move_ops(int dsta, int dstb)
 	int	ops;
 
 	ops = 0;
-	if (dsta == INT_MAX)
-	{
-		while (ps_abs(dstb) > 0)
-			ops += decrement_dst(&dstb);
-		return (ops + 1);
-	}
 	while (dsta * dstb > 0)
 	{
 		ops += decrement_dst(&dsta);
