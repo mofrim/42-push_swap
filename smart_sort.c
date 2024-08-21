@@ -6,13 +6,15 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:17:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:50:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
 
 static void	sort_two(t_stacks **sts);
+
+static void	sort_three(t_stacks **sts);
 
 /*
  * smart sort. first pb all but 3 elems. sort those 3 elems. compute dst for
@@ -51,6 +53,30 @@ void	smartsort(t_stacks **sts)
 	}
 	move_top_min_smart(sts);
 }
+
+/* Handles 3-elem stack_a. */
+static void	sort_three(t_stacks **sts)
+{
+	long	*a;
+
+	a = (*sts)->a->st;
+	if (a[0] > a[1] && a[0] > a[2])
+	{
+		ra_print(sts);
+		if (a[0] > a[1])
+			sa_print(sts);
+	}
+	if (a[1] > a[0] && a[1] > a[2])
+	{
+		rra_print(sts);
+		if (a[0] > a[1])
+			sa_print(sts);
+	}
+	if (a[2] > a[0] && a[2] > a[1])
+		if (a[0] > a[1])
+			sa_print(sts);
+}
+
 
 static void	sort_two(t_stacks **sts)
 {

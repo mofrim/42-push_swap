@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:43:29 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:50:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,6 @@ void	move_top_min_smart(t_stacks **sts)
 		else
 			rra_print(sts);
 	}
-}
-
-/* Handles 3-elem stack_a. */
-int	sort_three(t_stacks **sts)
-{
-	long	*a;
-	int		ops;
-
-	ops = 0;
-	a = (*sts)->a->st;
-	if (a[0] > a[1] && a[0] > a[2])
-	{
-		ops += ra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[1] > a[0] && a[1] > a[2])
-	{
-		ops += rra_print(sts);
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	}
-	if (a[2] > a[0] && a[2] > a[1])
-		if (a[0] > a[1])
-			ops += sa_print(sts);
-	return (ops);
 }
 
 void	print_dsts_trgts(t_stacks *sts)
@@ -81,3 +55,23 @@ void	print_dsts_trgts(t_stacks *sts)
 	}
 }
 
+/* Print stacks a & b. */
+void	print_stacks(t_stacks *sts)
+{
+	int	i;
+
+	i = -1;
+	while (++i < sts->initial_size)
+	{
+		ft_printf("a[%d] = ", i);
+		if (sts->a->st[i] == LONG_MAX)
+			ft_printf("   ");
+		else
+			ft_printf("%d  ", sts->a->st[i]);
+		ft_printf("b[%d] = ", i);
+		if (sts->b->st[i] == LONG_MAX)
+			ft_printf(" \n");
+		else
+			ft_printf("%d\n", sts->b->st[i]);
+	}
+}
