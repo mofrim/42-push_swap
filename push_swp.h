@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 19:24:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:07:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,8 @@ void		fill_stack_rev(t_stacks **st);
 void		free_stacks(t_stacks **st);
 void		print_stacks(t_stacks *st);
 
-void		quicksort(long **arr, int low, int high);
-long		*quicksorted_stack(long *arr, int size);
-int			get_index_sorted(long num, long *sorted_stack, int size);
-void		move_to_top_next(t_stacks **sts, long *ss, long xi, int stack_size);
 
-/* Operations. */
+/* Ops. */
 int			sa(t_stacks **st);
 int			sb(t_stacks **st);
 int			ss(t_stacks **st);
@@ -86,7 +82,6 @@ int			is_dupl(long n, long *arr, int size);
 int			is_sorted(long *arr, int size);
 
 /* smartsort. */
-
 int			smartsort(t_stacks **sts);
 int			pb_all_but_three_small(t_stacks **sts);
 int			pb_all_but_three_big(t_stacks **sts);
@@ -98,5 +93,9 @@ void		print_dsts_trgts(t_stacks *sts);
 void		calc_dsts(t_stacks **sts);
 int			find_best_move(t_stacks **sts);
 int			do_best_move(t_stacks **sts, int best);
+
+/* quicksort. */
+void		quicksort(long **arr, int low, int high);
+long		*quicksorted_stack(long *arr, int size);
 
 #endif 

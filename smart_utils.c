@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 20:15:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/22 00:10:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,38 +63,6 @@ int	pb_all_but_three_big(t_stacks **sts)
 		ops += pb_print(sts);
 	return (ops);
 }
-
-/* For N <= 200 this seems to be optimal. */
-// int	pb_all_but_three(t_stacks **sts)
-// {
-// 	int		ops;
-// 	long	*sortd;
-// 	long	pivot;
-// 	int		pushed;
-//
-// 	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
-// 	pivot = sortd[(*sts)->a->size / 2];
-// 	free(sortd);
-// 	ops = 0;
-// 	pushed = 0;
-// 	while ((*sts)->a->size > 3 && pushed < (*sts)->a->size / 2 )
-// 	{
-// 		if ((*sts)->a->st[0] <= pivot)
-// 		{
-// 			ops += pb_print(sts);
-// 			pushed++;
-// 		}
-// 		else
-// 			ops += ra_print(sts);
-// 	}
-// 	while ((*sts)->a->size > 3)
-// 	{
-// 		ops += pb_print(sts);
-// 	 	if ((*sts)->a->st[0] > (*sts)->a->st[1] &&  (*sts)->b->st[0] <   (*sts)->b->st[1])
-//
-// 	}
-// 	return (ops);
-// }
 
 int	pb_all_but_three_small(t_stacks **sts)
 {
@@ -197,7 +165,6 @@ int	get_min_indx(t_stack *s)
 	return (imin);
 }
 
-// FIXME: rename!!
 int	move_top_min_smart(t_stacks **sts)
 {
 	t_stacks	*s;
