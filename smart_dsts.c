@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/21 08:54:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 12:05:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,13 @@ void	reset_dsts(t_stacks **sts)
 	(*sts)->dsts_a = malloc(sizeof(int) * b->size);
 	(*sts)->dsts_b = malloc(sizeof(int) * b->size);
 	if (!(*sts)->dsts_a || !(*sts)->dsts_b)
-	{
-		ft_printf("malloc error!\n");
-		exit(ENOMEM);
-	}
+		exit_error_malloc();
 	// FIXME: remove that again in the future. maybe
-	i = -1;
-	while (++i < b->size)
-	{
-		(*sts)->dsts_a[i] = 0;
-		(*sts)->dsts_b[i] = 0;
-	}
+	// i = -1;
+	// while (++i < b->size)
+	// {
+	// 	(*sts)->dsts_a[i] = 0;
+	// 	(*sts)->dsts_b[i] = 0;
+	// }
 }
 
