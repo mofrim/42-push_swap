@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 13:16:14 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 08:49:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,16 @@ int			rrb_print(t_stacks **st);
 int			rrr_print(t_stacks **st);
 
 /* utils. */
-long		ft_abs(long num);
-long		ft_atol(const char *s);
+long		ps_abs(long num);
+long		ps_atol(const char *s);
 void		exit_error_malloc(void);
 void		exit_error_arg(void);
 int			get_min_indx(t_stack *s);
 int			get_max_indx(t_stack *s);
 long		get_stack_max(t_stack *stck);
 int			move_top_min_smart(t_stacks **sts);
+int			is_dupl(long n, long *arr, int size);
+int			is_sorted(long *arr, int size);
 
 /* smartsort. */
 

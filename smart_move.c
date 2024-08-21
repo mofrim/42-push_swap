@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 16:52:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 00:28:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 08:49:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	get_move_ops(int dsta, int dstb)
 	ops = 0;
 	if (dsta == INT_MAX)
 	{
-		while (ft_abs(dstb) > 0)
+		while (ps_abs(dstb) > 0)
 			ops += decrement_dst(&dstb);
 		return (ops + 1);
 	}
@@ -37,9 +37,9 @@ int	get_move_ops(int dsta, int dstb)
 		ops += decrement_dst(&dsta);
 		decrement_dst(&dstb);
 	}
-	while (ft_abs(dsta) > 0)
+	while (ps_abs(dsta) > 0)
 		ops += decrement_dst(&dsta);
-	while (ft_abs(dstb) > 0)
+	while (ps_abs(dstb) > 0)
 		ops += decrement_dst(&dstb);
 	return (ops);
 }
@@ -81,7 +81,7 @@ int	do_best_move(t_stacks **sts, int best)
 	// QUESTION: ^^^
 	if (dsta == INT_MAX)
 	{
-		while (ft_abs(dstb) > 0)
+		while (ps_abs(dstb) > 0)
 		{
 			if (dstb > 0)
 			{
@@ -107,7 +107,7 @@ int	do_best_move(t_stacks **sts, int best)
 		decrement_dst(&dsta);
 		decrement_dst(&dstb);
 	}
-	while (ft_abs(dsta) > 0)
+	while (ps_abs(dsta) > 0)
 	{
 		if (dsta > 0)
 		{
@@ -120,7 +120,7 @@ int	do_best_move(t_stacks **sts, int best)
 			dsta++;
 		}
 	}
-	while (ft_abs(dstb) > 0)
+	while (ps_abs(dstb) > 0)
 	{
 		if (dstb > 0)
 		{

@@ -6,14 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:43:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 12:46:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 08:49:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swp.h"
 
-long	ft_abs(long num)
+long	ps_abs(long num)
 {
 	if (num < 0)
 		return (-num);

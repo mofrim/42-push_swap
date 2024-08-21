@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 13:28:38 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/21 08:48:54 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Convert string to integer. Uses long in order to catch int overflow. Returns
  * LONG_MAX if string contains not number chars, number represented by is too
  * big or too small.*/
-long	ft_atol(const char *s)
+long	ps_atol(const char *s)
 {
 	long	num;
 	long	sgn;
@@ -59,4 +59,31 @@ void	print_stacks(t_stacks *sts)
 		else
 			ft_printf("%d\n", sts->b->st[i]);
 	}
+}
+
+int	is_dupl(long n, long *arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i] == n)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	is_sorted(long *arr, int size)
+{
+	int	i;
+
+	if (size == 1)
+		return (1);
+	i = 0;
+	while (++i < size)
+		if (arr[i - 1] > arr[i])
+			return (0);
+	return (1);
 }

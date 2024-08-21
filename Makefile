@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/20 14:14:11 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/20 20:15:13 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(LIBFT):
 	make -C $(LIBFT_PATH) all
 
 push: 
-	cc -g -o $(NAME) $(SRC) $(LIBFT) && ./push_swp
+	cc -g -o $(NAME) $(SRC) $(LIBFT) && ./push_swap
 
 test2:		$(NAME)
 					$(eval ARG = $(shell shuf -i 0-100 -n 2 | sed "s/\$$/-50/" | bc))
@@ -88,6 +88,11 @@ test1000:	$(NAME)
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
+
+test100py: $(NAME)
+					$(eval ARG = $(shell ./tester.py))
+					@./push_swap $(ARG) | ./checker_linux $(ARG) > /dev/null
+					@./push_swap $(ARG) | wc -l >> ops.log
 
 clean: fclean
 
