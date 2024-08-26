@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/22 00:44:05 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/26 06:54:46 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRC = $(patsubst ./%.c,%.c,$(SRC_FILES))
 all: $(NAME)
 
 $(NAME): $(SRC) | $(LIBFT)
-	cc -o $(NAME) $^ $(LIBFT)
+	cc $(CFLAGS) -o $(NAME) $^ $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
