@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:39:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 12:06:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/26 06:55:14 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	pa(t_stacks **sts)
 	t_stack	*a;
 	t_stack	*b;
 	long	tmp;
-	int		i;
 
 	a = (*sts)->a;
 	b = (*sts)->b;
@@ -41,7 +40,6 @@ int	pb(t_stacks **sts)
 	t_stack	*b;
 	t_stack	*a;
 	long	tmp;
-	int		i;
 
 	b = (*sts)->b;
 	a = (*sts)->a;
