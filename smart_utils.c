@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:50:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/27 21:21:01 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,5 @@ void	print_dsts_trgts(t_stacks *sts)
 		else if (i < a->size)
 			ft_printf("a[%2d] = %3d -- \n", i, a->st[i]);
 		i++;
-	}
-}
-
-/* Print stacks a & b. */
-void	print_stacks(t_stacks *sts)
-{
-	int	i;
-
-	i = -1;
-	while (++i < sts->initial_size)
-	{
-		ft_printf("a[%d] = ", i);
-		if (sts->a->st[i] == LONG_MAX)
-			ft_printf("   ");
-		else
-			ft_printf("%d  ", sts->a->st[i]);
-		ft_printf("b[%d] = ", i);
-		if (sts->b->st[i] == LONG_MAX)
-			ft_printf(" \n");
-		else
-			ft_printf("%d\n", sts->b->st[i]);
 	}
 }
