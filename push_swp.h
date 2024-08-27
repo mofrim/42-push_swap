@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:51:30 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/27 21:45:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ long		ps_atol(const char *s);
 void		exit_error_malloc(void);
 void		exit_error_arg(void);
 int			get_min_indx(t_stack *s);
-int			get_max_indx(t_stack *s);
+int			get_indx_of_stack_max(t_stack *s);
 long		get_stack_max(t_stack *stck);
 void		move_top_min_smart(t_stacks **sts);
 int			is_dupl(long n, long *arr, int size);

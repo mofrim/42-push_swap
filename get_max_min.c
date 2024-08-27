@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 00:35:34 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:39:00 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/27 21:45:06 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
 
-int	get_max_indx(t_stack *s)
+int	get_indx_of_stack_max(t_stack *s)
 {
 	int	i;
 	int	max;
