@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 00:35:34 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/27 21:45:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/27 22:21:41 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,4 @@ int	get_min_indx(t_stack *s)
 		i++;
 	}
 	return (imin);
-}
-
-long	get_stack_max(t_stack *stck)
-{
-	int	i;
-	int	max;
-
-	max = INT_MIN;
-	i = -1;
-	while (++i < stck->size)
-		if (stck->st[i] > max)
-			max = stck->st[i];
-	return (max);
 }

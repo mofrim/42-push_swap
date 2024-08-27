@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/27 22:15:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/27 22:22:28 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ int	get_target(long elem, t_stack *s, int size)
 
 	i = -1;
 	max_indx = get_indx_of_stack_max(s);
-	// FIXME: get rid of get_stack_max!!
-	if (elem > get_stack_max(s) && max_indx < size - 1)
+	if (elem > s->st[max_indx] && max_indx < size - 1)
 		return (max_indx + 1);
 	while (++i < size - 1)
 	{
 		if (s->st[i] < elem && elem < s->st[i + 1])
 			return (i + 1);
-		if (elem < s->st[i+1] && s->st[i+1] < s->st[i])
+		if (elem < s->st[i + 1] && s->st[i + 1] < s->st[i])
 			return (i + 1);
 	}
 	return (0);
