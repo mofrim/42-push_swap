@@ -57,23 +57,25 @@ def testrun():
         plt.show()
 
 
-def testrun_loop(lstlen, lim=1000, rand_func=worstcase2):
+def testrun_loop(lstlen, lim=1000, rand_func=worstcase2, runs=5000):
     '''
     Good for testing other people's stuff.
     @param lstlen Length of number list to be sorted.
     @param lim Upper / lower boundary for random numbers to be generated.
     @param rand_func Random number generation function to be used.
     '''
-    for i in range(5000):
+    moves_sum = 0
+    for i in range(runs):
         rands = rand_func(lstlen, lim)
         args = [str(x) for x in rands]
-        cmd = './push_swap'
+        cmd = '../push_swap'
         for x in args:
             cmd += f" {x}"
         cmd += ' | wc -l'
         out = run(cmd, shell=True, capture_output=True, text=True)
         numofmoves = int(out.stdout.rstrip())
         print(numofmoves)
+        moves_sum += numofmoves
         if (lstlen == 500 and numofmoves > 5500):
             print(f"Num of moves > 5500 for 500 Numbers: numofmoves = {numofmoves}")
             print(f"cmd:\n{cmd}")
@@ -82,9 +84,10 @@ def testrun_loop(lstlen, lim=1000, rand_func=worstcase2):
             print(f"Num of moves > 700 for 100 Numbers: numofmoves = {numofmoves}")
             print(f"cmd:\n{cmd}")
             input()
+    print(f"lstlen = {lstlen}, avg moves = {moves_sum/runs}")
 
 
-def testrun_benchmark(runs=300, bin='./push_swap', rands_func=worstcase2):
+def testrun_benchmark(runs=300, bin='../push_swap', rands_func=worstcase2):
     '''
     Well, this is obviously good for benchmarking.
     @param runs Number of loops for every list len.
@@ -107,6 +110,6 @@ def testrun_benchmark(runs=300, bin='./push_swap', rands_func=worstcase2):
 
 
 if __name__ == "__main__":
-    testrun_loop(Nums=500, rand_func=anothercase)
-    # testrun_benchmark(runs=300, bin='./push_swap')
+    # testrun_loop(lstlen=500, runs=200)
+    testrun_benchmark(runs=500, bin='../push_swap')
     # testrun_benchmark(runs=300, bin='./mcomb')
