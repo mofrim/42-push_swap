@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/27 22:22:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/28 07:12:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,21 @@ void	set_targets(t_stacks **sts)
 		s->targets[i] = get_target(b->st[i], a, a->size);
 }
 
-/* Get target index in stack a. This is the heart of the sorting logic. */
+/*
+ * Get target index in stack a. This is **The Heart** of the sorting logic.
+ *
+ * The Logic Unravelled: let a_i, a_i+1 in A ...
+ *
+ * - If elem is the new max of A and old max is not located at the highest index
+ *   ATM -> put elem after (max_indx+1) old max.
+ * - If a_i+1 > elem > a_i obviously -> elem fits right in between a_i and a_i+1
+ *   above a_i+1
+ * - If a_i+1 > elem but a_i+1 < a_i, so elem < a_i+1 < a_i. elem has to be
+ *   above a_i+1 but the list is rotated in a way that min and max element
+ *   meet -> still put it between a_i+1 and a_i
+ * - If elem would be the new min of A and the list rotated is rotated in a way
+ *   that old min is on top -> put it on top of the list (index 0).
+ */
 int	get_target(long elem, t_stack *s, int size)
 {
 	int	i;
@@ -47,11 +61,7 @@ int	get_target(long elem, t_stack *s, int size)
 	if (elem > s->st[max_indx] && max_indx < size - 1)
 		return (max_indx + 1);
 	while (++i < size - 1)
-	{
-		if (s->st[i] < elem && elem < s->st[i + 1])
+		if (elem < s->st[i + 1] && (s->st[i] < elem || s->st[i + 1] < s->st[i]))
 			return (i + 1);
-		if (elem < s->st[i + 1] && s->st[i + 1] < s->st[i])
-			return (i + 1);
-	}
 	return (0);
 }
