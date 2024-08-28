@@ -6,56 +6,61 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 21:36:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/19 23:44:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/26 21:08:41 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* copy paste from geeks-for-geeks */
 
-#include "libft/libft.h"
+#include "push_swp.h"
 
-void swap(long* a, long* b) {
-    long t = *a;
-    *a = *b;
-    *b = t;
-}
+// TODO: write my own implementation so that i understand it.
 
-int partition(long **arr, int low, int high) {
-  
-    // Choose the pivot
-    int pivot = (*arr)[high];
-    // Index of smaller element and indicates 
-    // the right position of pivot found so far
-    int i = low - 1;
-    // Traverse arr[low..high] and move all smaller
-    // elements on the left side. Elements from low to 
-    // i are smaller after every iteration
-    for (int j = low; j <= high - 1; j++) {
-        if ((*arr)[j] < pivot) {
-            i++;
-            swap(&(*arr)[i], &(*arr)[j]);
-        }
-    }
-    // Move pivot after smaller elements and
-    // return its position
-    swap(&(*arr)[i + 1], &(*arr)[high]);
-    return (i + 1);
-}
-
-// The QuickSort function implementation
-void quicksort(long **arr, int low, int high)
+void	swap(long *a, long *b)
 {
-    if (low < high) {
-        // pi is the partition return index of pivot
-        int pi = partition(arr, low, high);
-        // Recursion calls for smaller elements
-        // and greater or equals elements
-        quicksort(arr, low, pi - 1);
-        quicksort(arr, pi + 1, high);
-    }
+	long	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-long *quicksorted_stack(long *arr, int size)
+/* Lomuto partition algorithm. Slower then Hoare. */
+int	partition(long **arr, int low, int high)
+{
+	int	pivot;
+	int	i;
+	int	j;
+
+	pivot = (*arr)[high];
+	i = low - 1;
+	j = low;
+	while (j <= high)
+	{
+		if ((*arr)[j] < pivot)
+		{
+			i++;
+			swap(&(*arr)[i], &(*arr)[j]);
+		}
+		j++;
+	}
+	swap(&(*arr)[i + 1], &(*arr)[high]);
+	return (i + 1);
+}
+
+void	quicksort(long **arr, int low, int high)
+{
+	int	pi;
+
+	if (low < high)
+	{
+		pi = partition(arr, low, high);
+		quicksort(arr, low, pi - 1);
+		quicksort(arr, pi + 1, high);
+	}
+}
+
+long	*quicksorted_stack(long *arr, int size)
 {
 	long	*sorted_stack;
 	int		i;
