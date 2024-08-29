@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:39:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:56:00 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 15:02:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	move_both(t_stacks **sts, int *dsta, int *dstb);
 static void	move_stack_a(t_stacks **sts, int *dsta);
 static void	move_stack_b(t_stacks **sts, int *dstb);
 
+/* Do the best move. */
 void	do_best_move(t_stacks **sts, int best)
 {
 	int			dsta;
@@ -31,6 +32,7 @@ void	do_best_move(t_stacks **sts, int best)
 	pa_print(sts);
 }
 
+/* Helper function for rotating both stacks. */
 static void	move_both(t_stacks **sts, int *dsta, int *dstb)
 {
 	while ((*dsta) * (*dstb) > 0)
@@ -44,6 +46,7 @@ static void	move_both(t_stacks **sts, int *dsta, int *dstb)
 	}
 }
 
+/* Helper function for rotating only stack A. */
 static void	move_stack_a(t_stacks **sts, int *dsta)
 {
 	while (ps_abs(*dsta) > 0)
@@ -55,6 +58,7 @@ static void	move_stack_a(t_stacks **sts, int *dsta)
 	}
 }
 
+/* Helper function for rotating only stack B. */
 static void	move_stack_b(t_stacks **sts, int *dstb)
 {
 	while (ps_abs(*dstb) > 0)
