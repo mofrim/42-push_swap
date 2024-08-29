@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:39:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 18:07:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:22:32 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	shift_down_target_stack(t_stack **stck, long tmpa);
 
 static void	shift_up_source_stack(t_stack **stck);
 
-/* Push A. Return 1 in case there was something we could do. */
+/* Push A. Return 1 in case there was something we could do, 0 otherwise. */
 int	pa(t_stacks **sts)
 {
 	t_stack	*a;

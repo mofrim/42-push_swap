@@ -6,37 +6,46 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 20:39:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:57 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:24:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* swap a & b. */
+/* Swap A & B. */
 int	ss_print(t_stacks **sts)
 {
-	ss(sts);
-	ft_printf("ss\n");
-	return (1);
+	int	op;
+
+	op = ss(sts);
+	if (op)
+		ft_printf("ss\n");
+	return (op);
 }
 
-/* push a and print pa. */
+/* Push A and print pa. */
 int	pa_print(t_stacks **sts)
 {
-	pa(sts);
-	ft_printf("pa\n");
-	return (1);
+	int	op;
+
+	op = pa(sts);
+	if (op)
+		ft_printf("pa\n");
+	return (op);
 }
 
-/* push b and print pb. */
+/* Push B and print pb. */
 int	pb_print(t_stacks **sts)
 {
-	pb(sts);
-	ft_printf("pb\n");
-	return (1);
+	int	op;
+
+	op = pb(sts);
+	if (op)
+		ft_printf("pb\n");
+	return (op);
 }
 
-/* rotate a & b and print rr. */
+/* Rotate A & B and print rr. */
 int	rr_print(t_stacks **sts)
 {
 	ra(sts);
@@ -45,7 +54,7 @@ int	rr_print(t_stacks **sts)
 	return (1);
 }
 
-/* rev rotate a & b and print rrr. */
+/* Rev rotate A & B and print rrr. */
 int	rrr_print(t_stacks **sts)
 {
 	rra(sts);
