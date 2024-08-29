@@ -6,11 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:32:33 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:58:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	get_target(long elem, t_stack *s, int size);
 
 /*
  * Set targets arrays belonging to each stack. First each target array is freed.
@@ -54,7 +56,7 @@ void	set_targets(t_stacks **sts)
  *
  * That's it.
  */
-int	get_target(long elem, t_stack *s, int size)
+static int	get_target(long elem, t_stack *s, int size)
 {
 	int	i;
 	int	max_indx;
