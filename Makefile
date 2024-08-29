@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/27 21:25:37 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/29 10:28:49 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC_FILES =	./push_swap.c \
 						./stack_ops_rot.c \
 						./stack_ops_revrot.c \
 						./stack_ops_print.c \
-						./quick_sort.c \
+						./quicksort_median.c\
 						./smart_dsts.c \
 						./smart_sort.c \
 						./smart_utils.c \
