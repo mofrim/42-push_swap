@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:39:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:07:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	shift_down_target_stack(t_stack **stck, long tmpa);
 
 static void	shift_up_source_stack(t_stack **stck);
 
+/* Push A. Return 1 in case there was something we could do. */
 int	pa(t_stacks **sts)
 {
 	t_stack	*a;
@@ -35,6 +36,7 @@ int	pa(t_stacks **sts)
 	return (1);
 }
 
+/* Push B. Return 1 in case there was something we could do. */
 int	pb(t_stacks **sts)
 {
 	t_stack	*b;
@@ -54,6 +56,8 @@ int	pb(t_stacks **sts)
 	return (1);
 }
 
+/* Helper func for shifting the whole target stack down after pushing new
+ * element to the top. */
 static void	shift_down_target_stack(t_stack **stck, long tmp)
 {
 	t_stack	*s;
@@ -72,6 +76,8 @@ static void	shift_down_target_stack(t_stack **stck, long tmp)
 	}
 }
 
+/* Helper func for shifting the whole source stack up after removing element
+ * from the top. */
 static void	shift_up_source_stack(t_stack **stck)
 {
 	t_stack	*s;
