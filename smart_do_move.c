@@ -6,58 +6,62 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:39:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:39:30 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:56:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	do_best_move(t_stacks **sts, int best)
+static void	move_both(t_stacks **sts, int *dsta, int *dstb);
+static void	move_stack_a(t_stacks **sts, int *dsta);
+static void	move_stack_b(t_stacks **sts, int *dstb);
+
+void	do_best_move(t_stacks **sts, int best)
 {
-	int	dsta;
-	int	dstb;
-	int	ops;
-	t_stacks *s;
+	int			dsta;
+	int			dstb;
+	t_stacks	*s;
 
 	s = *sts;
 	dsta = s->dsts_a[best];
 	dstb = s->dsts_b[best];
-	ops = 0;
-	while (dsta * dstb > 0)
+	move_both(sts, &dsta, &dstb);
+	move_stack_a(sts, &dsta);
+	move_stack_b(sts, &dstb);
+	pa_print(sts);
+}
+
+static void	move_both(t_stacks **sts, int *dsta, int *dstb)
+{
+	while ((*dsta) * (*dstb) > 0)
 	{
-		if (dsta < 0)
-			ops += rrr_print(sts);
+		if (*dsta < 0)
+			rrr_print(sts);
 		else
-			ops += rr_print(sts);
-		decrement_dst(&dsta);
-		decrement_dst(&dstb);
+			rr_print(sts);
+		decrement_dst(dsta);
+		decrement_dst(dstb);
 	}
-	while (ps_abs(dsta) > 0)
+}
+
+static void	move_stack_a(t_stacks **sts, int *dsta)
+{
+	while (ps_abs(*dsta) > 0)
 	{
-		if (dsta > 0)
-		{
-			ops += ra_print(sts);
-			dsta--;
-		}
-		if (dsta < 0)
-		{
-			ops += rra_print(sts);
-			dsta++;
-		}
+		if (*dsta > 0)
+			*dsta -= ra_print(sts);
+		if (*dsta < 0)
+			*dsta += rra_print(sts);
 	}
-	while (ps_abs(dstb) > 0)
+}
+
+static void	move_stack_b(t_stacks **sts, int *dstb)
+{
+	while (ps_abs(*dstb) > 0)
 	{
-		if (dstb > 0)
-		{
-			ops += rb_print(sts);
-			dstb--;
-		}
-		if (dstb < 0)
-		{
-			ops += rrb_print(sts);
-			dstb++;
-		}
+		if (*dstb > 0)
+			*dstb -= rb_print(sts);
+		if (*dstb < 0)
+			*dstb += rrb_print(sts);
 	}
-	ops += pa_print(sts);
-	return (ops);
 }
