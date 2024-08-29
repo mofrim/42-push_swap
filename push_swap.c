@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:13:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:35:16 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ int	main(int ac, char **av)
 	stacks = init_stacks_with_args(&array_a, list_len);
 	free(array_a);
 	if (!stacks)
-	{
-		free_stacks(&stacks);
-		exit_error_malloc();
-	}
+		exit_error_malloc_free_stacks(&stacks);
 	smartsort(&stacks);
 	free_stacks(&stacks);
 	return (0);
