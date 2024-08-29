@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:40:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ void	move_top_min_smart(t_stacks **sts)
 		else
 			rra_print(sts);
 	}
+}
+
+int	decrement_dst(int *dst)
+{
+	if (*dst > 0)
+		(*dst)--;
+	if (*dst < 0)
+		(*dst)++;
+	return (1);
 }
 
 void	print_dsts_trgts(t_stacks *sts)
