@@ -6,32 +6,24 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:55 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 15:19:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	sort_two(t_stacks **sts);
-
 static void	sort_three(t_stacks **sts);
 
-/*
- * smart sort. first pb all but 3 elems. sort those 3 elems. compute dst for
- * every elem in b. let b_0 an elem in b. if b_0 > max_elem_of_a, append to
- * bottom by pa, ra => dst 2.
- *
- * if the next elem in b, b_1 > b_0 this would be rb,pa,ra => dst 3;
- * and so on.
- *
- * but now. if there are some elems in a, say a_x and a_y such that a_x < b_0 <
- * a_y, we need to place b_0 above a_y. this can be done by ra'ing or rra'ing
- * a_y to top of a then pa.
- *
+/* The main sorting function.
+ * 1) Handle small stack sizes
+ * 2) Push all but 3 elems to B (Optimized).
+ * 3) Do the sorting using the distance algortihm until stack B is empty again.
+ * 4) Finally move the minimal elem in stack A to top. 
  */
 void	smartsort(t_stacks **sts)
 {
-	int best;
+	int	best;
 
 	if ((*sts)->a->size == 1)
 		return ;
@@ -54,7 +46,7 @@ void	smartsort(t_stacks **sts)
 	move_top_min_smart(sts);
 }
 
-/* Handles 3-elem stack_a. */
+/* Sort 3-elem stack A */
 static void	sort_three(t_stacks **sts)
 {
 	long	*a;
@@ -77,7 +69,7 @@ static void	sort_three(t_stacks **sts)
 			sa_print(sts);
 }
 
-
+/* Sort 2-elem stack A */
 static void	sort_two(t_stacks **sts)
 {
 	t_stack	*a;
