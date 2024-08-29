@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 17:30:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:40:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*  */
+/* Move the minimum of stack A to top. */
 void	move_to_top_min(t_stacks **sts)
 {
 	t_stacks	*s;
@@ -22,15 +22,16 @@ void	move_to_top_min(t_stacks **sts)
 	s = *sts;
 	min_indx = get_indx_of_stack_min(s->a);
 	min = s->a->st[min_indx];
-	while (s->a->st[0] != min)
-	{
-		if (min_indx < s->a->size - min_indx)
+	if (min_indx < s->a->size - min_indx)
+		while (s->a->st[0] != min)
 			ra_print(sts);
-		else
+	else
+		while (s->a->st[0] != min)
 			rra_print(sts);
-	}
 }
 
+/* Decrement absolute value of arg. Always return 1 for using it in ops
+ * counting. */
 int	decrement_dst(int *dst)
 {
 	if (*dst > 0)
@@ -40,6 +41,8 @@ int	decrement_dst(int *dst)
 	return (1);
 }
 
+/* Output function for dsts and targets debugging. Just wanted to keep as a
+ * sounvenir. You never know... */
 void	print_dsts_trgts(t_stacks *sts)
 {
 	int			i;
