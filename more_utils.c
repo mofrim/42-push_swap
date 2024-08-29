@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:49:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 08:57:39 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ long	ps_atol(const char *s)
 	return (num * sgn);
 }
 
+/* Search for possible duplicates of long value n in long array arr. Returns 1
+ * if duplicate is found 0 otherwise. */
 int	is_dupl(long n, long *arr, int size)
 {
 	int	i;
@@ -54,6 +56,7 @@ int	is_dupl(long n, long *arr, int size)
 	return (0);
 }
 
+/* Quickly check if given long array is sorted ascendingly. */
 int	is_sorted(long *arr, int size)
 {
 	int	i;
