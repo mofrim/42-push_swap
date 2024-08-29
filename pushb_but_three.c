@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 00:33:18 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:22:11 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 13:43:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	pb_all_but_three_small(t_stacks **sts)
 	int		pushed;
 
 	sortd = quicksorted_stack((*sts)->a->st, (*sts)->a->size);
+	if (!sortd)
+		exit_error_malloc_free_stacks(sts);
 	pivot = sortd[(*sts)->a->size / 2];
 	free(sortd);
 	pushed = 0;

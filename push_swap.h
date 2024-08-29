@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 10:28:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 13:38:39 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int			get_indx_of_stack_max(t_stack *s);
 void		move_top_min_smart(t_stacks **sts);
 void		exit_error_malloc(void);
 void		exit_error_arg(void);
+void		exit_error_malloc_free_stacks(t_stacks **sts);
 
 /* Smartsort. */
 void		smartsort(t_stacks **sts);

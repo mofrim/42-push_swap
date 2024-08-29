@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:18:40 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 13:20:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 13:33:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	partition(long **arr, int left, int right)
 	return (i);
 }
 
+/* Swap to long numbers. */
 static void	swap(long *a, long *b)
 {
 	long	tmp;
@@ -63,6 +64,7 @@ static void	swap(long *a, long *b)
 	*b = tmp;
 }
 
+/* Return malloced sorted array of longs. */
 long	*quicksorted_stack(long *arr, int size)
 {
 	long	*sorted_stack;

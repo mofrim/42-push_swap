@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:43:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 13:37:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int	is_in(long *arr, int val, int size)
 void	exit_error_malloc(void)
 {
 	ft_putstr_fd("Error\n", 2);
+	exit(ENOMEM);
+}
+
+void	exit_error_malloc_free_stacks(t_stacks **sts)
+{
+	ft_putstr_fd("Error\n", 2);
+	free_stacks(sts);
 	exit(ENOMEM);
 }
 
