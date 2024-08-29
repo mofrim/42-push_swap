@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 10:18:45 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:19:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* swap a. Returns 0 if nothing was done. Returns 1 otherwise. */
+/* Swap A. Returns 0 if nothing was done. Returns 1 otherwise. */
 int	sa(t_stacks **sts)
 {
 	long	**a;
@@ -27,7 +27,7 @@ int	sa(t_stacks **sts)
 	return (1);
 }
 
-/* swap b */
+/* Swap B. */
 int	sb(t_stacks **sts)
 {
 	long	tmp;
@@ -42,26 +42,37 @@ int	sb(t_stacks **sts)
 	return (1);
 }
 
-/* swap a & b */
+/* Swap A & B. */
 int	ss(t_stacks **sts)
 {
-	sa(sts);
-	sb(sts);
-	return (1);
+	int	ops;
+
+	ops = 0;
+	ops += sa(sts);
+	ops += sb(sts);
+	if (ops > 0)
+		return (1);
+	return (0);
 }
 
-/* swap a, and print that. */
+/* Swap A, and print that. */
 int	sa_print(t_stacks **sts)
 {
-	sa(sts);
-	ft_printf("sa\n");
-	return (1);
+	int	op;
+
+	op = sa(sts);
+	if (op)
+		ft_printf("sa\n");
+	return (op);
 }
 
-/* swap b, and print that. */
+/* Swap B, and print that. */
 int	sb_print(t_stacks **sts)
 {
-	sb(sts);
-	ft_printf("sb\n");
-	return (1);
+	int	op;
+
+	op = sb(sts);
+	if (op)
+		ft_printf("sb\n");
+	return (op);
 }
