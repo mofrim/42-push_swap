@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 21:36:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/26 21:08:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* copy paste from geeks-for-geeks */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 // TODO: write my own implementation so that i understand it.
 

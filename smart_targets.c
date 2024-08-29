@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 08:44:11 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 /*
  * Set targets arrays belonging to each stack. First each target array is freed.

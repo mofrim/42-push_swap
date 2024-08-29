@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:57:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 void	calc_dsts(t_stacks **sts)
 {

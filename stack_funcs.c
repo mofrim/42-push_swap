@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/27 21:21:04 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:57 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 t_stacks	*init_stacks_with_args(long **args, int size)
 {

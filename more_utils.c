@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 08:57:39 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:50 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 /* Convert string to integer. Uses long in order to catch int overflow. Returns
  * LONG_MAX if string contains not number chars, number represented by is too

@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 10:20:49 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/20 10:36:05 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 /* rotate a */
 int	ra(t_stacks **sts)

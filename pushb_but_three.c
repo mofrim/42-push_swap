@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 00:33:18 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/22 00:33:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:52 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 /* Seems to be optimal for N > 200. */
 void	pb_all_but_three_big(t_stacks **sts)

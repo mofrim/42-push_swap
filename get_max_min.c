@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 00:35:34 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 08:50:57 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:01:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swp.h"
+#include "push_swap.h"
 
 /* Return the index of maximal elem in stack s. */
 int	get_indx_of_stack_max(t_stack *s)
