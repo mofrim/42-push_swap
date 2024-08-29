@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:02:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:14:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include "libft/libft.h"
 # include <errno.h>
+# include "libft/libft.h"
 
+/* Struct for the individual stacks A and B. */
 typedef struct s_stack
 {
 	long	*st;
 	int		size;
 }	t_stack;
 
+/* The mother struct. Keeping Stacks A and B and all auxiliary vars. */
 typedef struct s_stacks
 {
 	t_stack	*a;
@@ -33,15 +35,12 @@ typedef struct s_stacks
 	int		initial_size;
 }	t_stacks;
 
+/* Stack funcs. */
 t_stacks	*init_stacks(int size);
 t_stacks	*init_stacks_with_args(long **args, int size);
-t_stacks	*init_stacks_rand(int size, int seed);
-t_stacks	*init_stacks_empty(int size);
 void		fill_stack_rand(t_stacks **st, unsigned int seed);
-void		fill_stack_rev(t_stacks **st);
 void		free_stacks(t_stacks **st);
 void		print_stacks(t_stacks *st);
-
 
 /* Ops. */
 int			sa(t_stacks **st);
@@ -69,19 +68,19 @@ int			rra_print(t_stacks **st);
 int			rrb_print(t_stacks **st);
 int			rrr_print(t_stacks **st);
 
-/* utils. */
+/* Utils. */
+int			is_dupl(long n, long *arr, int size);
+int			is_sorted(long *arr, int size);
 long		ps_abs(long num);
 long		ps_atol(const char *s);
-void		exit_error_malloc(void);
-void		exit_error_arg(void);
 int			get_indx_of_stack_min(t_stack *s);
 int			get_indx_of_stack_max(t_stack *s);
 void		move_top_min_smart(t_stacks **sts);
-int			is_dupl(long n, long *arr, int size);
-int			is_sorted(long *arr, int size);
+void		exit_error_malloc(void);
+void		exit_error_arg(void);
 
-/* smartsort. */
-void 		smartsort(t_stacks **sts);
+/* Smartsort. */
+void		smartsort(t_stacks **sts);
 void		pb_all_but_three_small(t_stacks **sts);
 void		pb_all_but_three_big(t_stacks **sts);
 void		reset_dsts(t_stacks **sts);
@@ -92,7 +91,7 @@ void		calc_dsts(t_stacks **sts);
 int			find_best_move(t_stacks **sts);
 int			do_best_move(t_stacks **sts, int best);
 
-/* quicksort. */
+/* Quicksort. */
 void		quicksort(long **arr, int low, int high);
 long		*quicksorted_stack(long *arr, int size);
 
