@@ -6,12 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 13:48:44 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:03:23 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Init all components of t_stacks struct. If malloccing goes wrong anywhere
+ * return NULL for error handling in main func. */
 t_stacks	*init_stacks_with_args(long **args, int size)
 {
 	t_stacks	*stacks;
@@ -41,6 +43,7 @@ t_stacks	*init_stacks_with_args(long **args, int size)
 	return (stacks);
 }
 
+/* Conditionally free all components of t_stacks struct. */
 void	free_stacks(t_stacks **st)
 {
 	if ((*st)->a->st)
@@ -57,10 +60,11 @@ void	free_stacks(t_stacks **st)
 		free((*st)->dsts_a);
 	if ((*st)->targets)
 		free((*st)->targets);
-	free(*st);
+	if (*st)
+		free(*st);
 }
 
-/* Print stacks a & b. */
+/* Print stacks a & b. Not used, but also wanted to keep as a souvenir. */
 void	print_stacks(t_stacks *sts)
 {
 	int	i;
