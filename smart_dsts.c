@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:13:51 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:32:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void	reset_dsts(t_stacks **sts)
 	(*sts)->dsts_a = malloc(sizeof(int) * b->size);
 	(*sts)->dsts_b = malloc(sizeof(int) * b->size);
 	if (!(*sts)->dsts_a || !(*sts)->dsts_b)
-		exit_error_malloc();
+		exit_error_malloc_free_stacks(sts);
 }

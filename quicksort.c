@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:18:40 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 13:33:42 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:29:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ static void	swap(long *a, long *b)
 }
 
 /* Return malloced sorted array of longs. */
-long	*quicksorted_stack(long *arr, int size)
+long	*get_quicksorted_stack_a(t_stacks **sts, int size)
 {
 	long	*sorted_stack;
 	int		i;
 
 	sorted_stack = malloc(size * sizeof(long));
 	if (!sorted_stack)
-		return (NULL);
+		exit_error_malloc_free_stacks(sts);
 	i = -1;
 	while (++i < size)
-		sorted_stack[i] = arr[i];
+		sorted_stack[i] = (*sts)->a->st[i];
 	quicksort(&sorted_stack, 0, size - 1);
 	return (sorted_stack);
 }

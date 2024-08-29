@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 13:38:39 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:28:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ void		print_dsts_trgts(t_stacks *sts);
 void		calc_dsts(t_stacks **sts);
 int			find_best_move(t_stacks **sts);
 int			do_best_move(t_stacks **sts, int best);
-long		*quicksorted_stack(long *arr, int size);
+long		*get_quicksorted_stack_a(t_stacks **sts, int size);
 
 #endif 

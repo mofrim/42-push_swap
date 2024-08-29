@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 14:32:33 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_targets(t_stacks **sts)
 		free(s->targets);
 	s->targets = malloc(sizeof(int) * b->size);
 	if (!s->targets)
-		exit_error_malloc();
+		exit_error_malloc_free_stacks(sts);
 	i = -1;
 	while (++i < b->size)
 		s->targets[i] = get_target(b->st[i], a, a->size);
