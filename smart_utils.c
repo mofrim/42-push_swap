@@ -6,13 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:40:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:30:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_top_min_smart(t_stacks **sts)
+/*  */
+void	move_to_top_min(t_stacks **sts)
 {
 	t_stacks	*s;
 	int			min_indx;

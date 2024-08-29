@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:58:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:27:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	set_targets(t_stacks **sts)
 }
 
 /*
- * Get target index in stack a. This is **The Heart** of the sorting logic.
+ * Get target index in stack a. This is **The Heart** of the sorting logic!
+ *
  *
  * The Logic Unravelled: let a_i, a_i+1 in A ...
  *

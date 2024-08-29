@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 15:19:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:30:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	smartsort(t_stacks **sts)
 		best = find_best_move(sts);
 		do_best_move(sts, best);
 	}
-	move_top_min_smart(sts);
+	move_to_top_min(sts);
 }
 
 /* Sort 3-elem stack A */
