@@ -6,12 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:43:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 13:37:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:27:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Return absolute value of long number. */
 long	ps_abs(long num)
 {
 	if (num < 0)
@@ -19,23 +20,15 @@ long	ps_abs(long num)
 	return (num);
 }
 
-int	is_in(long *arr, int val, int size)
-{
-	int	i;
-
-	i = -1;
-	while (++i < size)
-		if (arr[i] == val)
-			return (1);
-	return (0);
-}
-
+/* Exit func in case early malloc fails. */
 void	exit_error_malloc(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(ENOMEM);
 }
 
+/* Exit func in case malloc fails but there might be things allocated in stacks
+ * struct. */
 void	exit_error_malloc_free_stacks(t_stacks **sts)
 {
 	ft_putstr_fd("Error\n", 2);
@@ -43,6 +36,7 @@ void	exit_error_malloc_free_stacks(t_stacks **sts)
 	exit(ENOMEM);
 }
 
+/* Exit func in case there were invalid args. */
 void	exit_error_arg(void)
 {
 	ft_putstr_fd("Error\n", 2);
