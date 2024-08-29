@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:38:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:15:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* rev rotate a */
+/* Rev rotate A. */
 int	rra(t_stacks **sts)
 {
 	long	**a;
@@ -35,7 +35,7 @@ int	rra(t_stacks **sts)
 	return (1);
 }
 
-/* rev rotate b */
+/* Rev rotate B. */
 int	rrb(t_stacks **sts)
 {
 	long	**b;
@@ -58,7 +58,7 @@ int	rrb(t_stacks **sts)
 	return (1);
 }
 
-/* rev rotate a & b */
+/* Rev rotate A & B */
 int	rrr(t_stacks **sts)
 {
 	rra(sts);
@@ -66,7 +66,7 @@ int	rrr(t_stacks **sts)
 	return (1);
 }
 
-/* rev rotate a and print rra. */
+/* Rev rotate A and print rra. */
 int	rra_print(t_stacks **sts)
 {
 	rra(sts);
@@ -74,7 +74,7 @@ int	rra_print(t_stacks **sts)
 	return (1);
 }
 
-/* rev rotate b and print rrb. */
+/* Rev rotate B and print rrb. */
 int	rrb_print(t_stacks **sts)
 {
 	rrb(sts);
