@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:41:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 17:30:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:50:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	sort_two(t_stacks **sts);
 static void	sort_three(t_stacks **sts);
 
 /* The main sorting function.
+ *
  * 1) Handle small stack sizes
  * 2) Push all but 3 elems to B (Optimized).
  * 3) Do the sorting using the distance algortihm until stack B is empty again.

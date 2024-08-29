@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:19:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 17:27:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:56:01 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	set_targets(t_stacks **sts)
  * The Logic Unravelled: let a_i, a_i+1 in A ...
  *
  * 1) If elem is the new max of A and old max is not located at the highest 
- *    index ATM -> put elem after (max_indx+1) old max.
+ *    index ATM -> put elem *after* (max_indx+1) old max.
  * 2) If a_i+1 > elem > a_i, obviously -> elem fits right in between a_i and
  *    a_i+1 above a_i+1
  * 3) If a_i+1 > elem but a_i+1 < a_i, so elem < a_i+1 < a_i. elem has to be
@@ -57,17 +57,19 @@ void	set_targets(t_stacks **sts)
  *
  * That's it.
  */
-static int	get_target(long elem, t_stack *s, int size)
+static int	get_target(long elem, t_stack *sta, int size)
 {
-	int	i;
-	int	max_indx;
+	int		i;
+	int		max_indx;
+	long	*a;
 
+	a = sta->st;
 	i = -1;
-	max_indx = get_indx_of_stack_max(s);
-	if (elem > s->st[max_indx] && max_indx < size - 1)
+	max_indx = get_indx_of_stack_max(sta);
+	if (elem > a[max_indx] && max_indx < size - 1)
 		return (max_indx + 1);
 	while (++i < size - 1)
-		if (elem < s->st[i + 1] && (s->st[i] < elem || s->st[i + 1] < s->st[i]))
+		if (elem < a[i + 1] && (a[i] < elem || a[i + 1] < a[i]))
 			return (i + 1);
 	return (0);
 }
