@@ -6,12 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 09:01:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 09:06:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Read stack A from cmdline args. Perform error checking: no int overflow
+ * allowed, no duplicates and of course nothing but number. */
 long	*get_stack_from_args(char **av, int size)
 {
 	long	*st;
