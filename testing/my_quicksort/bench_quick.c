@@ -48,17 +48,20 @@ int main(void)
 	double	endTime;
 	double	timeElapsedLo;
 	double	timeElapsedHo;
+	double	timeElapsedMed;
 	double	timeElapsedMy;
 	int		runs;
 	long	*arr1;
 	long	*arr2;
 	long	*arr3;
+	long	*arr4;
 	int		array_size = 500;
 	int		seed;
 
 	runs = 10000;
 	timeElapsedLo = 0;
 	timeElapsedHo = 0;
+	timeElapsedMed = 0;
 	timeElapsedMy = 0;
 	setvbuf(stdout, NULL, _IONBF, 0);
 	for (int i = 0;i < runs;i++) {
@@ -67,8 +70,10 @@ int main(void)
 		arr1 = long_rand_arr(array_size, seed);
 		arr2 = malloc(sizeof(long) * array_size);
 		arr3 = malloc(sizeof(long) * array_size);
+		arr4 = malloc(sizeof(long) * array_size);
 		memcpy(arr2, arr1, sizeof(long) * array_size);
 		memcpy(arr3, arr1, sizeof(long) * array_size);
+		memcpy(arr4, arr1, sizeof(long) * array_size);
 
 		printf("qs lomuto... // ");
 		startTime = (float)clock()/CLOCKS_PER_SEC;
@@ -84,20 +89,29 @@ int main(void)
 		timeElapsedHo += endTime - startTime;
 		free(arr2);
 
-		printf("qs my... // ");
+		printf("qs med... // ");
 		startTime = (float)clock()/CLOCKS_PER_SEC;
 		quicksort_median(&arr3, 0, array_size - 1);
 		endTime = (float)clock()/CLOCKS_PER_SEC;
-		timeElapsedMy += endTime - startTime;
+		timeElapsedMed += endTime - startTime;
 		free(arr3);
+
+		printf("qs my... // ");
+		startTime = (float)clock()/CLOCKS_PER_SEC;
+		quicksort(&arr4, 0, array_size - 1);
+		endTime = (float)clock()/CLOCKS_PER_SEC;
+		timeElapsedMy += endTime - startTime;
+		free(arr4);
 		// printf("i = %d\r", i);
 	printf("Lo: %.10lf //", timeElapsedLo / (double)(i+1));
 	printf("Ho: %.10lf //", timeElapsedHo / (double)(i+1));
+	printf("Med: %.10lf\n", timeElapsedMed / (double)(i+1));
 	printf("My: %.10lf\n", timeElapsedMy / (double)(i+1));
 	}
 	printf("\ntotal time Lo: %.10lf\n", timeElapsedLo / (double)runs);
 	printf("total time Ho: %.10lf\n", timeElapsedHo / (double)runs);
-	printf("total time My: %.10lf\n", timeElapsedMy / (double)runs);
+	printf("total time Med : %.10lf\n", timeElapsedMed / (double)runs);
+	printf("total time My : %.10lf\n", timeElapsedMy / (double)runs);
 	return (0);
 }
 

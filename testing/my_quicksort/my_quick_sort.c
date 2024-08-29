@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:48:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/26 21:52:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 13:11:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,9 @@ int	partition_median(long **arr, int left, int right)
 		while ((*arr)[i] < pivot)
 			i++;
 		if (i < j)
-		{
 			swap(&(*arr)[i], &(*arr)[j]);
-			i++;
-			j--;
-		}
+		else if (i == j)
+			return (j);
 		else
 			return (j + 1);
 	}

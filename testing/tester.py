@@ -110,6 +110,6 @@ def testrun_benchmark(runs=300, bin='../push_swap', rands_func=worstcase2):
 
 
 if __name__ == "__main__":
-    # testrun_loop(lstlen=500, runs=200)
-    testrun_benchmark(runs=500, bin='../push_swap')
+    testrun_loop(lstlen=500, runs=200)
+    # testrun_benchmark(runs=500, bin='../push_swap')
     # testrun_benchmark(runs=300, bin='./mcomb')

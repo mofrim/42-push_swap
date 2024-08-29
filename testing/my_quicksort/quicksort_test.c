@@ -27,6 +27,9 @@ int main(void)
 	// int size = 5;
 	// long arr[10] = {9,0,0,0,0};
 
+	// int size = 5;
+	// long arr[10] = {4,1,3,5,2};
+
 	// long arr[10] = {9,8,7,6,0,0,0,0,0};
 	// long arr[10] = {0,0,0,0,0,9,8,7,6};
 
@@ -37,8 +40,8 @@ int main(void)
 	p = arr;
 
 	// quicksort_median(&p, 0, size - 1);
-	// quicksort(&p, 0, size - 1);
-	quicksort_hoare(&p, 0, size - 1);
+	quicksort(&p, 0, size - 1);
+	// quicksort_hoare(&p, 0, size - 1);
 
 	printf("\n");
 	for (int i = 0;i < size; i++) {

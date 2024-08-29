@@ -39,6 +39,17 @@ function mytest4()
 	oktest $out_push
 }
 
+function mytest5()
+{
+	echo
+	echo "mytest5"
+	echo "-------"
+	myarg="4 1 3 5 2"
+	out_push=$(../push_swap $myarg | ./checker_linux $myarg)
+	echo -n $out_push ""
+	oktest $out_push
+}
+
 function test5()
 {
 	echo
@@ -112,6 +123,8 @@ function test500()
 }
 
 mytest4
+echo
+mytest5
 echo
 mytest10
 echo
