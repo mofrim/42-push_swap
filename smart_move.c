@@ -6,12 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 16:52:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:41:23 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 15:09:54 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Calculate number of stack ops needed to move a given elem in stack B to its
+ * target pos given the precalculated distances. */
 static int	get_move_ops(int dsta, int dstb)
 {
 	int	ops;
@@ -29,6 +31,7 @@ static int	get_move_ops(int dsta, int dstb)
 	return (ops);
 }
 
+/* Find the best move to be made given the current stacks-setting. */
 int	find_best_move(t_stacks **sts)
 {
 	int			best;
