@@ -6,20 +6,19 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 00:35:34 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/27 22:21:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 08:50:57 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swp.h"
 
+/* Return the index of maximal elem in stack s. */
 int	get_indx_of_stack_max(t_stack *s)
 {
 	int	i;
 	int	max;
 	int	imax;
 
-	if (!s->size)
-		return (-1);
 	i = 0;
 	max = s->st[0];
 	imax = 0;
@@ -35,14 +34,13 @@ int	get_indx_of_stack_max(t_stack *s)
 	return (imax);
 }
 
-int	get_min_indx(t_stack *s)
+/* Return the index of minimal elem in stack s. */
+int	get_indx_of_stack_min(t_stack *s)
 {
 	int	i;
 	int	min;
 	int	imin;
 
-	if (!s->size)
-		return (-1);
 	i = 0;
 	min = s->st[0];
 	imin = 0;

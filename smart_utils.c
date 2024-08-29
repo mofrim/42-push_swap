@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:18:41 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/27 21:21:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/29 08:47:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_top_min_smart(t_stacks **sts)
 	int			min;
 
 	s = *sts;
-	min_indx = get_min_indx(s->a);
+	min_indx = get_indx_of_stack_min(s->a);
 	min = s->a->st[min_indx];
 	while (s->a->st[0] != min)
 	{
