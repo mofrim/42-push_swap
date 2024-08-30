@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:35:30 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 17:30:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/30 11:30:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ void		move_to_top_min(t_stacks **sts);
 void		exit_error_malloc(void);
 void		exit_error_arg(void);
 void		exit_error_malloc_free_stacks(t_stacks **sts);
+int			decrement_dst(int *dst);
+void		print_dsts_trgts(t_stacks *sts);
 
 /* Smartsort. */
 void		smartsort(t_stacks **sts);
 void		pb_all_but_three_small(t_stacks **sts);
 void		pb_all_but_three_big(t_stacks **sts);
 void		reset_dsts(t_stacks **sts);
-int			decrement_dst(int *dst);
-void		set_targets(t_stacks **sts);
-void		print_dsts_trgts(t_stacks *sts);
 void		calc_dsts(t_stacks **sts);
+void		set_targets(t_stacks **sts);
 int			find_best_move(t_stacks **sts);
 void		do_best_move(t_stacks **sts, int best);
 long		*get_quicksorted_stack_a(t_stacks **sts, int size);
