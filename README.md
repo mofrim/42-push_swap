@@ -4,6 +4,9 @@
 
 ## Current Status
 
+- [X] Done, so far.
+- [ ] Check on campus.
+
 I got stuck using my array-approach. In principle it should be possible to
 solve this exercise also using the array-approach. But right now i am lacking
 the right idea to do it.
