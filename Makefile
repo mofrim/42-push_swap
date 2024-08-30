@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/30 11:36:12 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/30 11:40:11 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ LIBFT				= $(LIBFT_PATH)/libft.a
 SRC_FILES =	./push_swap.c \
 						./stack_funcs.c \
 						./pushb_but_three.c \
-						./utils.c \
 						./get_max_min.c \
-						./more_utils.c \
+						./utils.c \
+						./utils_is.c \
 						./stack_ops_push.c \
 						./stack_ops_swap.c \
 						./stack_ops_rot.c \
