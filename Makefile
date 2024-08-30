@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/30 11:40:11 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/30 11:54:24 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ SRC_FILES =	./push_swap.c \
 						./stack_funcs.c \
 						./pushb_but_three.c \
 						./get_max_min.c \
-						./utils.c \
-						./utils_is.c \
 						./stack_ops_push.c \
 						./stack_ops_swap.c \
 						./stack_ops_rot.c \
@@ -33,10 +31,12 @@ SRC_FILES =	./push_swap.c \
 						./quicksort.c\
 						./smart_dsts.c \
 						./smart_sort.c \
-						./smart_utils.c \
 						./smart_targets.c \
 						./smart_move.c \
-						./smart_do_move.c
+						./smart_do_move.c \
+						./utils.c \
+						./utils_is.c \
+						./utils_smart.c
 
 SRC = $(patsubst ./%.c,%.c,$(SRC_FILES))
 
