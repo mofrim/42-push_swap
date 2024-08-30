@@ -6,11 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:46:59 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 18:03:23 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/30 11:52:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	set_initial_values(t_stacks **sts, int size);
 
 /* Init all components of t_stacks struct. If malloccing goes wrong anywhere
  * return NULL for error handling in main func. */
@@ -24,9 +26,11 @@ t_stacks	*init_stacks_with_args(long **args, int size)
 		return (NULL);
 	stacks->a = malloc(size * sizeof(t_stack));
 	stacks->b = malloc(size * sizeof(t_stack));
+	if (!stacks->a || !stacks->b)
+		return (NULL);
 	stacks->a->st = malloc(size * sizeof(long));
 	stacks->b->st = malloc(size * sizeof(long));
-	if (!stacks->a || !stacks->b || !stacks->a->st || !stacks->b->st)
+	if (!stacks->a->st || !stacks->b->st)
 		return (NULL);
 	i = -1;
 	while (++i < size)
@@ -34,13 +38,18 @@ t_stacks	*init_stacks_with_args(long **args, int size)
 		stacks->a->st[i] = (*args)[i];
 		stacks->b->st[i] = LONG_MAX;
 	}
-	stacks->a->size = size;
-	stacks->b->size = 0;
-	stacks->dsts_a = NULL;
-	stacks->dsts_b = NULL;
-	stacks->targets = NULL;
-	stacks->initial_size = size;
+	set_initial_values(&stacks, size);
 	return (stacks);
+}
+
+void	set_initial_values(t_stacks **sts, int size)
+{
+	(*sts)->a->size = size;
+	(*sts)->b->size = 0;
+	(*sts)->dsts_a = NULL;
+	(*sts)->dsts_b = NULL;
+	(*sts)->targets = NULL;
+	(*sts)->initial_size = size;
 }
 
 /* Conditionally free all components of t_stacks struct. */
