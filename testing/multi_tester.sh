@@ -50,6 +50,18 @@ function mytest5()
 	oktest $out_push
 }
 
+function mytest_mean()
+{
+	echo
+	echo "mytest mean"
+	echo "-----------"
+	myarg="0 -0"
+	out_push=$(../push_swap $myarg | ./checker_linux $myarg 2>&1)
+	myarg="00002147483647 -000000000000000002147483648"
+	out_push=$(../push_swap $myarg | ./checker_linux $myarg 2>&1)
+	echo -n $out_push ""
+}
+
 function test5()
 {
 	echo
@@ -122,6 +134,8 @@ function test500()
 	done
 }
 
+mytest_mean
+echo
 mytest4
 echo
 mytest5
