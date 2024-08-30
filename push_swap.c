@@ -6,37 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:33:32 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/29 14:35:16 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/30 11:14:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Read stack A from cmdline args. Perform error checking: no int overflow
- * allowed, no duplicates and of course nothing but number. */
-long	*get_stack_from_args(char **av, int size)
-{
-	long	*st;
-	long	new;
-	int		i;
-
-	st = malloc(sizeof(long) * size);
-	if (!st)
-		exit_error_malloc();
-	i = 0;
-	while (i < size)
-	{
-		new = ps_atol(av[i + 1]);
-		if (new == LONG_MAX || is_dupl(new, st, i))
-		{
-			free(st);
-			exit_error_arg();
-		}
-		st[i] = new;
-		i++;
-	}
-	return (st);
-}
+static long	*get_stack_from_args(char **av, int size);
 
 int	main(int ac, char **av)
 {
@@ -60,4 +36,30 @@ int	main(int ac, char **av)
 	smartsort(&stacks);
 	free_stacks(&stacks);
 	return (0);
+}
+
+/* Read stack A from cmdline args. Perform error checking: no int overflow
+ * allowed, no duplicates and of course nothing but number. */
+static long	*get_stack_from_args(char **av, int size)
+{
+	long	*st;
+	long	new;
+	int		i;
+
+	st = malloc(sizeof(long) * size);
+	if (!st)
+		exit_error_malloc();
+	i = 0;
+	while (i < size)
+	{
+		new = ps_atol(av[i + 1]);
+		if (new == LONG_MAX || is_dupl(new, st, i))
+		{
+			free(st);
+			exit_error_arg();
+		}
+		st[i] = new;
+		i++;
+	}
+	return (st);
 }
