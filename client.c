@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:40:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 00:50:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/01 00:55:31 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	sendchar(unsigned char c, int pid)
 			usleep(10);
 			while (g_bits_received == old_received_bits)
 			{
-				ft_printf("A");
+				ft_printf(" ");
 				usleep(10);
 			}
 		}
@@ -52,7 +52,7 @@ int	sendchar(unsigned char c, int pid)
 			usleep(10);
 			while (g_bits_received == old_received_bits)
 			{
-				ft_printf("A");
+				ft_printf(" ");
 				usleep(10);
 			}
 		}
