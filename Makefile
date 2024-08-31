@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/30 14:46:41 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/09/01 00:17:58 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CFLAGS	= -Wall -Wextra -Werror
 LIBFT_PATH	= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
 
-SRC_FILES_SRV =	./server.c
-SRC_FILES_CLI =	./client.c
+SRC_FILES_SRV =	./server.c ./miniutils.c
+SRC_FILES_CLI =	./client.c ./miniutils.c
 
 SRC_SRV = $(patsubst ./%.c,%.c,$(SRC_FILES_SRV))
 SRC_CLI = $(patsubst ./%.c,%.c,$(SRC_FILES_CLI))

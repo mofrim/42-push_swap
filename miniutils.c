@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   miniutils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 12:48:43 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 00:12:45 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/09/01 00:10:08 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/09/01 00:11:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include "libft/libft.h"
-# include <unistd.h>
-# include <signal.h>
-# include <errno.h>
-
-void	exit_error(char *msg);
-
-#endif
+void	exit_error(char *msg)
+{
+	ft_printf("%s\n", msg);
+	exit(errno);
+} 
