@@ -6,77 +6,24 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:40:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 00:55:31 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/01 01:59:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "minitalk.h"
+#include <wchar.h>
 
-static int	g_bits_received;
+static int	g_srv_ack;
 
-void	sig_handler(int signum)
-{
-	if (signum == SIGUSR2)
-		ft_printf(".");
-	if (signum == SIGUSR1)
-		g_bits_received++;
-}
-
-/* SIGUSR1 = 0, SIGUSR2 = 1 */
-int	sendchar(unsigned char c, int pid)
-{
-	int	bit_indx;
-	int	old_received_bits;
-
-	bit_indx = 0;
-	// ft_printf("Sending char \'%c\' = ", c);
-	// print_bitstr(c);
-	while (bit_indx < 8)
-	{
-		if ((c << bit_indx) & 0b10000000)
-		{
-			old_received_bits = g_bits_received;
-			kill(pid, SIGUSR2);
-			usleep(10);
-			while (g_bits_received == old_received_bits)
-			{
-				ft_printf(" ");
-				usleep(10);
-			}
-		}
-		else
-		{
-			old_received_bits = g_bits_received;
-			kill(pid, SIGUSR1);
-			usleep(10);
-			while (g_bits_received == old_received_bits)
-			{
-				ft_printf(" ");
-				usleep(10);
-			}
-		}
-		bit_indx++;
-	}
-	// ft_printf("\n");
-	return (0);
-}
+void	send_msg(int srv_pid, char *msg);
+void	sig_handler(int signum);
+int		sendchar(unsigned char c, int pid, int *bits_sent);
 
 int	main(int ac, char **av)
 {
 	pid_t	srv_pid;
-	char	*ptr;
-	struct sigaction	act;
 
-	act.sa_handler = sig_handler;
-	act.sa_flags = SA_SIGINFO;
-	sigemptyset(&act.sa_mask);
-	sigaddset(&act.sa_mask, SIGUSR1);
-	sigaddset(&act.sa_mask, SIGUSR2);
-	if (sigaction(SIGUSR1, &act, NULL) == -1)
-		exit_error("sigaction error\n");
-	if (sigaction(SIGUSR2, &act, NULL) == -1)
-		exit_error("sigaction error\n");
 	if (ac != 3)
 	{
 		ft_printf("Usage: %s SERVER_PID MESSAGE\n", av[0]);
@@ -85,16 +32,69 @@ int	main(int ac, char **av)
 	srv_pid = ft_atoi(av[1]);
 	if (kill(srv_pid, 0) == -1)
 		exit_error("Wrong PID.\n");
-	ptr = av[2];
-	ft_printf("Sending message to server at PID %d\n", srv_pid);
-	while (*ptr)
-	{
-		sendchar((unsigned char)*ptr, srv_pid);
-		ptr++;
-	}
-	sendchar('\0', srv_pid);
-	ft_printf(" done!");
+	signal_setup(&sig_handler);
+	send_msg(srv_pid, av[2]);
 	return (0);
 }
 
+void	sig_handler(int signum)
+{
+	if (signum == SIGUSR2)
+		ft_printf(".");
+	if (signum == SIGUSR1)
+		g_srv_ack = 1;
+}
 
+void	send_sig(int pid, int signum)
+{
+	int	timeout;
+
+	timeout = 0;
+	kill(pid, signum);
+	usleep(10);
+	while (!g_srv_ack && timeout < TIMEOUT)
+	{
+		ft_printf(" ");
+		usleep(10);
+		timeout++;
+	}
+	if (timeout == 10 && !g_srv_ack)
+	{
+		errno = ETIMEDOUT;
+		exit_error("Server Timeout\n");
+	}
+}
+
+/* SIGUSR1 = 0, SIGUSR2 = 1 */
+int	sendchar(unsigned char c, int pid, int *bits_sent)
+{
+	int	bit_indx;
+
+	bit_indx = 0;
+	while (bit_indx < 8)
+	{
+		if ((c << bit_indx) & 0b10000000)
+			send_sig(pid, SIGUSR2);
+		else
+			send_sig(pid, SIGUSR1);
+		(*bits_sent)++;
+		bit_indx++;
+		g_srv_ack = 0;
+	}
+	return (0);
+}
+
+void	send_msg(int srv_pid, char *msg)
+{
+	int	bits_sent;
+
+	bits_sent = 0;
+	ft_printf("Sending message to server at PID %d\n", srv_pid);
+	while (*msg)
+	{
+		sendchar((unsigned char)*msg, srv_pid, &bits_sent);
+		msg++;
+	}
+	sendchar('\0', srv_pid, &bits_sent);
+	ft_printf(" done!\n%d bits sent\n", bits_sent);
+}
