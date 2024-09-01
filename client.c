@@ -6,19 +6,19 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:40:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 01:59:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/01 02:07:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "minitalk.h"
-#include <wchar.h>
 
 static int	g_srv_ack;
 
-void	send_msg(int srv_pid, char *msg);
 void	sig_handler(int signum);
+void	send_msg(int srv_pid, char *msg);
 int		sendchar(unsigned char c, int pid, int *bits_sent);
+void	send_sig(int pid, int signum);
 
 int	main(int ac, char **av)
 {
@@ -45,24 +45,19 @@ void	sig_handler(int signum)
 		g_srv_ack = 1;
 }
 
-void	send_sig(int pid, int signum)
+void	send_msg(int srv_pid, char *msg)
 {
-	int	timeout;
+	int	bits_sent;
 
-	timeout = 0;
-	kill(pid, signum);
-	usleep(10);
-	while (!g_srv_ack && timeout < TIMEOUT)
+	bits_sent = 0;
+	ft_printf("Sending message to server at PID %d\n", srv_pid);
+	while (*msg)
 	{
-		ft_printf(" ");
-		usleep(10);
-		timeout++;
+		sendchar((unsigned char)*msg, srv_pid, &bits_sent);
+		msg++;
 	}
-	if (timeout == 10 && !g_srv_ack)
-	{
-		errno = ETIMEDOUT;
-		exit_error("Server Timeout\n");
-	}
+	sendchar('\0', srv_pid, &bits_sent);
+	ft_printf(" done!\n%d bits sent\n", bits_sent);
 }
 
 /* SIGUSR1 = 0, SIGUSR2 = 1 */
@@ -84,17 +79,22 @@ int	sendchar(unsigned char c, int pid, int *bits_sent)
 	return (0);
 }
 
-void	send_msg(int srv_pid, char *msg)
+void	send_sig(int pid, int signum)
 {
-	int	bits_sent;
+	int	timeout;
 
-	bits_sent = 0;
-	ft_printf("Sending message to server at PID %d\n", srv_pid);
-	while (*msg)
+	timeout = 0;
+	kill(pid, signum);
+	usleep(10);
+	while (!g_srv_ack && timeout < ACK_TIMEOUT)
 	{
-		sendchar((unsigned char)*msg, srv_pid, &bits_sent);
-		msg++;
+		ft_printf(" ");
+		usleep(10);
+		timeout++;
 	}
-	sendchar('\0', srv_pid, &bits_sent);
-	ft_printf(" done!\n%d bits sent\n", bits_sent);
+	if (timeout == ACK_TIMEOUT && !g_srv_ack)
+	{
+		errno = ETIMEDOUT;
+		exit_error("Server Timeout\n");
+	}
 }

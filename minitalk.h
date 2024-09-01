@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 12:48:43 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 01:59:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/01 02:06:17 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <signal.h>
 # include <errno.h>
 
-# define TIMEOUT 20
+# define ACK_TIMEOUT 20
 
 void	exit_error(char *msg);
 void 	print_bitstr(unsigned char c);
