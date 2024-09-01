@@ -1,6 +1,11 @@
 # 42-minitalk
 42's Minitalk Project
 
+## Progress
+
+- somehow it already fulfills all the bonus requirements 🙃. even unicode chars are
+working because we send/receive print raw bytes 🥳
+
 # Notes
 
 ## How to start msg transfer?
