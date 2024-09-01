@@ -6,11 +6,10 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:40:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 02:07:37 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/01 02:20:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "minitalk.h"
 
 static int	g_srv_ack;
@@ -40,7 +39,7 @@ int	main(int ac, char **av)
 void	sig_handler(int signum)
 {
 	if (signum == SIGUSR2)
-		ft_printf(".");
+		ft_putchar_fd('.', 1);
 	if (signum == SIGUSR1)
 		g_srv_ack = 1;
 }
@@ -88,7 +87,7 @@ void	send_sig(int pid, int signum)
 	usleep(10);
 	while (!g_srv_ack && timeout < ACK_TIMEOUT)
 	{
-		ft_printf(" ");
+		ft_putchar_fd(' ', 1);
 		usleep(10);
 		timeout++;
 	}
