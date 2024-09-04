@@ -6,15 +6,15 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 12:49:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/01 00:21:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/04 11:02:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include "signal.h"
 
-// (unsigned char)128 = 10000000
-// TODO find most obvious way of doing this.
+/* The server signal_handler. If we receive SIGUSR2 from client set bits from
+ * left to right by bitwise or. (unsigned char)128 = 0b10000000 but i prefer
+ * explicitness over shortness here. */
 void	signal_handler(int signum, siginfo_t *info, void *context)
 {
 	static int				i;
@@ -22,7 +22,7 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 
 	(void)context;
 	if (signum == SIGUSR2)
-		c |= (128 >> i);
+		c |= (0b10000000 >> i);
 	i++;
 	if (i == 8)
 	{
@@ -39,6 +39,9 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 		exit_error("Server failed to send SIGUSR1");
 }
 
+/* Main. Using SA_SIGINFO here because we need the pid of the client which will
+ * be saved in siginfo_t struct. SIGUSR* is added to sa_mask in order to block
+ * both signals during handler execution. */
 int	main(void)
 {
 	pid_t				pid;
@@ -47,7 +50,7 @@ int	main(void)
 	pid = getpid();
 	ft_printf("%d\n", pid);
 	sig_act.sa_sigaction = &signal_handler;
-	sig_act.sa_flags = SA_SIGINFO | SA_RESTART;
+	sig_act.sa_flags = SA_SIGINFO;
 	sigemptyset(&sig_act.sa_mask);
 	sigaddset(&sig_act.sa_mask, SIGUSR1);
 	sigaddset(&sig_act.sa_mask, SIGUSR2);
