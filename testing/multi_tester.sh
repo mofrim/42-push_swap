@@ -15,11 +15,11 @@ function mytest10()
 	echo "mytest10"
 	echo "--------"
 	myarg10="1 2 3 4 5 6 7 8 9 10"
-	out_push=$(../push_swap $myarg10 | ./checker_linux $myarg10)
+	out_push=$(./push_swap $myarg10 | testing/checker_linux $myarg10)
 	echo -n $out_push ""
 	oktest $out_push
 	myarg10="2 3 4 6 5 7 8 9 10 11"
-	out_push=$(../push_swap $myarg10 | ./checker_linux $myarg10)
+	out_push=$(./push_swap $myarg10 | testing/checker_linux $myarg10)
 	echo -n $out_push
 	oktest $out_push
 }
@@ -30,11 +30,11 @@ function mytest4()
 	echo "mytest4"
 	echo "-------"
 	myarg="4 3 2 1"
-	out_push=$(../push_swap $myarg | ./checker_linux $myarg)
+	out_push=$(./push_swap $myarg | testing/checker_linux $myarg)
 	echo -n $out_push ""
 	oktest $out_push
 	myarg="-1 1 -2 2"
-	out_push=$(../push_swap $myarg | ./checker_linux $myarg)
+	out_push=$(./push_swap $myarg | testing/checker_linux $myarg)
 	echo -n $out_push
 	oktest $out_push
 }
@@ -45,7 +45,7 @@ function mytest5()
 	echo "mytest5"
 	echo "-------"
 	myarg="4 1 3 5 2"
-	out_push=$(../push_swap $myarg | ./checker_linux $myarg)
+	out_push=$(./push_swap $myarg | testing/checker_linux $myarg)
 	echo -n $out_push ""
 	oktest $out_push
 }
@@ -56,9 +56,9 @@ function mytest_mean()
 	echo "mytest mean"
 	echo "-----------"
 	myarg="0 -0"
-	out_push=$(../push_swap $myarg | ./checker_linux $myarg 2>&1)
+	out_push=$(./push_swap $myarg | testing/checker_linux $myarg 2>&1)
 	myarg="00002147483647 -000000000000000002147483648"
-	out_push=$(../push_swap $myarg | ./checker_linux $myarg 2>&1)
+	out_push=$(./push_swap $myarg | testing/checker_linux $myarg 2>&1)
 	echo -n $out_push ""
 }
 
